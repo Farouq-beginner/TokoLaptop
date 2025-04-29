@@ -20,4 +20,9 @@ public class TokoController {
 	public String getHome() {
 		return "homePage";
 	}
+
+	@GetMapping("/AboutUs")
+	public String getAboutUs() {
+		return "AboutUs";
+	}
 }
