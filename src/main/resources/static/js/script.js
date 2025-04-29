@@ -1,12 +1,14 @@
 // Get modal elements
 const searchModal = document.getElementById('search-modal');
 const loginModal = document.getElementById('login-modal');
+const laptopSection = document.getElementById('laptop-section');
 
 // Get buttons that open the modals
 const searchIcon = document.getElementById('search-icon');
 const profileIcon = document.getElementById('profile-icon');
 const hamburgerMenu = document.getElementById('hamburger-menu');
 const mainNav = document.getElementById('main-nav');
+const laptopLink = document.getElementById('laptop-link');
 
 // Get elements that close the modals
 const searchClose = document.getElementById('search-close');
@@ -15,6 +17,16 @@ const loginClose = document.getElementById('login-close');
 // When the user clicks on the hamburger menu, toggle the nav menu
 hamburgerMenu.onclick = function () {
     mainNav.classList.toggle('active')
+}
+
+// When the user clicks on the Laptop Link, show the Laptop section
+laptopLink.onclick = function(e) {
+    e.preventDefault();
+    laptopSection.style.display = "block";
+    // Hide the nav menu on mobile after clicking
+    if (window.innerWidth < 768) {
+        mainNav.classList.remove('active');
+    }
 }
 
 // When the user clicks on the icon, open the modal
@@ -53,8 +65,10 @@ window.onclick = function (event) {
 const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 768 && link.id !== 'laptop-link') {
             mainNav.classList.remove('active');
+            // Hide laptop section when clicking on other nav links
+            laptopSection.style.display = "none";
         }
     });
 });
