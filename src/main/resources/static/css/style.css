@@ -28,7 +28,7 @@ body {
     background-position: center;
     z-index: 1;
     /* Fallback color gradient if image doesn't load */
-    background: linear-gradient(to bottom, #6ad1c7 0%, #2b90a8 50%, #1a4c5e 100%);
+    background: linear-gradient(135deg, #4158D0, #C850C0, #FFCC70);
 }
 
 .header {
@@ -38,7 +38,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: linear-gradient(135deg, #4158D0, #C850C0, #FFCC70);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -56,7 +56,7 @@ body {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: linear-gradient(135deg, #4158D0, #C850C0, #FFCC70);
     padding: 0;
     max-height: 0;
     overflow: hidden;
@@ -194,7 +194,7 @@ body {
     object-fit: contain;
 }
 
-.hand-icon {
+.hand-icon{
     position: absolute;
     top: 5px;
     right: -40px;
@@ -206,6 +206,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.hand-icon img {
+    width: 300%;
+    height: 300%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .product-title {
