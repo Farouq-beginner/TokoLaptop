@@ -89,8 +89,8 @@ body {
     content: '';
     position: absolute;
     top: -5px;
-    left: -7px;
-    right: -7px;
+    left: -9px;
+    right: -9px;
     bottom: -8px;
     border-radius: 8px;
     border: 2px solid transparent;
