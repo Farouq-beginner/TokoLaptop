@@ -45,7 +45,7 @@ body {
 .logo {
     font-size: 22px;
     font-weight: bold;
-    color: #0c3a68;
+    color: #252e37;
     text-decoration: none;
 }
 
@@ -70,17 +70,101 @@ body {
 }
 
 .nav-link {
-    color: #0c3a68;
+    color: #252e37;
     text-decoration: none;
     font-size: 16px;
     padding: 15px 20px;
     text-align: center;
     border-bottom: 1px solid #f1f1f1;
+    position: relative;
+    transition: color 0.3s;
 }
 
+/* Hover Effect Styles */
 .nav-link:hover {
-    color: #2b90a8;
-    background-color: #f9f9f9;
+    color: #f1f1f1;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -7px;
+    right: -7px;
+    bottom: -8px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: -1;
+}
+
+.nav-link:hover::before {
+    border-color: #00e1ff;
+    box-shadow: 0 0 15px #00e1ff, 0 0 30px rgba(0, 225, 255, 0.5);
+    opacity: 1;
+}
+
+.nav-link .sparkle {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-link .sparkle-1 {
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    left: 20%;
+}
+
+.nav-link .sparkle-2 {
+    width: 8px;
+    height: 8px;
+    top: -5px;
+    right: 25%;
+}
+
+.nav-link .sparkle-3 {
+    width: 6px;
+    height: 6px;
+    bottom: -8px;
+    right: 40%;
+}
+
+.nav-link:hover .sparkle {
+    animation: sparkle 1.5s infinite alternate;
+}
+
+.nav-link:hover .sparkle-1 {
+    animation-delay: 0s;
+}
+
+.nav-link:hover .sparkle-2 {
+    animation-delay: 0.2s;
+}
+
+.nav-link:hover .sparkle-3 {
+    animation-delay: 0.4s;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
 }
 
 .icons {
