@@ -21,19 +21,14 @@ hamburgerMenu.onclick = function() {
 }
 
 // When the user clicks on the laptop link, show the products
-laptopLink.onclick = function(e) {
-    e.preventDefault();
-    if (laptopProducts.style.display === 'block') {
-        laptopProducts.style.display = 'none';
-    } else {
-        laptopProducts.style.display = 'block';
-    }
-    
-    // Close the mobile menu if open
-    if (window.innerWidth < 768) {
-        mainNav.classList.remove('active');
-    }
-}
+const laptopLink = document.getElementById('laptop-link');
+const laptopProducts = document.getElementById('laptop-products');
+const mainNav = document.getElementById('main-nav');
+
+// Tampilkan langsung saat halaman load
+window.addEventListener('DOMContentLoaded', () => {
+    laptopProducts.style.display = 'block'; // atau 'grid' tergantung CSS kamu
+});
 
 // When the user clicks on the back button, hide products and show menu on mobile
 backButton.onclick = function() {

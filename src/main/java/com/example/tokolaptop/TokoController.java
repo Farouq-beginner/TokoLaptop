@@ -21,6 +21,11 @@ public class TokoController {
 		return "homePage";
 	}
 
+	@GetMapping("/DaftarLaptop")
+    public String showDaftarLaptop() {
+        return "DaftarLaptop"; 
+    }
+
 	@GetMapping("/AboutUs")
 	public String getAboutUs() {
 		return "AboutUs";
