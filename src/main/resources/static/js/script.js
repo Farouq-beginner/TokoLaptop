@@ -20,11 +20,6 @@ hamburgerMenu.onclick = function() {
     mainNav.classList.toggle('active');
 }
 
-// When the user clicks on the laptop link, show the products
-const laptopLink = document.getElementById('laptop-link');
-const laptopProducts = document.getElementById('laptop-products');
-const mainNav = document.getElementById('main-nav');
-
 // Tampilkan langsung saat halaman load
 window.addEventListener('DOMContentLoaded', () => {
     laptopProducts.style.display = 'block'; // atau 'grid' tergantung CSS kamu
