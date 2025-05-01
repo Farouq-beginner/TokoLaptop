@@ -505,3 +505,15 @@ model-viewer {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     --poster-color: transparent;
 }
+
+.model-nama-viewer {
+    position: absolute;
+    bottom: 420px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.221);
+    color: white;
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+}

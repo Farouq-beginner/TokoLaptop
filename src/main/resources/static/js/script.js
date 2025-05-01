@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // When the user clicks on the back button, hide products and show menu on mobile
-backButton.onclick = function() {
+mainNav.onclick = function() {
     laptopProducts.style.display = 'none';
     // On mobile, show the menu again
     if (window.innerWidth < 768) {
