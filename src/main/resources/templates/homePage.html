@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toko Laptop</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+    <link rel="stylesheet" href="/css/cards.css">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="background"></div>
-        
+
         <header class="header">
             <a href="/Home" class="logo">TOKO LAPTOP</a>
-            
+
             <nav class="nav" id="main-nav">
                 <a href="/Home" class="nav-link">
-                Home
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
-            <a href="/DaftarLaptop" class="nav-link" id="laptop-link">
-                Laptop
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
-            <a href="#" class="nav-link">
-                Services
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
-            <a href="#" class="nav-link">
-                About Us
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
-            <a href="https://wa.me/+6285791730657" class="nav-link">
-                Contact Me
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
+                    Home
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                </a>
+                <a href="/DaftarLaptop" class="nav-link" id="laptop-link">
+                    Laptop
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                </a>
+                <a href="#" class="nav-link">
+                    Services
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                </a>
+                <a href="#" class="nav-link">
+                    About Us
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                </a>
+                <a href="https://wa.me/+6285791730657" class="nav-link">
+                    Contact Me
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
                 </a>
             </nav>
-            
+
             <div class="icons">
                 <div class="icon" id="search-icon">🔍</div>
                 <div class="icon" id="profile-icon">👤</div>
@@ -58,52 +60,102 @@
                 </div>
             </div>
         </header>
-        
-    <!-- 3D Model Viewer (Only visible on home page) -->
-    <div class="model-viewer-container" id="model-viewer-container">
-        <model-viewer src="/models/asus_rog_strix_scar_17_2023_g733_gaming_laptop.glb" alt="3D Model" auto-rotate camera-controls>
-            <div class="model-nama-viewer">Asus ROG Strix Scar 17_2023_G733 | Gaming Laptop</div>
-        </model-viewer>
-    </div>
-    
-    <!-- Search Modal -->
-    <div id="search-modal" class="modal">
-        <span class="close" id="search-close">×</span>
-        <div class="modal-content">
-            <div class="search-bar">
-                <span class="search-icon">🔍</span>
-                <input type="text" placeholder="TOKOLAPTOP@gmail.com">
-                <span class="filter-icon">⚙️</span>
-                <span class="search-close">×</span>
+
+        <!-- 3D Model Viewer (Only visible on home page) -->
+        <div class="model-viewer-container" id="model-viewer-container">
+            <model-viewer src="/models/asus_rog_strix_scar_17_2023_g733_gaming_laptop.glb" alt="3D Model" auto-rotate
+                camera-controls>
+                <div class="model-nama-viewer">Asus ROG Strix Scar 17_2023_G733 | Gaming Laptop</div>
+            </model-viewer>
+        </div>
+
+        <!-- Search Modal -->
+        <div id="search-modal" class="modal">
+            <span class="close" id="search-close">×</span>
+            <div class="modal-content">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="TOKOLAPTOP@gmail.com">
+                    <span class="filter-icon">⚙️</span>
+                    <span class="search-close">×</span>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Login Modal -->
-    <div id="login-modal" class="modal">
-        <span class="close" id="login-close">×</span>
-        <div class="modal-content">
-            <div class="login-form">
-                <h2>Log In</h2>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Write your email">
+
+        <!-- Login Modal -->
+        <div id="login-modal" class="modal">
+            <span class="close" id="login-close">×</span>
+            <div class="modal-content">
+                <div class="login-form">
+                    <h2>Log In</h2>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Write your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password">
+                    </div>
+                    <div class="login-links">
+                        <span>You do not have an account? <a href="#">Sign up</a></span>
+                    </div>
+                    <div class="login-links">
+                        <a href="#">You forgot your password</a>
+                    </div>
+                    <button class="btn-login">Log In</button>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password">
-                </div>
-                <div class="login-links">
-                    <span>You do not have an account? <a href="#">Sign up</a></span>
-                </div>
-                <div class="login-links">
-                    <a href="#">You forgot your password</a>
-                </div>
-                <button class="btn-login">Log In</button>
             </div>
         </div>
-    </div>
-    <script src="/js/script.js"></script>
-    <script src="/src/main/resources/static/js/script.js"></script>
+
+        <section class="sec">
+
+            <div class="cards">
+                <h3>Laptops</h3>
+                <h1>Best Selling Laptops</h1>
+                <div class="card card__one">
+                    <div class="card__bg"></div>
+                    <img class="card__img" src="FC2B4411-BBBD-4DB9-A68E-F19DA1CDAB90.png"
+                        alt="Asus ROG Strix Scar 17" />
+                    <div class="card__text">
+                        <p class="card__title">Asus ROG Strix Scar 17</p>
+                    </div>
+                </div>
+                <div class="card card__two">
+                    <div class="card__bg"></div>
+                    <img class="card__img" src="https://source.unsplash.com/random/300x200/?laptop" alt="Dell XPS 15" />
+                    <div class="card__text">
+                        <p class="card__title">Laptop 2</p>
+                    </div>
+                </div>
+                <div class="card card__three">
+                    <div class="card__bg"></div>
+                    <img class="card__img" src="https://source.unsplash.com/random/300x200/?laptop"
+                        alt="Lenovo ThinkPad X1 Carbon" />
+                    <div class="card__text">
+                        <p class="card__title">Laptop 3</p>
+                    </div>
+                </div>
+                <div class="card card__four">
+                    <div class="card__bg"></div>
+                    <img class="card__img" src="https://source.unsplash.com/random/300x200/?laptop"
+                        alt="HP Spectre x360" />
+                    <div class="card__text">
+                        <p class="card__title">Laptop 4</p>
+                    </div>
+                </div>
+                <div class="card card__five">
+                    <div class="card__bg"></div>
+                    <img class="card__img" src="https://source.unsplash.com/random/300x200/?laptop"
+                        alt="Apple MacBook Pro" />
+                    <div class="card__text">
+                        <p class="card__title">Laptop 5</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <script src="/js/script.js"></script>
+        <script src="/js/cards.js"></script>
 </body>
+
 </html>
