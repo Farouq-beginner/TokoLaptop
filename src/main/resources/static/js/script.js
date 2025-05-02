@@ -39,9 +39,6 @@ searchIcon.onclick = function() {
     searchModal.style.display = "block";
 }
 
-profileIcon.onclick = function() {
-    loginModal.style.display = "block";
-}
 
 // When the user clicks on close button, close the modal
 searchClose.onclick = function() {
