@@ -27,19 +27,9 @@ body {
     background-position: center;
     /* Fallback color gradient if image doesn't load */
     background: linear-gradient(135deg, #4158D0, #C850C0, #FFCC70);
-    z-index: 1;
+    z-index: 0;
 }
 
-.header {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background-color: linear-gradient(135deg, #4158D0, #C850C0, #FFCC70);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
 
 .logo {
     font-size: 22px;
@@ -67,7 +57,7 @@ body {
 
 .nav.active {
     max-height: 300px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-link {
@@ -279,7 +269,7 @@ body {
     object-fit: contain;
 }
 
-.hand-icon{
+.hand-icon {
     position: absolute;
     top: -35px;
     right: -85px;
@@ -336,7 +326,7 @@ body {
     .hamburger {
         display: none;
     }
-    
+
     .nav {
         position: static;
         flex-direction: row;
@@ -347,12 +337,12 @@ body {
         margin-left: auto;
         margin-right: 20px;
     }
-    
+
     .nav-link {
         border-bottom: none;
         padding: 0;
     }
-    
+
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     }
@@ -515,4 +505,14 @@ model-viewer {
     padding: 10px 10px;
     border-radius: 10px;
     font-size: 16px;
+}
+
+.nama-penjelasan {
+    display: flex;
+    flex-direction: column;
+    /* Susun elemen secara vertikal */
+    justify-content: flex-end;
+    /* Posisikan elemen di bawah */
+    height: 30dvh;
+    /* Sesuaikan dengan tinggi layar */
 }
