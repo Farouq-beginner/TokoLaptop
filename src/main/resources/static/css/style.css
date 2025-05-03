@@ -91,10 +91,20 @@ body {
     background: none;
 }
 
+/* Efek hover tetap ada di PC */
 .nav-link:hover::before {
     border-color: #00e1ff;
     box-shadow: 0 0 15px #00e1ff, 0 0 30px rgba(0, 225, 255, 0.5);
     opacity: 1;
+}
+
+/* Menonaktifkan hover di perangkat mobile */
+@media (max-width: 768px) {
+    .nav-link:hover::before {
+        border-color: transparent;
+        box-shadow: none;
+        opacity: 0;
+    }
 }
 
 .nav-link .sparkle {
@@ -381,6 +391,15 @@ model-viewer {
     padding: 10px 10px;
     border-radius: 10px;
     font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .model-nama-viewer {
+        bottom: 400px; /* Naikkan posisinya */
+        padding: 6px 8px; /* Perkecil padding */
+        font-size: 12px; /* Ukuran teks lebih kecil */
+        border-radius: 8px; /* Bentuk tetap sesuai */
+    }
 }
 
 .nama-penjelasan {

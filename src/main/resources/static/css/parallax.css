@@ -36,11 +36,22 @@ header.sticky .nav a {
   color: #fff;
 }
 
+header.sticky .nav a {
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+header.sticky .nav a:hover {
+  background: #fff;
+  color: #112434;
+  transform: scale(1.05); /* Memberikan sedikit efek zoom saat hover */
+}
+
 header.sticky .nav a.active {
   background: #fff;
   color: #112434;
+  font-weight: bold; /* Menegaskan menu yang aktif */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan */
 }
-
 /* Parallax Section */
 .parallax {
   position: relative;
@@ -80,17 +91,20 @@ header.sticky .nav a.active {
 
 #text {
   position: absolute;
-  width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 40%; 
+  left: 70%;
+  transform: translate(-60%, -60%);
   font-size: 3em;
   color: #112434;
+  display: flex; /* Membuat teks dalam satu baris */
+  white-space: nowrap; /* Mencegah teks berpindah ke baris baru */
 }
 
 #text1 {
   position: absolute;
-  top: 40%;
-  transform: translateY(-50%);
+  top: 32%;
+  left: 60%;
+  transform: translate(-70%, -70%);
   font-size: 3em;
   color: #112434;
 }
