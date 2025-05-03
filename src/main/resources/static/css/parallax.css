@@ -1,42 +1,77 @@
 .info-container {
-    background: linear-gradient(to bottom, #909cda,#4158D0, #112434);
-    transform: translateZ(0) scale(1);
-    display: absolute;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-    min-height: 100vh;
-  }
+  background: linear-gradient(to bottom, #909cda, #4158D0, #112434);
+  transform: translateZ(0) scale(1);
+  display: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
 
 /* Header and Navigation */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 30px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    transition: 0.5s;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: 0.5s;
+}
 
-  header.sticky {
-    background: #112434;
-    padding: 15px 100px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  }
+header.sticky {
+  background: #112434;
+  padding: 15px 100px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
 
-  header.sticky .logo,
-  header.sticky .nav a {
-    color: #fff;
-  }
+header.sticky .logo,
+header.sticky .nav a {
+  color: #fff;
+}
 
-  header.sticky .navigation li a:hover,
-  header.sticky .navigation li a.active {
-    background: #fff;
-    color: #112434;
-  }
+header.sticky .nav a:hover,
+header.sticky .nav a.active {
+  background: #fff;
+  color: #112434;
+}
+
+/* Parallax Section */
+.parallax {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.parallax img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+#text {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3em;
+  color: #112434;
+}
+
+#text1 {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 3em;
+  color: #112434;
+}
