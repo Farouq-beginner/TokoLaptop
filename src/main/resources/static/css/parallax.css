@@ -32,10 +32,10 @@ header.sticky {
 
 header.sticky .logo,
 header.sticky .nav a {
+  background: #112434;
   color: #fff;
 }
 
-header.sticky .nav a:hover,
 header.sticky .nav a.active {
   background: #fff;
   color: #112434;
@@ -56,7 +56,26 @@ header.sticky .nav a.active {
   bottom: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover; /* Menyesuaikan gambar agar tidak terdistorsi */
   pointer-events: none;
+}
+
+/* Perbaikan untuk tampilan mobile */
+@media (max-width: 768px) {
+  .parallax {
+    height: auto; /* Menghindari tinggi yang berlebihan */
+  }
+
+  .parallax img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Memastikan gambar tidak terlalu besar */
+  }
+
+  .header, .content {
+    margin-bottom: 20px; /* Mengurangi jarak antar elemen */
+  }
 }
 
 #text {
