@@ -47,7 +47,6 @@ body {
     right: 0;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(10px);
-    background-color: linear-gradient(135deg, #4158D0, #C850C0, #FFCC70);
     padding: 0;
     max-height: 0;
     overflow: hidden;
