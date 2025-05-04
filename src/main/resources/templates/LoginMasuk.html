@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Masuk Toko Laptop</title>
-  <link rel="stylesheet" href="css/Login.css"/>
+  <meta charset="UTF-8">
+  <title>Masuk ke Akun - Toko Laptop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/Login.css"> 
 </head>
 <body>
-  <div class="container">
-    <div class="background"></div>
-    <img src="/images/Logo.png" alt="Logo Toko Laptop" class="logo">
-    <h1>Masuk ke Akun Anda</h1>
-    <p>Belum punya akun? <a href="/loginmasuk">Daftar</a></p>
+  <section>
+    <div class="leaves">
+      <div class="set">
+        <div><img src="/images/Login/leaf_01.png"></div>
+        <div><img src="/images/Login/leaf_02.png"></div>
+        <div><img src="/images/Login/leaf_03.png"></div>
+        <div><img src="/images/Login/leaf_04.png"></div>
+        <div><img src="/images/Login/leaf_01.png"></div>
+        <div><img src="/images/Login/leaf_02.png"></div>
+        <div><img src="/images/Login/leaf_03.png"></div>
+        <div><img src="/images/Login/leaf_04.png"></div>
+      </div>
+    </div>
 
-    <form method="POST" action="/login">
-      <button class="google-btn">Masuk dengan Google</button>
-      <hr class="divider"/>
-      <input type="email" name="email" placeholder="Alamat email" required/>
-      <input type="password" name="password" placeholder="Kata sandi" required/>
-      <button type="submit" class="submit-btn">Masuk</button>
-    </form>
-  </div>
+  
+    <img src="/images/Login/bg.jpg" class="bg">
+    <img src="/images/Login/girl.png" class="girl">
+    <img src="/images/Login/trees.png" class="trees">
+
+    <!-- Form login -->
+    <div class="login">
+      <h2>Masuk ke Akun Anda</h2>
+      <form method="POST" action="/login">
+        <div class="inputBox">
+          <input type="email" name="email" placeholder="Alamat email" required />
+        </div>
+        <div class="inputBox">
+          <input type="password" name="password" placeholder="Kata sandi" required />
+        </div>
+        <div class="inputBox">
+          <input type="submit" value="Masuk" id="btn" />
+        </div>
+      </form>
+      <div class="group">
+        <a href="/login">Belum punya akun? Daftar</a>
+      </div>
+      <div style="text-align: center; margin-top: 10px;">
+      </div>
+    </div>
+  </section>
 </body>
 </html>
