@@ -32,14 +32,20 @@ header.sticky {
 
 header.sticky .logo,
 header.sticky .nav a {
-  background: #112434;
-  color: #fff;
+    color: #fff;
+    transition: 0.5s;
 }
-
 /* Warna navbar tetap gelap di mobile */
 @media (max-width: 768px) {
   header.sticky {
-      background: #112434; /* Tetap gelap di layar kecil */
+      background: #112434;
+      /* Tetap gelap di layar kecil */
+  }
+  header.sticky .logo,
+  header.sticky .nav a {
+      background: #112434;
+      color: #fff;
+      transition: 0.5s;
   }
 }
 
@@ -65,13 +71,6 @@ header.sticky .nav a {
 @media (max-width: 768px) {
   header.sticky .nav a {
       color: #fff; /* Warna tetap putih di mobile */
-  }
-}
-
-/* Warna teks tetap kontras di mobile */
-@media (max-width: 768px) {
-  header.sticky .nav a {
-      color: #ffffff; /* Warna tetap gelap di mobile */
   }
 }
 
