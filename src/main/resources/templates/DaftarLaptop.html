@@ -48,7 +48,6 @@
         </nav>
 
         <div class="icons">
-            <div class="icon" id="search-icon">🔍</div>
             <a href="/login" class="icon" id="profile-icon">👤</a>
             <div class="hamburger" id="hamburger-menu">
                 <div class="hamburger-line"></div>
@@ -63,160 +62,53 @@
         <div class="products-container" id="laptop-products">
             <div class="products-header">
                 <h2 class="products-title">Our Laptop Collection</h2>
+                
+                <!-- New Search and Sort Controls -->
+                <div class="search-sort-controls">
+                    <div class="search-container">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-input" placeholder="Search for laptops..." aria-label="Search laptops">
+                    </div>
+                    <div class="sort-container">
+                        <span class="sort-label">Sort by:</span>
+                        <select id="sort-select" aria-label="Sort options">
+                            <option value="default">Featured</option>
+                            <option value="name-asc">Name (A-Z)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                            <option value="price-asc">Price (Low to High)</option>
+                            <option value="price-desc">Price (High to Low)</option>
+                            <option value="limited">Limited Edition</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/images/contoh_laptop1.png" alt="Laptop product">
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be dynamically loaded here -->
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="/images/contoh_laptop1.png" alt="Laptop product">
+                        </div>
+                        <h3 class="product-title">MacBook Pro M2</h3>
+                        <p class="product-price">Rp. 26,999,000</p>
+                        <button class="buy-now-btn">
+                            <span>Buy Now</span>
+                        </button>
                     </div>
-                    <h3 class="product-title">MacBook Pro M2</h3>
-                    <p class="product-price">Rp. 26,999,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/images/laptop2.png" alt="Laptop product">
+    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="/images/laptop2.png" alt="Laptop product">
+                        </div>
+                        <h3 class="product-title">ASUS ROG Strix G15</h3>
+                        <p class="product-price">Rp. 17,499,000</p>
+                        <button class="buy-now-btn">
+                            <span>Buy Now</span>
+                        </button>
                     </div>
-                    <h3 class="product-title">ASUS ROG Strix G15</h3>
-                    <p class="product-price">Rp. 17,499,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/images/laptop3.png" alt="Laptop product">
-                        <div class="hand-icon"><img src="/images/LimitedEdition.png"></div>
-                    </div>
-                    <h3 class="product-title">Lenovo Legion 5 Pro</h3>
-                    <p class="product-price">Rp. 19,999,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/images/laptop4.png" alt="Laptop product">
-                    </div>
-                    <h3 class="product-title">HP Spectre x360</h3>
-                    <p class="product-price">Rp. 21,899,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/images/laptop5.png" alt="Laptop product">
-                    </div>
-                    <h3 class="product-title">Dell XPS 13 Plus</h3>
-                    <p class="product-price">Rp. 22,599,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/api/placeholder/220/220" alt="Laptop product">
-                        <div class="hand-icon"><img src="/images/LimitedEdition.png"></div>
-                    </div>
-                    <h3 class="product-title">Razer Blade 15</h3>
-                    <p class="product-price">Rp. 24,899,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/api/placeholder/220/220" alt="Laptop product">
-                    </div>
-                    <h3 class="product-title">Acer Predator Helios</h3>
-                    <p class="product-price">Rp. 18,299,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/api/placeholder/220/220" alt="Laptop product">
-                    </div>
-                    <h3 class="product-title">MSI Stealth 15M</h3>
-                    <p class="product-price">Rp. 18,999,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/api/placeholder/220/220" alt="Laptop product">
-                        <div class="hand-icon"><img src="/images/LimitedEdition.png"></div>
-                    </div>
-                    <h3 class="product-title">ASUS ZenBook Pro Duo</h3>
-                    <p class="product-price">Rp. 25,499,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/api/placeholder/220/220" alt="Laptop product">
-                    </div>
-                    <h3 class="product-title">Microsoft Surface Laptop</h3>
-                    <p class="product-price">Rp. 17,899,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/api/placeholder/220/220" alt="Laptop product">
-                        <div class="hand-icon"><img src="/images/LimitedEdition.png"></div>
-                    </div>
-                    <h3 class="product-title">Alienware m17 R5</h3>
-                    <p class="product-price">Rp. 28,999,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="/api/placeholder/220/220" alt="Laptop product">
-                    </div>
-                    <h3 class="product-title">LG Gram 17</h3>
-                    <p class="product-price">Rp. 20,499,000</p>
-                    <button class="buy-now-btn">
-                        <span>Buy Now</span>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
-
-    <!-- Search Modal -->
-    <div id="search-modal" class="modal">
-        <span class="close" id="search-close">×</span>
-        <div class="modal-content">
-            <div class="search-bar">
-                <span class="search-icon">🔍</span>
-                <input type="text" placeholder="Search for laptops...">
-                <span class="filter-icon">⚙️</span>
-                <span class="search-close">×</span>
-            </div>
-        </div>
-    </div>
-
     <script src="/js/daftarlaptop.js"></script>
 </body>
 

@@ -311,7 +311,9 @@ body {
     align-items: center;
     margin-bottom: 40px;
     padding: 0 10px;
+    flex-direction: column;
 }
+
 
 .products-title {
     color: white;
@@ -321,6 +323,7 @@ body {
     position: relative;
     display: inline-block;
     padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .products-title::after {
@@ -533,6 +536,108 @@ body {
     cursor: pointer;
 }
 
+/* Enhanced Search & Sort Controls */
+.search-sort-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto 30px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    padding: 15px 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 8px 15px;
+    width: 60%;
+    transition: all 0.3s;
+}
+
+.search-container:focus-within {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+.search-container input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-container select {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    padding: 8px 12px;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+.sort-container select:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.sort-container select:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+}
+
+.sort-container select option {
+    background-color: #112434;
+    color: white;
+}
+
+.sort-label {
+    color: white;
+    font-weight: 500;
+}
+
+/* No results message */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 /* Responsive Design */
 @media (min-width: 768px) {
     .products-grid {
@@ -582,5 +687,19 @@ body {
 
     .products-header {
         margin-bottom: 30px;
+    }
+    .search-sort-controls {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .sort-container {
+        width: 100%;
+        justify-content: space-between;
     }
 }
