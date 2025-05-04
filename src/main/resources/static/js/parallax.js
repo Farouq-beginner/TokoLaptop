@@ -72,7 +72,6 @@ if (window.innerWidth > 768) {
       end: "bottom top",
     },
     x: -400,
-    opacity: 0,
     scale: 1.3,
     skewX: 10,
     duration: 5,
@@ -92,38 +91,8 @@ if (window.innerWidth > 768) {
     duration: 4.3,
     ease: "power2.out",
   });
-
-  gsap.from("#text1", {
-    scrollTrigger: {
-      scrub: 4,
-      trigger: "#text1",
-      start: "top bottom",
-      end: "bottom top",
-    },
-    y: 70,
-    x: -100, // Geser ke kiri sebanyak 50px
-    opacity: 0,
-    scale: 1.2,
-    duration: 4,
-    ease: "power2.out",
-  });
-
-  gsap.from("#text", {
-    scrollTrigger: {
-      scrub: 4,
-      trigger: "#text",
-      start: "top bottom",
-      end: "bottom top",
-    },
-    y: 70,
-    x: -100, // Geser ke kiri sebanyak 50px
-    opacity: 0,
-    scale: 1.2,
-    duration: 4,
-    ease: "power2.out",
-});
 } else {
-  gsap.set(["#m1", "#m2", "#t2", "#t1", "#man", "#plants", "#text1", "#text"], { clearProps: "all" });
+  gsap.set(["#m1", "#m2", "#t2", "#t1", "#man", "#plants"], { clearProps: "all" });
 }
 
 

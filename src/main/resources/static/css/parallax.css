@@ -1,5 +1,5 @@
 .info-container {
-  background: linear-gradient(to bottom, #909cda, #4158D0, #112434);
+  background: linear-gradient(to top, #112434, #1c3150);
   transform: translateZ(0) scale(1);
   display: absolute;
   flex-direction: column;
@@ -110,26 +110,4 @@ header.sticky .nav a {
   .header, .content {
     margin-bottom: 20px; /* Mengurangi jarak antar elemen */
   }
-}
-
-#text {
-  position: absolute;
-  top: 40%; 
-  left: 70%;
-  transform: translate(-60%, -60%);
-  font-size: 3em;
-  color: #112434;
-  display: flex; /* Membuat teks dalam satu baris */
-  white-space: nowrap; /* Mencegah teks berpindah ke baris baru */
-}
-
-#text1 {
-  position: absolute;
-  top: 32%;
-  left: 60%;
-  transform: translate(-70%, -70%);
-  font-size: 3em;
-  color: #112434;
-  display: flex; /* Membuat teks dalam satu baris */
-  white-space: nowrap; /* Mencegah teks berpindah ke baris baru */
 }
