@@ -26,8 +26,8 @@ public class TokoController {
         return "DaftarLaptop"; 
     }
 
-	@GetMapping("/AboutUs")
-	public String getAboutUs() {
-		return "AboutUs";
+	@GetMapping("/Aboutus")
+	public String getAboutus() {
+		return "Aboutus";
 	}
 }
