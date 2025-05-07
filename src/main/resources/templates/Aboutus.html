@@ -3,40 +3,1214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="/css/aboutus.css">
+    <title>About Us | Toko Laptop Laptops</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a192f;
+            --dark-navy: #020c1b;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --accent: #64ffda;
+            --light-accent: #9affe7;
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --lightest-slate: #ccd6f6;
+            --white: #e6f1ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-navy);
+            color: var(--light-slate);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Raleway', sans-serif;
+            color: var(--lightest-slate);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent);
+            padding: 0.75rem 2rem;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(2, 12, 27, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-scrolled {
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links li a {
+            color: var(--light-slate);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links li a:hover {
+            color: var(--accent);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(2, 12, 27, 0.8), rgba(2, 12, 27, 0.9)), url('/api/placeholder/1920/1080') center/cover no-repeat fixed;
+            margin-top: 0;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        /* Who We Are Section */
+        .who-we-are {
+            background-color: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .section-image {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .section-content h2 {
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-content h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .section-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Vision & Mission */
+        .vision-mission {
+            background-color: var(--dark-navy);
+            position: relative;
+        }
+        
+        .vision-mission::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(100, 255, 218, 0.1), transparent 60%);
+            pointer-events: none;
+        }
+        
+        .vm-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .vm-card {
+            background: var(--light-navy);
+            padding: 2.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .vm-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .vm-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+        
+        .vm-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        /* Company Timeline */
+        .timeline {
+            background-color: var(--navy);
+            position: relative;
+        }
+        
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+        
+        .timeline-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--accent);
+            z-index: 1;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--light-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+            z-index: 2;
+            box-shadow: 0 0 0 4px var(--dark-navy), inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 2rem;
+            background: var(--light-navy);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content::before {
+            content: "";
+            position: absolute;
+            top: 24px;
+            width: 14px;
+            height: 14px;
+            background: var(--light-navy);
+            transform: rotate(45deg);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            float: right;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -7px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            float: left;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -7px;
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--white);
+        }
+        
+        .timeline-content .date {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--accent);
+            color: var(--navy);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        /* Team Section */
+        .team {
+            background-color: var(--dark-navy);
+            position: relative;
+        }
+        
+        .team h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 4px solid var(--light-navy);
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .team-photo img {
+            transform: scale(1.1);
+        }
+        
+        .team-member h3 {
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+        
+        .team-member .position {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--light-navy);
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--navy);
+            transform: translateY(-3px);
+        }
+        
+        /* Why Choose Us */
+        .why-us {
+            background-color: var(--navy);
+            position: relative;
+        }
+        
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .why-us-item {
+            background: var(--light-navy);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .why-us-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .why-us-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--navy), var(--light-navy));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            color: var(--accent);
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .why-us-icon::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            z-index: -1;
+            opacity: 0.5;
+            transform: scale(1.2);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .why-us-item:hover .why-us-icon::before {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+        
+        .why-us-item h3 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        /* Quote Section */
+        .quote {
+            background: linear-gradient(rgba(2, 12, 27, 0.8), rgba(2, 12, 27, 0.8)), url('/api/placeholder/1920/1080') center/cover no-repeat fixed;
+            padding: 8rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .quote blockquote {
+            font-size: 1.8rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 2rem;
+            color: var(--white);
+        }
+        
+        .quote blockquote::before,
+        .quote blockquote::after {
+            content: "";
+            font-family: serif;
+            font-size: 5rem;
+            color: var(--accent);
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .quote blockquote::before {
+            top: -4rem;
+            left: -1rem;
+        }
+        
+        .quote blockquote::after {
+            content: "";
+            bottom: -6rem;
+            right: -1rem;
+        }
+        
+        .quote-author {
+            margin-top: 2rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-navy);
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-slate);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-navy);
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--navy);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--light-navy);
+            padding-top: 1.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .section-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-image {
+                height: 300px;
+                order: -1;
+            }
+            
+            .vm-cards,
+            .why-us-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline-container::before {
+                left: 20px;
+            }
+            
+            .timeline-icon {
+                left: 20px;
+                transform: translateX(0);
+            }
+            
+            .timeline-content {
+                width: calc(100% - 70px);
+                float: right;
+                margin-left: 70px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(odd) .timeline-content {
+                float: right;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content::before,
+            .timeline-item:nth-child(odd) .timeline-content::before {
+                left: -7px;
+                right: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                position: relative;
+            }
+            
+            .hamburger {
+                display: block;
+                font-size: 1.5rem;
+                color: var(--white);
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 250px;
+                background: var(--light-navy);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-radius: 5px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section-content h2,
+            .vision-mission h2,
+            .timeline h2,
+            .team h2,
+            .why-us h2 {
+                font-size: 2rem;
+            }
+            
+            .vm-cards,
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .quote blockquote {
+                font-size: 1.3rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="background"></div>
-        <header class="header">
-            <a href="/Home" class="logo">TOKO LAPTOP</a>
-            <nav class="nav" id="main-nav">
-                <a href="/Home" class="nav-link">Home</a>
-                <a href="/DaftarLaptop" class="nav-link">Laptop</a>
-                <a href="/Services" class="nav-link">Services</a>
-                <a href="/Aboutus" class="nav-link">About Us</a>
-                <a href="https://wa.me/+6285791730657" class="nav-link">Contact Me</a>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Toko <span>Laptop</span></div>
+                <ul class="nav-links">
+                    <li><a href="/Home">Home</a></li>
+                    <li><a href="#who-we-are">About</a></li>
+                    <li><a href="#vision-mission">Vision</a></li>
+                    <li><a href="#timeline">History</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="/Contactus" class="btn">Contact Us</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
             </nav>
+        </div>
+    </header>
 
-            <div class="icons">
-                <div class="icon" id="search-icon">🔍</div>
-                <a href="/login" class="icon" id="profile-icon">👤</a>
-                <div class="hamburger" id="hamburger-menu">
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h1>Toko Laptop Laptops</h1>
+                <h2>Empowering Your Digital Journey</h2>
+                <p>We are more than just a laptop store. We're your technology partners committed to bringing you the best computing solutions that match your lifestyle and professional needs.</p>
+                <a href="#who-we-are" class="btn">Discover Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are -->
+    <section class="who-we-are" id="who-we-are">
+        <div class="container">
+            <div class="section-grid">
+                <div class="section-content" data-aos="fade-right" data-aos-duration="1000">
+                    <h2>Who We Are</h2>
+                    <p>Founded in 2010, Toko Laptop has grown from a small tech shop to a leading laptop retailer known for exceptional customer service and premium products. We believe that the right technology can transform lives and businesses.</p>
+                    <p>Our team of tech enthusiasts and experts are dedicated to helping you find the perfect laptop that meets your unique needs. We don't just sell products – we provide solutions.</p>
+                    <p>With a carefully curated selection of the world's top brands and our own exclusive deals, we offer a shopping experience that's both enjoyable and rewarding.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="section-image" data-aos="fade-left" data-aos-duration="1000">
+                    <img src="hardwarerepair.png" alt="Toko Laptop Store">
                 </div>
             </div>
+        </div>
+    </section>
 
+    <!-- Vision & Mission -->
+    <section class="vision-mission" id="vision-mission">
+        <div class="container">
+            <h2 class="text-center" data-aos="fade-up">Vision & Mission</h2>
+            <p class="text-center" data-aos="fade-up" data-aos-delay="100">Our guiding principles that shape everything we do</p>
+            
+            <div class="vm-cards">
+                <div class="vm-card" data-aos="zoom-in" data-aos-delay="200">
+                    <h3>Our Vision</h3>
+                    <p>To be the most trusted destination for technology solutions, where innovation meets exceptional customer experience.</p>
+                    <p>We envision a world where everyone has access to quality technology that enhances their productivity, creativity, and connection to the digital world.</p>
+                </div>
+                <div class="vm-card" data-aos="zoom-in" data-aos-delay="300">
+                    <h3>Our Mission</h3>
+                    <p>To provide personalized technology solutions through expert guidance, superior service, and carefully selected products that empower our customers.</p>
+                    <p>We are committed to continuous education, ethical business practices, and building lasting relationships with our customers and partners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Company Timeline -->
+    <section class="timeline" id="timeline">
+        <div class="container">
+            <h2 class="text-center" data-aos="fade-up">Our Journey</h2>
+            <p class="text-center" data-aos="fade-up" data-aos-delay="100">From a dream to a leading tech retailer</p>
+            
+            <div class="timeline-container">
+                <div class="timeline-item clearfix" data-aos="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="date">2010</span>
+                        <h3>The Beginning</h3>
+                        <p>Toko Laptop was founded by tech enthusiasts Michael Chen and Sarah Williams with a small shop in downtown.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item clearfix" data-aos="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="date">2013</span>
+                        <h3>First Expansion</h3>
+                        <p>Opened our second store and launched our first online platform to reach more customers.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item clearfix" data-aos="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="date">2016</span>
+                        <h3>Industry Recognition</h3>
+                        <p>Received "Best Tech Retailer" award and established partnerships with major laptop manufacturers.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item clearfix" data-aos="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="date">2019</span>
+                        <h3>National Presence</h3>
+                        <p>Expanded to 15 stores nationwide and launched our premium service program TechCare.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item clearfix" data-aos="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="date">2022</span>
+                        <h3>Digital Transformation</h3>
+                        <p>Revamped our online experience with virtual consultations and AI-powered laptop matching.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item clearfix" data-aos="fade-up">
+                    <div class="timeline-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="date">2023</span>
+                        <h3>Community Engagement</h3>
+                        <p>Launched Toko Laptop Academy to provide free tech education workshops and resources for the community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <p>Our dedicated team of experts is here to help you find the perfect laptop and provide exceptional service.</p>
+            
+            <div class="team-grid">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-photo">
+                        <img src="team1.jpg" alt="Farouq Gusmo Abdilah">
+                    </div>
+                    <h3>Farouq Gusmo Abdilah</h3>
+                    <span class="position">CEO & Founder</span>
+                    <p>Farouq is a tech visionary with over 15 years of experience in the industry. He leads our team with passion and innovation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-photo">
+                        <img src="team2.jpg" alt="Rendy">
+                    </div>
+                    <h3>Rendy</h3>
+                    <span class="position">COO</span>
+                    <p>Jane is the operational backbone of Toko Laptop, ensuring that everything runs smoothly and efficiently.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-photo">
+                        <img src="team3.jpg" alt="Vhemas">
+                    </div>
+                    <h3>Vhemas</h3>
+                    <span class="position">CTO</span>
+                    <p>Michael is our tech guru, always on the lookout for the latest innovations and trends in the tech world.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-photo">
+                        <img src="team4.jpg" alt="Aditya">
+                    </div>
+                    <h3>Aditya</h3>
+                    <span class="position">Marketing Director</span>
+                    <p>Sarah is the creative mind behind our marketing strategies, ensuring that Toko Laptop's message reaches the right audience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="500">
+                    <div class="team-photo">
+                        <img src="team5.jpg" alt="Naufal">
+                    </div>
+                    <h3>Naufal</h3>
+                    <span class="position">Customer Service Manager</span>
+                    <p>Emily is dedicated to providing exceptional customer service and ensuring that every customer has a great experience with Toko Laptop.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="600">
+                    <div class="team-photo">
+                        <img src="team6.jpg" alt="Sultan">
+                    </div>
+                    <h3>Sultan</h3>
+                    <span class="position">Sales Manager</span>
+                    <p>David is passionate about helping customers find the right laptop and ensuring they leave with a smile.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="700">
+                    <div class="team-photo">
+                        <img src="team7.jpg" alt="Tabligh">
+                    </div>
+                    <h3>Tabligh</h3>
+                    <span class="position">Product Specialist</span>
+                    <p>Laura is our product expert, always ready to provide insights and recommendations on the latest laptops.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-delay="800">
+                    <div class="team-photo">
+                        <img src="team8.jpg" alt="Pratama">
+                    </div>
+                    <h3>Pratama</h3>
+                    <span class="position">Technical Support</span>
+                    <p>Chris is our go-to person for all tech-related questions and issues, ensuring that our customers have the best experience possible.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <h2>Why Choose Us</h2>
+            <p>Discover the reasons why Toko Laptop is the best choice for your laptop needs.</p>
+            
+            <div class="why-us-grid">
+                <div class="why-us-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-us-icon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <h3>Quality Products</h3>
+                    <p>We offer a wide range of high-quality laptops from top brands, ensuring you get the best value for your money.</p>
+                </div>
+                <div class="why-us-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-us-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Expert Support</h3>
+                    <p>Our knowledgeable staff is always ready to assist you with any questions or concerns you may have.</p>
+                </div>
+                <div class="why-us-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="why-us-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Warranty & Protection</h3>
+                    <p>We provide comprehensive warranty options and protection plans to keep your investment safe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Quote Section -->
+    <section class="quote">
+        <div class="container">
+            <blockquote data-aos="fade-up" data-aos-duration="1000">
+                "At Toko Laptop, we believe that technology should empower you, not overwhelm you. Let us help you find the perfect laptop for your needs."
+                <cite class="quote-author">- Farouq Gusmo Abdilah, CEO</cite>
+            </blockquote>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Toko Laptop is your trusted partner in technology, providing top-notch laptops and exceptional service since 2010.</p>
+                    <p>We are committed to helping you find the perfect laptop that fits your lifestyle and needs.</p>
+                    <p>Join us on our journey to empower your digital experience.</p>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#who-we-are">About</a></li>
+                        <li><a href="#vision-mission">Vision</a></li>
+                        <li><a href="#timeline">History</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#why-us">Why Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Silicon Valley, CA</li>
+                        <li><i class="fas fa-phone"></i> +1 (123) 456-7890</li>
+                        <li><i class="fas fa-envelope"></i></li>
+                        <li><a href="mailto:"></a></li>
+                        <li><i class="fas fa-clock"></i> Mon - Fri: 9 AM - 6 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p>Stay connected with us on social media for the latest updates, promotions, and tech tips!</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Subscribe</h3>
+                    <p>Join our newsletter for exclusive offers and updates.</p>
+                    <form action="#" method="post">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                    <p>We respect your privacy. Unsubscribe at any time.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Toko Laptop. All rights reserved.</p>
+                <p>Designed by Farouq</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize AOS
+            AOS.init();
 
+            // Smooth scrolling
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                }
+            });
 
+            // Hamburger menu toggle
+            $('.hamburger').on('click', function() {
+                $('.nav-links').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+    <script>
+        // Reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
 
-
-
-
-    <script src="/js/aboutus.js"></script>
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>

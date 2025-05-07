@@ -35,4 +35,9 @@ public class TokoController {
 	public String getServices() {
 		return "Services";
 	}
+
+	@GetMapping("/Contactus")
+	public String getContactus() {
+		return "Contactus";
+	}
 }

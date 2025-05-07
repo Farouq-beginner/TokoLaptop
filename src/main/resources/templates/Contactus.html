@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background">
+            <h1>404 Not Found</h1>
+            <h2>Oops! The page you are looking for does not exist.</h2>
+            <p>Please check the URL or return to the <a href="/Home">home page</a>.</p>
+            <p>If you believe this is an error, please contact support.</p>
+            <p>Thank you for your understanding!</p>
+            <p>&copy; 2025 Toko Laptop. All rights reserved.</p>
+            <p>Contact us: <a href="https://wa.me/+6285791730657">WhatsApp</a></p>
+            <p>Follow us on social media: <a href="https://www.instagram.com/tokolaptop/">Instagram</a></p>
+            <p>Privacy Policy | Terms of Service</p>
+            <p>Website by Toko Laptop Team</p>
+            <p>Last updated: May 2025</p>
+        </div>
+        <script>
+            // JavaScript for the hamburger menu
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const mainNav = document.getElementById('main-nav');
+            hamburgerMenu.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+            });
+            // Close the menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!mainNav.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+                    mainNav.classList.remove('active');
+                    hamburgerMenu.classList.remove('active');
+                }
+            });
+            // Close the menu when a nav link is clicked
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                    hamburgerMenu.classList.remove('active');
+                });
+            });
+            // Optional: Add any JavaScript functionality here
+            // For example, you can add a function to redirect to the home page after a few seconds
+            setTimeout(function () {
+                window.location.href = "/Home";
+            }, 5000); // Redirect after 5 seconds
+        </script>
+</body>
+
+</html>
