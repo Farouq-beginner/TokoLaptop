@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toko Laptop</title>
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/parallax.css">
+    <link rel="stylesheet" href="/css/3dmodel.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -65,79 +66,77 @@
 
         <section class="parallax">
 
-            <img src="/images/Parallax/text.png" id="t1"> 
+            <img src="/images/Parallax/text.png" id="t1">
             <img src="/images/Parallax/elemen1.png" id="m1">
             <img src="/images/Parallax/elemen2.png" id="t2">
             <img src="/images/Parallax/laptop.png" id="m2">
-           
+
             <img src="/images/Parallax/elemen3.png" id="man">
             <img src="/images/Parallax/laptop1.png" id="plants">
         </section>
 
         <!-- 3D Model Viewer (Only visible on home page) -->
 
-        <div class="info-container">
-            <div class="model-viewer-container" id="model-viewer-container">
-                <model-viewer src="/models/asus_rog_strix_scar_17_2023_g733_gaming_laptop.glb" alt="3D Model"
-                    auto-rotate camera-controls>
-                    <div class="model-nama-viewer">Asus ROG Strix Scar 17 2023 G733 | Gaming Laptop</div>
-                </model-viewer>
-            </div>
-            <div class="deskripsi3d">
-                <h2>Asus ROG Strix Scar 17 2023 G733</h2>
-                <p>Gaming laptop ini dirancang untuk performa tinggi dengan prosesor terbaru, kartu grafis kelas atas,
-                    dan sistem pendinginan yang optimal.</p>
-                <ul>
-                    <li>Prosesor: AMD Ryzen / Intel Core terbaru</li>
-                    <li>GPU: NVIDIA GeForce RTX seri terbaru</li>
-                    <li>Layar: 17 inci dengan refresh rate tinggi</li>
-                    <li>Desain agresif dan RGB yang dapat dikustomisasi</li>
-                </ul>
-            </div>
-        </div>
-
+<!-- Konten utama -->
+<div class="info-container">
+    <div class="deskripsi3d">
+      <h2>Asus ROG Strix Scar 17 2023 G733</h2>
+      <p>
+        Gaming laptop ini dirancang untuk performa tinggi dengan prosesor terbaru, kartu grafis kelas atas,
+        dan sistem pendinginan yang optimal.
+      </p>
+      <ul>
+        <li>Prosesor: AMD Ryzen / Intel Core terbaru</li>
+        <li>GPU: NVIDIA GeForce RTX seri terbaru</li>
+        <li>Layar: 17 inci dengan refresh rate tinggi</li>
+        <li>Desain agresif dan RGB yang dapat dikustomisasi</li>
+      </ul>
+    </div>
+  
+    <!-- Model Viewer -->
+    <div class="model-viewer-container" id="model-viewer-container">
+      <model-viewer src="/models/asus_rog_strix_scar_17_2023_g733_gaming_laptop.glb"
+                    alt="Asus ROG Strix Scar 17 3D Model"
+                    auto-rotate
+                    camera-controls
+                    ar
+                    shadow-intensity="1"
+                    exposure="0.9"
+                    style="width: 100%; max-width: 800px; height: 500px; background-color: rgba(255, 255, 255, 0.05); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+      </model-viewer>
+  
+      
+    </div>
+  </div>
+          
 
         <section class="sec">
-            <div class="card__wrapper">
-                <div class="cards">
-                    <h3>Laptops</h3>
-                    <h1>Best Selling Laptops</h1>
-                    <div class="card card__one">
-                        <div class="card__bg"></div>
-                        <img class="card__img" src="/images/BS/ASUS ROG GL552 BS1.png" alt="BS1" />
-                        <div class="card__text">
-                            <p class="card__title">ASUS ROG GL552</p>
-                        </div>
-                    </div>
-                    <div class="card card__two">
-                        <div class="card__bg"></div>
-                        <img class="card__img" src="/images/BS/Fujitsu LIFEBOOK E756 BS2.png" alt=" BS2" />
-                        <div class="card__text">
-                            <p class="card__title">Fujitsu LIFEBOOK E756</p>
-                        </div>
-                    </div>
-                    <div class="card card__three">
-                        <div class="card__bg"></div>
-                        <img class="card__img" src="/images/BS/HP EliteBook 840 G4 BS3.png" alt="BS3" />
-                        <div class="card__text">
-                            <p class="card__title">LHP EliteBook 840 G4</p>
-                        </div>
-                    </div>
-                    <div class="card card__four">
-                        <div class="card__bg"></div>
-                        <img class="card__img" src="/images/BS/Lenovo V310 BS4.png" alt="BS4" />
-                        <div class="card__text">
-                            <p class="card__title">Lenovo V310</p>
-                        </div>
-                    </div>
-                    <div class="card card__five">
-                        <div class="card__bg"></div>
-                        <img class="card__img" src="/images/BS/MacBook Pro 13-inch BS5.png" alt="BS5" />
-                        <div class="card__text">
-                            <p class="card__title">MacBook Pro 13-inch</p>
-                        </div>
-                    </div>
-                </div>
+            <h1 class="title11">Hover over the cards</h1>
+            <div id="app" class="container11">
+                <card data-image="/images/bgrndDigital.jpg">
+                    <h1 slot="header11">Canyons</h1>
+                    <p slot="content11">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                </card>
+                <card data-image="/images/bgrndDigital.jpg">
+                    <h1 slot="header11">Beaches</h1>
+                    <p slot="content11">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                </card>
+                <card data-image="/images/bgrndDigital.jpg">
+                    <h1 slot="header11">Trees</h1>
+                    <p slot="content11">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                </card>
+                <card data-image="/images/bgrndDigital.jpg">
+                    <h1 slot="header11">Lakes</h1>
+                    <p slot="content11">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                </card>
             </div>
 
             <div class="nama-penjelasan">
@@ -147,6 +146,8 @@
                 <a href="/DaftarLaptop" class="btn">Lihat Semua Laptop</a>
             </div>
         </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+        <script src="/js/3dmodel.js"></script>
         <script src="/js/script.js"></script>
         <script src="/js/cards.js"></script>
         <script src="/js/parallax.js"></script>

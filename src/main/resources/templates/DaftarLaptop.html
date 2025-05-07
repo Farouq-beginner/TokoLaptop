@@ -11,83 +11,118 @@
 <body>
     <div class="background"></div>
 
-    <header class="header">
-        <a href="/Home" class="logo">TOKO LAPTOP</a>
+    <section class="parallax">
+        <img src="/images/Parallax/text.png" id="t1">
+        <img src="/images/Parallax/elemen1.png" id="m1">
+        <img src="/images/Parallax/elemen2.png" id="t2">
+        <img src="/images/Parallax/laptop.png" id="m2">
+        <img src="/images/Parallax/elemen3.png" id="man">
+        <img src="/images/Parallax/laptop1.png" id="plants">
+    </section>
+    <main class="main-content">
+        <header class="header">
+            <a href="/Home" class="logo">TOKO LAPTOP</a>
 
-        <nav class="nav" id="main-nav">
-            <a href="/Home" class="nav-link">
-                Home
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
-            <a href="/DaftarLaptop" class="nav-link" id="laptop-link">
-                Laptop
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
-            <a href="/Service" class="nav-link">
-                Services
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
-            <a href="/AbouUs" class="nav-link">
-                About Us
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
-            <a href="https://wa.me/+6285791730657" class="nav-link">
-                Contact Me
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
-        </nav>
+            <nav class="nav" id="main-nav">
+                <a href="/Home" class="nav-link">
+                    Home
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                </a>
+                <a href="/DaftarLaptop" class="nav-link" id="laptop-link">
+                    Laptop
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                </a>
+                <a href="/Service" class="nav-link">
+                    Services
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                </a>
+                <a href="/AbouUs" class="nav-link">
+                    About Us
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                </a>
+                <a href="https://wa.me/+6285791730657" class="nav-link">
+                    Contact Me
+                    <span class="sparkle sparkle-1"></span>
+                    <span class="sparkle sparkle-2"></span>
+                    <span class="sparkle sparkle-3"></span>
+                </a>
+            </nav>
 
-        <div class="icons">
-            <a href="/login" class="icon" id="profile-icon">👤</a>
-            <div class="hamburger" id="hamburger-menu">
-                <div class="hamburger-line"></div>
-                <div class="hamburger-line"></div>
-                <div class="hamburger-line"></div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Products Section -->
-    <div class="produkcontainer">
-        <div class="products-container" id="laptop-products">
-            <div class="products-header">
-                <h2 class="products-title">Our Laptop Collection</h2>
-                
-                <!-- New Search and Sort Controls -->
-                <div class="search-sort-controls">
-                    <div class="search-container">
-                        <span class="search-icon">🔍</span>
-                        <input type="text" id="search-input" placeholder="Search for laptops..." aria-label="Search laptops">
-                    </div>
-                    <div class="sort-container">
-                        <span class="sort-label">Sort by:</span>
-                        <select id="sort-select" aria-label="Sort options">
-                            <option value="default">Featured</option>
-                            <option value="name-asc">Name (A-Z)</option>
-                            <option value="name-desc">Name (Z-A)</option>
-                            <option value="price-asc">Price (Low to High)</option>
-                            <option value="price-desc">Price (High to Low)</option>
-                            <option value="limited">Limited Edition</option>
-                        </select>
-                    </div>
+            <div class="icons">
+                <a href="/login" class="icon" id="profile-icon">👤</a>
+                <div class="hamburger" id="hamburger-menu">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
                 </div>
             </div>
-            <div class="products-grid" id="products-grid">
-                <!-- Products will be dynamically loaded here -->
+        </header>
+
+        <!-- Products Section -->
+        <div class="produkcontainer">
+            <div class="products-container" id="laptop-products">
+                <div class="products-header">
+                    
+                    <h2 class="products-title">Our Laptop Collection</h2>
+
+                    <!-- New Search and Sort Controls -->
+                    <div class="search-sort-controls">
+                        <div class="search-container">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="search-input" placeholder="Search for laptops..."
+                                aria-label="Search laptops">
+                        </div>
+                        <div class="sort-container">
+                            <span class="sort-label">Sort by:</span>
+                            <select id="sort-select" aria-label="Sort options">
+                                <option value="default">Featured</option>
+                                <option value="name-asc">Name (A-Z)</option>
+                                <option value="name-desc">Name (Z-A)</option>
+                                <option value="price-asc">Price (Low to High)</option>
+                                <option value="price-desc">Price (High to Low)</option>
+                                <option value="limited">Limited Edition</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
             </div>
         </div>
-    </div>
-    <script src="/js/daftarlaptop.js"></script>
+        <script>
+            window.addEventListener('scroll', function () {
+                const scroll = window.scrollY;
+                const vh = window.innerHeight;
+                const vw = window.innerWidth;
+        
+                // Progress scroll: 0 (atas) -> 1 (1 layar scroll)
+                const progress = Math.min(scroll / vh, 1);
+        
+                // Sesuaikan dengan % layar untuk pergerakan maksimal
+                const moveX = vw * 0.2 * progress; // Maks 20% lebar layar
+                const moveY = vh * 0.2 * progress; // Maks 20% tinggi layar
+        
+                // Apply ke tiap elemen sesuai arah
+                document.getElementById('t1').style.transform = `translate(${moveX}px, ${moveY}px)`;      // kiri atas → kanan bawah
+                document.getElementById('m1').style.transform = `translate(${-moveX}px, ${moveY}px)`;     // kanan atas → kiri bawah
+                document.getElementById('t2').style.transform = `translate(${moveX}px, ${-moveY}px)`;     // kiri bawah → kanan atas
+                document.getElementById('m2').style.transform = `translate(${-moveX}px, ${-moveY}px)`;    // kanan bawah → kiri atas
+                document.getElementById('man').style.transform = `translate(${-moveX}px, -50%)`;          // kanan → kiri
+                document.getElementById('plants').style.transform = `translate(${moveX}px, -50%)`;        // kiri → kanan
+            });
+        </script>
+        
+        <script src="/js/daftarlaptop.js"></script>
+    </main>
 </body>
 
 </html>
