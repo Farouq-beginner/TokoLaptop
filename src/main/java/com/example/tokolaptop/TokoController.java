@@ -30,4 +30,9 @@ public class TokoController {
 	public String getAboutus() {
 		return "Aboutus";
 	}
+
+	@GetMapping("/Services")
+	public String getServices() {
+		return "Services";
+	}
 }

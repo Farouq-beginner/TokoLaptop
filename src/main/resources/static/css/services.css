@@ -1,0 +1,587 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    /* Warna transparan */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #252e37;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    z-index: 100;
+}
+
+.nav.active {
+    max-height: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+    color: #252e37;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* Hover Effect Styles */
+.nav-link:hover {
+    color: #000000;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -9px;
+    right: -9px;
+    bottom: -8px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: -1;
+    background: none;
+}
+
+/* Efek hover tetap ada di PC */
+.nav-link:hover::before {
+    border-color: #00e1ff;
+    box-shadow: 0 0 15px #00e1ff, 0 0 30px rgba(0, 225, 255, 0.5);
+    opacity: 1;
+}
+
+/* Menonaktifkan hover di perangkat mobile */
+@media (max-width: 768px) {
+    .nav-link:hover::before {
+        border-color: transparent;
+        box-shadow: none;
+        opacity: 0;
+    }
+}
+
+.nav-link .sparkle {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-link .sparkle-1 {
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    left: 20%;
+}
+
+.nav-link .sparkle-2 {
+    width: 8px;
+    height: 8px;
+    top: -5px;
+    right: 25%;
+}
+
+.nav-link .sparkle-3 {
+    width: 6px;
+    height: 6px;
+    bottom: -8px;
+    right: 40%;
+}
+
+.nav-link:hover .sparkle {
+    animation: sparkle 1.5s infinite alternate;
+}
+
+.nav-link:hover .sparkle-1 {
+    animation-delay: 0s;
+}
+
+.nav-link:hover .sparkle-2 {
+    animation-delay: 0.2s;
+}
+
+.nav-link:hover .sparkle-3 {
+    animation-delay: 0.4s;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: #0c3a68;
+}
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: #0c3a68;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+
+@media (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+
+    .nav {
+        position: static;
+        flex-direction: row;
+        max-height: none;
+        overflow: visible;
+        background: none;
+        gap: 30px;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    .nav-link {
+        border-bottom: none;
+        padding: 0;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+}
+
+/* Header and Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: 0.5s;
+}
+
+header.sticky {
+    background: #112434;
+    padding: 15px 100px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+header.sticky .logo,
+header.sticky .nav a {
+    color: #fff;
+    transition: 0.5s;
+}
+
+/* Warna navbar tetap gelap di mobile */
+@media (max-width: 768px) {
+    header.sticky {
+        background: #112434;
+        /* Tetap gelap di layar kecil */
+    }
+    header.sticky .logo,
+    header.sticky .nav a {
+        background: #112434;
+        color: #fff;
+        transition: 0.5s;
+    }
+}
+
+@media (max-width: 768px) {
+    header.sticky .nav a:hover {
+        background: #ffffff;
+        /* Warna saat hover di mobile */
+        color: #112434;
+        transform: scale(1.05);
+        transition: 0.3s ease-in-out;
+    }
+}
+
+/* Nonaktifkan Hover di PC */
+@media (min-width: 769px) {
+    header.sticky .nav a:hover {
+        background: transparent !important;
+        transform: none !important;
+        color: #fff !important;
+    }
+}
+
+/* Warna teks tetap kontras di mobile */
+@media (max-width: 768px) {
+    header.sticky .nav a {
+        color: #fff;
+        /* Warna tetap putih di mobile */
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to right, #e0e0e0 1px, transparent 1px), 
+                      linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Main container */
+.container {
+    width: 90%;
+    max-width: 900px;
+    height: 550px;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Service content layout */
+.service-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+/* Display board - moved lower */
+.display-board {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    position: relative;
+    background: linear-gradient(145deg, #2c3e50, #34495e);
+    box-shadow: 5px 10px 15px rgba(4, 0, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(0deg);
+    transition: transform 0.8s ease;
+    cursor: pointer;
+    border: 15px solid #ecf0f1;
+    margin-bottom: 20px;
+}
+
+/* Service display */
+.service-display {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+}
+
+.service-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.service-image.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.service-image img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+/* Description section - moved above the display board with blur box */
+.description-container {
+    position: absolute;
+    top: 80px;
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.description {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    display: none;
+}
+
+.description.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+}
+
+.description h4 {
+    font-size: 14px;
+    color: #3498db;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.description h2 {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.description p {
+    font-size: 14px;
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.description .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #27ae60;
+}
+
+/* Thumbnail */
+.thumbnail {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.thumbnail img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+/* Store name */
+.store-name {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-family: 'Arial', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #3498db;
+    letter-spacing: 2px;
+    z-index: 20;
+}
+
+/* Bottom navigation */
+.bottom-nav {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 80px;
+}
+
+.nav-item {
+    font-size: 16px;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #3498db;
+}
+
+.appointment-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.appointment-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Decorative elements */
+.tool-icon {
+    position: absolute;
+    left: 40px;
+    bottom: 100px;
+    width: 60px;
+    height: 60px;
+    opacity: 0.7;
+}
+
+.tool-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.parts-icon {
+    position: absolute;
+    left: 80px;
+    top: 250px;
+    width: 80px;
+    height: 80px;
+    opacity: 0.7;
+}
+
+.parts-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.chip-icon {
+    position: absolute;
+    right: 80px;
+    bottom: 100px;
+    width: 40px;
+    height: 40px;
+}
+
+.chip-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.warranty-icon {
+    position: absolute;
+    right: 40px;
+    bottom: 200px;
+    width: 50px;
+    height: 50px;
+}
+
+.warranty-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* For initial loading animation */
+.fadeIn {
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
