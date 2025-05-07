@@ -4,82 +4,996 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 Not Found</title>
+    <title>Contact Us | TechHub Laptops</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #5465FF;
+            --secondary-color: #9BB1FF;
+            --accent-color: #38B6FF;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --bg-color: #F8FAFC;
+            --bg-secondary: #FFFFFF;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --input-bg: #F0F4F8;
+            --success-color: #4CAF50;
+            --error-color: #FF5252;
+        }
+
+        .dark-theme {
+            --primary-color: #7B8CFF;
+            --secondary-color: #6272ED;
+            --accent-color: #4FA3FF;
+            --text-color: #E2E8F0;
+            --text-secondary: #A1A1AA;
+            --bg-color: #121826;
+            --bg-secondary: #1E293B;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --input-bg: #1E293B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 25px;
+            right: 20px;
+            z-index: 1000;
+            background-color: var(--bg-secondary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .header {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/400') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 50px;
+            padding: 20px;
+            color: white;
+            background-attachment: fixed;
+            overflow: hidden;
         }
 
-        h1 {
-            font-size: 50px;
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(3px);
+            z-index: -1;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-section {
+            padding: 60px 0;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-form-wrap,
+        .contact-info-wrap {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form-wrap:hover,
+        .contact-info-wrap:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .form-group {
             margin-bottom: 20px;
         }
 
-        h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
         }
 
-        p {
-            font-size: 18px;
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        a {
-            color: #3498db;
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(84, 101, 255, 0.3);
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-text p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .map-container {
+            margin-top: 50px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            height: 400px;
+        }
+
+        .map-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-secondary);
+            color: var(--primary-color);
+            border-radius: 50%;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 10px var(--shadow-color);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) rotate(10deg);
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .chatbot-widget:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-widget::after {
+            content: 'Need Help?';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .chatbot-widget:hover::after {
+            opacity: 1;
+        }
+
+        .success-message {
+            display: none;
+            padding: 15px;
+            background-color: var(--success-color);
+            color: white;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .error-message {
+            display: none;
+            padding: 15px;
+            background-color: var(--error-color);
+            color: white;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .error-feedback {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header {
+                height: 300px;
+            }
+
+            .contact-form-wrap,
+            .contact-info-wrap {
+                width: 100%;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+
+
+        /* Scrollbar Styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            /* Warna transparan */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #252e37;
             text-decoration: none;
         }
-        
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            z-index: 100;
+        }
+
+        .nav.active {
+            max-height: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: #252e37;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        /* Hover Effect Styles */
+        .nav-link:hover {
+            color: #f1f1f1;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -9px;
+            right: -9px;
+            bottom: -8px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: -1;
+            background: none;
+        }
+
+        /* Efek hover tetap ada di PC */
+        .nav-link:hover::before {
+            border-color: #00e1ff;
+            box-shadow: 0 0 15px #00e1ff, 0 0 30px rgba(0, 225, 255, 0.5);
+            opacity: 1;
+        }
+
+        /* Menonaktifkan hover di perangkat mobile */
+        @media (max-width: 768px) {
+            .nav-link:hover::before {
+                border-color: transparent;
+                box-shadow: none;
+                opacity: 0;
+            }
+        }
+
+        .nav-link .sparkle {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .nav-link .sparkle-1 {
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            left: 20%;
+        }
+
+        .nav-link .sparkle-2 {
+            width: 8px;
+            height: 8px;
+            top: -5px;
+            right: 25%;
+        }
+
+        .nav-link .sparkle-3 {
+            width: 6px;
+            height: 6px;
+            bottom: -8px;
+            right: 40%;
+        }
+
+        .nav-link:hover .sparkle {
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        .nav-link:hover .sparkle-1 {
+            animation-delay: 0s;
+        }
+
+        .nav-link:hover .sparkle-2 {
+            animation-delay: 0.2s;
+        }
+
+        .nav-link:hover .sparkle-3 {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        .icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .icon {
+            cursor: pointer;
+            font-size: 18px;
+            color: #0c3a68;
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: #0c3a68;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+
+            .nav {
+                position: static;
+                flex-direction: row;
+                max-height: none;
+                overflow: visible;
+                background: none;
+                gap: 30px;
+                margin-left: auto;
+                margin-right: 20px;
+            }
+
+            .nav-link {
+                border-bottom: none;
+                padding: 0;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            }
+        }
+
+        /* Header and Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: 0.5s;
+        }
+
+        header.sticky {
+            background: #112434;
+            padding: 15px 100px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        header.sticky .logo,
+        header.sticky .nav a {
+            color: #fff;
+            transition: 0.5s;
+        }
+
+        /* Warna navbar tetap gelap di mobile */
+        @media (max-width: 768px) {
+            header.sticky {
+                background: #112434;
+                /* Tetap gelap di layar kecil */
+            }
+
+            header.sticky .logo,
+            header.sticky .nav a {
+                background: #112434;
+                color: #fff;
+                transition: 0.5s;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header.sticky .nav a:hover {
+                background: #ffffff;
+                /* Warna saat hover di mobile */
+                color: #112434;
+                transform: scale(1.05);
+                transition: 0.3s ease-in-out;
+            }
+        }
+
+        /* Nonaktifkan Hover di PC */
+        @media (min-width: 769px) {
+            header.sticky .nav a:hover {
+                background: transparent !important;
+                transform: none !important;
+                color: #fff !important;
+            }
+        }
+
+        /* Warna teks tetap kontras di mobile */
+        @media (max-width: 768px) {
+            header.sticky .nav a {
+                color: #fff;
+                /* Warna tetap putih di mobile */
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="background">
-            <h1>404 Not Found</h1>
-            <h2>Oops! The page you are looking for does not exist.</h2>
-            <p>Please check the URL or return to the <a href="/Home">home page</a>.</p>
-            <p>If you believe this is an error, please contact support.</p>
-            <p>Thank you for your understanding!</p>
-            <p>&copy; 2025 Toko Laptop. All rights reserved.</p>
-            <p>Contact us: <a href="https://wa.me/+6285791730657">WhatsApp</a></p>
-            <p>Follow us on social media: <a href="https://www.instagram.com/tokolaptop/">Instagram</a></p>
-            <p>Privacy Policy | Terms of Service</p>
-            <p>Website by Toko Laptop Team</p>
-            <p>Last updated: May 2025</p>
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Fixed: Removed the nested header and simplified the structure -->
+    <header>
+        <a href="/Home" class="logo">TOKO LAPTOP</a>
+
+        <nav class="nav" id="main-nav">
+            <a href="/Home" class="nav-link">
+                Home
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+            <a href="/DaftarLaptop" class="nav-link" id="laptop-link">
+                Laptop
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+            <a href="/Services" class="nav-link">
+                Services
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+            <a href="/Aboutus" class="nav-link">
+                About Us
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+            <a href="/Contactus" class="nav-link">
+                Contact Us
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+        </nav>
+
+        <div class="icons">
+            <a href="/login" class="icon" id="profile-icon">👤</a>
+            <div class="hamburger" id="hamburger-menu">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
         </div>
-        <script>
-            // JavaScript for the hamburger menu
-            const hamburgerMenu = document.getElementById('hamburger-menu');
-            const mainNav = document.getElementById('main-nav');
-            hamburgerMenu.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-                hamburgerMenu.classList.toggle('active');
-            });
-            // Close the menu when clicking outside
-            document.addEventListener('click', (event) => {
-                if (!mainNav.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-                    mainNav.classList.remove('active');
-                    hamburgerMenu.classList.remove('active');
-                }
-            });
-            // Close the menu when a nav link is clicked
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mainNav.classList.remove('active');
-                    hamburgerMenu.classList.remove('active');
+    </header>
+
+    <div class="header">
+        <h1 data-aos="fade-down" data-aos-duration="1000">Contact Us</h1>
+        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">We're here to help you find the perfect
+            laptop. Reach out to our team for personalized assistance.</p>
+    </div>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-form-wrap" data-aos="fade-right" data-aos-duration="1000">
+                    <h2 class="section-title">Send Us a Message</h2>
+                    <form id="contactForm" action="https://formsubmit.co/24111814081@mhs.unesa.ac.id" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="New Contact Form Submission - TechHub Laptops">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://example.com/thanks.html">
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your name"
+                                required>
+                            <span class="error-feedback" id="nameError">Please enter your name</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control"
+                                placeholder="your@email.com" required>
+                            <span class="error-feedback" id="emailError">Please enter a valid email address</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control"
+                                placeholder="How can we help you?" required>
+                            <span class="error-feedback" id="subjectError">Please enter a subject</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" rows="5"
+                                placeholder="Your message here..." required></textarea>
+                            <span class="error-feedback" id="messageError">Please enter your message</span>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        <div class="success-message" id="successMessage">
+                            Your message has been sent successfully! We'll get back to you soon.
+                        </div>
+                        <div class="error-message" id="errorMessage">
+                            Oops! Something went wrong. Please try again later.
+                        </div>
+                    </form>
+                </div>
+
+                <div class="contact-info-wrap" data-aos="fade-left" data-aos-duration="1000">
+                    <h2 class="section-title">Contact Information</h2>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Our Location</h4>
+                            <p>123 Tech Avenue, Digital Plaza<br>Silicon Valley, CA 94024</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone Number</h4>
+                            <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email Address</h4>
+                            <p>contact@techhublaptops.com<br>support@techhublaptops.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Working Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 8:00 PM<br>Saturday: 10:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container" data-aos="zoom-in" data-aos-duration="1000">
+                <!-- Placeholder for Google Maps -->
+                <img src="/api/placeholder/1200/400" alt="Store Location Map">
+            </div>
+        </div>
+    </section>
+
+    <div class="chatbot-widget" id="chatbotWidget">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-in-out'
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        const body = document.body;
+
+        // Check if user has a preferred theme
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+            body.classList.add('dark-theme');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        // Toggle theme on click
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+
+            // Toggle icon
+            if (body.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Form validation
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            // Client-side validation before sending to FormSubmit
+            let isValid = true;
+
+            // Validate name
+            const name = document.getElementById('name');
+            const nameError = document.getElementById('nameError');
+            if (name.value.trim() === '') {
+                e.preventDefault();
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+            // Validate email
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                e.preventDefault();
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            // Validate subject
+            const subject = document.getElementById('subject');
+            const subjectError = document.getElementById('subjectError');
+            if (subject.value.trim() === '') {
+                e.preventDefault();
+                subjectError.style.display = 'block';
+                isValid = false;
+            } else {
+                subjectError.style.display = 'none';
+            }
+
+            // Validate message
+            const message = document.getElementById('message');
+            const messageError = document.getElementById('messageError');
+            if (message.value.trim() === '') {
+                e.preventDefault();
+                messageError.style.display = 'block';
+                isValid = false;
+            } else {
+                messageError.style.display = 'none';
+            }
+
+            // If valid, let the form submission happen naturally to FormSubmit
+            // We don't prevent default if everything is valid
+            if (!isValid) {
+                e.preventDefault();
+            } else {
+                // Show visual feedback that submission is happening
+                const submitBtn = contactForm.querySelector('.submit-btn');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+                setTimeout(() => {
+                    successMessage.style.display = 'block';
+                    contactForm.reset();
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    submitBtn.disabled = false;
+                }, 2000);
+            }
+        });
+        // Hamburger menu toggle
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mainNav = document.getElementById('main-nav');
+        const laptopLink = document.getElementById('laptop-link');
+        const profileIcon = document.getElementById('profile-icon');
+        const laptopLinkText = laptopLink.textContent;
+        const profileIconText = profileIcon.textContent;
+        const laptopLinkIcon = document.createElement('span');
+        laptopLinkIcon.classList.add('sparkle', 'sparkle-1');
+        laptopLinkIcon.textContent = laptopLinkText;
+        const profileIconIcon = document.createElement('span');
+        profileIconIcon.classList.add('sparkle', 'sparkle-1');
+        profileIconIcon.textContent = profileIconText;
+        hamburgerMenu.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            hamburgerMenu.classList.toggle('active');
+            if (mainNav.classList.contains('active')) {
+                hamburgerMenu.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.backgroundColor = '#fff';
                 });
-            });
-            // Optional: Add any JavaScript functionality here
-            // For example, you can add a function to redirect to the home page after a few seconds
-            setTimeout(function () {
-                window.location.href = "/Home";
-            }, 5000); // Redirect after 5 seconds
-        </script>
+            } else {
+                hamburgerMenu.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.backgroundColor = '#0c3a68';
+                });
+            }
+        });
+        // Close the menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mainNav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+                mainNav.classList.remove('active');
+                hamburgerMenu.classList.remove('active');
+                hamburgerMenu.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.backgroundColor = '#0c3a68';
+                });
+            }
+        });
+        // Close the menu when clicking on a link
+        mainNav.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                mainNav.classList.remove('active');
+                hamburgerMenu.classList.remove('active');
+                hamburgerMenu.querySelectorAll('.hamburger-line').forEach(line => {
+                    line.style.backgroundColor = '#0c3a68';
+                });
+            }
+        });
+        // Chatbot widget functionality
+        const chatbotWidget = document.getElementById('chatbotWidget');
+        chatbotWidget.addEventListener('click', () => {
+            // Open your chatbot or chat support here
+            alert('Chatbot is not implemented yet.');
+        });
+        // Profile icon functionality
+        profileIcon.addEventListener('click', () => {
+            // Open your profile or login page here
+            alert('Profile icon is not implemented yet.');
+        });
+        // Laptop link functionality
+        laptopLink.addEventListener('click', () => {
+            // Open your laptop page here
+            alert('Laptop link is not implemented yet.');
+        });
+    </script>
 </body>
 
 </html>
