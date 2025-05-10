@@ -1,68 +1,3 @@
-
-/* Header and Navigation */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 30px 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  transition: 0.5s;
-}
-
-header.sticky {
-  background: #112434;
-  padding: 15px 100px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-header.sticky ,
-header.sticky .nav a {
-    color: #fff;
-    transition: 0.5s;
-}
-/* Warna navbar tetap gelap di mobile */
-@media (max-width: 768px) {
-  header.sticky {
-      background: #112434;
-      /* Tetap gelap di layar kecil */
-  }
-  header.sticky ,
-  header.sticky .nav a {
-      background: #112434;
-      color: #fff;
-      transition: 0.5s;
-  }
-}
-
-@media (max-width: 768px) {
-  header.sticky .nav a:hover {
-      background: #ffffff; /* Warna saat hover di mobile */
-      color: #112434;
-      transform: scale(1.05);
-      transition: 0.3s ease-in-out;
-  }
-}
-
-/* Nonaktifkan Hover di PC */
-@media (min-width: 769px) {
-  header.sticky .nav a:hover {
-      background: transparent !important;
-      transform: none !important;
-      color: #fff !important;
-  }
-}
-
-/* Warna teks tetap kontras di mobile */
-@media (max-width: 768px) {
-  header.sticky .nav a {
-      color: #fff; /* Warna tetap putih di mobile */
-  }
-}
-
 /* Parallax Section */
 .parallax {
   position: relative;
@@ -93,9 +28,5 @@ header.sticky .nav a {
     width: 100%;
     height: auto;
     object-fit: contain; /* Memastikan gambar tidak terlalu besar */
-  }
-
-  .header, .content {
-    margin-bottom: 20px; /* Mengurangi jarak antar elemen */
   }
 }

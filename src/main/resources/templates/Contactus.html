@@ -5,12 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | TechHub Laptops</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
     <style>
         :root {
             --primary-color: #5465FF;
@@ -65,7 +62,7 @@
             position: fixed;
             top: 25px;
             right: 20px;
-            z-index: 1000;
+            z-index: 1001;
             background-color: var(--bg-secondary);
             border-radius: 50%;
             width: 40px;
@@ -82,10 +79,10 @@
             transform: scale(1.1);
         }
 
-        .header {
+        .about-header {
             position: relative;
             height: 400px;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/400') center/cover;
+            background: linear-gradient(to bottom, rgba(135, 166, 214, 0.8), rgba(2, 12, 27, 0.9)), url('/api/placeholder/1920/1080') center/cover no-repeat fixed;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -97,7 +94,7 @@
             overflow: hidden;
         }
 
-        .header::before {
+        .about-header::before {
             content: '';
             position: absolute;
             top: 0;
@@ -108,14 +105,14 @@
             z-index: -1;
         }
 
-        .header h1 {
+        .about-header h1 {
             font-size: 3rem;
             margin-bottom: 10px;
             letter-spacing: 1px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .header p {
+        .about-header p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto;
@@ -360,11 +357,11 @@
                 flex-direction: column;
             }
 
-            .header h1 {
+            .about-header h1 {
                 font-size: 2.5rem;
             }
 
-            .header {
+            .about-header {
                 height: 300px;
             }
 
@@ -379,8 +376,8 @@
         }
 
 
-        /* Header Styles */
-        .logo {
+                /* Header Styles */
+                .logo {
             font-family: 'Raleway', sans-serif;
             font-weight: 800;
             font-size: 1.8rem;
@@ -450,7 +447,7 @@
             top: -5px;
             left: -9px;
             right: -9px;
-            bottom: -8px;
+            bottom: -5px;
             border-radius: 8px;
             border: 2px solid transparent;
             opacity: 0;
@@ -632,7 +629,17 @@
         }
 
         @media (max-width: 768px) {
-            header.sticky .nav a:hover {
+            .nav a:hover {
+                background: #112434;
+                /* Warna saat hover di mobile */
+                color: #ffffff;
+                transform: scale(1.05);
+                transition: 0.3s ease-in-out;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header.sticky .nav-link:hover {
                 background: #ffffff;
                 /* Warna saat hover di mobile */
                 color: #112434;
@@ -641,14 +648,7 @@
             }
         }
 
-        /* Nonaktifkan Hover di PC */
-        @media (min-width: 769px) {
-            header.sticky .nav a:hover {
-                background: transparent !important;
-                transform: none !important;
-                color: #fff !important;
-            }
-        }
+
 
         /* Warna teks tetap kontras di mobile */
         @media (max-width: 768px) {
@@ -660,7 +660,7 @@
 
         @media (min-width: 1200px) {
             header {
-                padding: 20px 10%;
+                padding: 14px 10%;
             }
         }
     </style>
@@ -718,7 +718,7 @@
         </div>
     </header>
 
-    <div class="header">
+    <div class="about-header">
         <h1 data-aos="fade-down" data-aos-duration="1000">Contact Us</h1>
         <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">We're here to help you find the perfect
             laptop. Reach out to our team for personalized assistance.</p>
@@ -839,7 +839,7 @@
     <script>
 // JavaScript for sticky header
 window.addEventListener('scroll', function () {
-    const header = document.querySelector('.header');
+    const header = document.querySelector('header');
     header.classList.toggle('sticky', window.scrollY > 50);
 });
 

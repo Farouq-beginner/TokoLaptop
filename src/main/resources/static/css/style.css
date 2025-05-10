@@ -7,7 +7,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .container {
     max-width: 100%;
@@ -18,6 +17,7 @@
 }
 
 body {
+    font-family: 'Poppins', sans-serif;
     background-color: #f5f5f5;
 }
 
@@ -35,23 +35,8 @@ body {
 }
 
 
-::-webkit-scrollbar {
-    width: 8px;
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2); /* Warna transparan */
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar {
-    width: 0;
-}
-
-
-
-.logo {
+ /* Header Styles */
+ .logo {
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
     font-size: 1.8rem;
@@ -60,6 +45,22 @@ body {
 
 .logo span {
     color: var(--accent);
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    /* Warna transparan */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }
 
 .nav {
@@ -105,7 +106,7 @@ body {
     top: -5px;
     left: -9px;
     right: -9px;
-    bottom: -8px;
+    bottom: -5px;
     border-radius: 8px;
     border: 2px solid transparent;
     opacity: 0;
@@ -218,6 +219,7 @@ body {
     transition: 0.4s;
 }
 
+
 @media (min-width: 768px) {
     .hamburger {
         display: none;
@@ -241,6 +243,83 @@ body {
 
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+}
+
+/* Header and Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: 0.5s;
+}
+
+header.sticky {
+    background: #112434;
+    padding: 15px 100px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+header.sticky .logo,
+header.sticky .nav a {
+    color: #fff;
+    transition: 0.5s;
+}
+
+/* Warna navbar tetap gelap di mobile */
+@media (max-width: 768px) {
+    header.sticky {
+        background: #112434;
+        /* Tetap gelap di layar kecil */
+    }
+
+    header.sticky .logo,
+    header.sticky .nav a {
+        background: #112434;
+        color: #fff;
+        transition: 0.5s;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav a:hover {
+        background: #112434;
+        /* Warna saat hover di mobile */
+        color: #ffffff;
+        transform: scale(1.05);
+        transition: 0.3s ease-in-out;
+    }
+}
+
+@media (max-width: 768px) {
+    header.sticky .nav-link:hover {
+        background: #ffffff;
+        /* Warna saat hover di mobile */
+        color: #112434;
+        transform: scale(1.05);
+        transition: 0.3s ease-in-out;
+    }
+}
+
+
+
+/* Warna teks tetap kontras di mobile */
+@media (max-width: 768px) {
+    header.sticky .nav a {
+        color: #fff;
+        /* Warna tetap putih di mobile */
+    }
+}
+
+@media (min-width: 1200px) {
+    header {
+        padding: 20px 10%;
     }
 }
 
