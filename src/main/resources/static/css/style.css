@@ -1,3 +1,8 @@
+:root {
+    --white: #e6f1ff;
+    --accent: #64ffda;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -47,10 +52,14 @@ body {
 
 
 .logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: #252e37;
-    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+.logo span {
+    color: var(--accent);
 }
 
 .nav {

@@ -1,3 +1,8 @@
+:root {
+    --white: #e6f1ff;
+    --accent: #64ffda;
+}
+
 .parallax {
     position: fixed;
     top: 0;
@@ -56,10 +61,14 @@
 }
 
 .logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: #252e37;
-    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+.logo span {
+    color: var(--accent);
 }
 
 .nav {
@@ -264,7 +273,6 @@ header.sticky {
     padding: 15px 100px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
-header.sticky .logo,
 header.sticky .nav a {
     color: #fff;
     transition: 0.5s;
@@ -276,7 +284,6 @@ header.sticky .nav a {
         background: #112434;
         /* Tetap gelap di layar kecil */
     }
-    header.sticky .logo,
     header.sticky .nav a {
         background: #112434;
         color: #fff;

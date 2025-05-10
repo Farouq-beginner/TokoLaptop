@@ -19,7 +19,7 @@ header.sticky {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-header.sticky .logo,
+header.sticky ,
 header.sticky .nav a {
     color: #fff;
     transition: 0.5s;
@@ -30,7 +30,7 @@ header.sticky .nav a {
       background: #112434;
       /* Tetap gelap di layar kecil */
   }
-  header.sticky .logo,
+  header.sticky ,
   header.sticky .nav a {
       background: #112434;
       color: #fff;

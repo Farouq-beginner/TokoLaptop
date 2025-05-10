@@ -24,6 +24,8 @@
             --input-bg: #F0F4F8;
             --success-color: #4CAF50;
             --error-color: #FF5252;
+            --white: #e6f1ff;
+            --accent: #64ffda;
         }
 
         .dark-theme {
@@ -377,6 +379,18 @@
         }
 
 
+        /* Header Styles */
+        .logo {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
         /* Scrollbar Styles */
         ::-webkit-scrollbar {
             width: 8px;
@@ -391,13 +405,6 @@
 
         ::-webkit-scrollbar {
             width: 0;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #252e37;
-            text-decoration: none;
         }
 
         .nav {
@@ -593,7 +600,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
+            z-index: 1000;
             transition: 0.5s;
         }
 
@@ -650,6 +657,12 @@
                 /* Warna tetap putih di mobile */
             }
         }
+
+        @media (min-width: 1200px) {
+            header {
+                padding: 20px 10%;
+            }
+        }
     </style>
 </head>
 
@@ -660,7 +673,7 @@
 
     <!-- Fixed: Removed the nested header and simplified the structure -->
     <header>
-        <a href="/Home" class="logo">TOKO LAPTOP</a>
+        <a href="/Home" class="logo">Lap<span>Zone</span></a>
 
         <nav class="nav" id="main-nav">
             <a href="/Home" class="nav-link">
@@ -824,6 +837,36 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+// JavaScript for sticky header
+window.addEventListener('scroll', function () {
+    const header = document.querySelector('.header');
+    header.classList.toggle('sticky', window.scrollY > 50);
+});
+
+        // Get buttons that open the modals
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mainNav = document.getElementById('main-nav');
+
+        // When the user clicks on the hamburger menu, toggle the nav menu
+        hamburgerMenu.onclick = function () {
+            mainNav.classList.toggle('active');
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            // Close the nav menu if clicked outside
+            if (!event.target.closest('.nav') && !event.target.closest('.hamburger') && mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+            }
+        }
+        // Check window size and adjust nav accordingly
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                mainNav.classList.remove('active');
+            }
+        });
+
+
         // Initialize AOS animation
         AOS.init({
             once: true,
@@ -931,67 +974,11 @@
                 }, 2000);
             }
         });
-        // Hamburger menu toggle
-        const hamburgerMenu = document.getElementById('hamburger-menu');
-        const mainNav = document.getElementById('main-nav');
-        const laptopLink = document.getElementById('laptop-link');
-        const profileIcon = document.getElementById('profile-icon');
-        const laptopLinkText = laptopLink.textContent;
-        const profileIconText = profileIcon.textContent;
-        const laptopLinkIcon = document.createElement('span');
-        laptopLinkIcon.classList.add('sparkle', 'sparkle-1');
-        laptopLinkIcon.textContent = laptopLinkText;
-        const profileIconIcon = document.createElement('span');
-        profileIconIcon.classList.add('sparkle', 'sparkle-1');
-        profileIconIcon.textContent = profileIconText;
-        hamburgerMenu.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            hamburgerMenu.classList.toggle('active');
-            if (mainNav.classList.contains('active')) {
-                hamburgerMenu.querySelectorAll('.hamburger-line').forEach(line => {
-                    line.style.backgroundColor = '#fff';
-                });
-            } else {
-                hamburgerMenu.querySelectorAll('.hamburger-line').forEach(line => {
-                    line.style.backgroundColor = '#0c3a68';
-                });
-            }
-        });
-        // Close the menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mainNav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
-                mainNav.classList.remove('active');
-                hamburgerMenu.classList.remove('active');
-                hamburgerMenu.querySelectorAll('.hamburger-line').forEach(line => {
-                    line.style.backgroundColor = '#0c3a68';
-                });
-            }
-        });
-        // Close the menu when clicking on a link
-        mainNav.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A') {
-                mainNav.classList.remove('active');
-                hamburgerMenu.classList.remove('active');
-                hamburgerMenu.querySelectorAll('.hamburger-line').forEach(line => {
-                    line.style.backgroundColor = '#0c3a68';
-                });
-            }
-        });
         // Chatbot widget functionality
         const chatbotWidget = document.getElementById('chatbotWidget');
         chatbotWidget.addEventListener('click', () => {
             // Open your chatbot or chat support here
             alert('Chatbot is not implemented yet.');
-        });
-        // Profile icon functionality
-        profileIcon.addEventListener('click', () => {
-            // Open your profile or login page here
-            alert('Profile icon is not implemented yet.');
-        });
-        // Laptop link functionality
-        laptopLink.addEventListener('click', () => {
-            // Open your laptop page here
-            alert('Laptop link is not implemented yet.');
         });
     </script>
 </body>
