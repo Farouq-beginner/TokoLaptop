@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | TechHub Laptops</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         :root {
@@ -106,6 +108,12 @@
         }
 
         .about-header h1 {
+            font-size: 4rem;
+            color: white;
+            /* agar isi teks transparan */
+            -webkit-text-stroke: 1px #000;
+            /* garis luar hitam */
+            font-weight: bold;
             font-size: 3rem;
             margin-bottom: 10px;
             letter-spacing: 1px;
@@ -113,7 +121,13 @@
         }
 
         .about-header p {
-            font-size: 1.2rem;
+            font-size: 4rem;
+            color: white;
+            /* agar isi teks transparan */
+            -webkit-text-stroke: 1px #000;
+            /* garis luar hitam */
+            font-weight: bold;
+            font-size: 1.5rem;
             max-width: 700px;
             margin: 0 auto;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -376,8 +390,8 @@
         }
 
 
-                /* Header Styles */
-                .logo {
+        /* Header Styles */
+        .logo {
             font-family: 'Raleway', sans-serif;
             font-weight: 800;
             font-size: 1.8rem;
@@ -426,7 +440,7 @@
         }
 
         .nav-link {
-            color: #252e37;
+            color: #f1f1f1;
             text-decoration: none;
             font-size: 16px;
             padding: 15px 20px;
@@ -438,7 +452,7 @@
 
         /* Hover Effect Styles */
         .nav-link:hover {
-            color: #f1f1f1;
+            color: #00e1ff;
         }
 
         .nav-link::before {
@@ -663,6 +677,15 @@
                 padding: 14px 10%;
             }
         }
+
+        #vanta-services-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 0;
+        }
     </style>
 </head>
 
@@ -719,6 +742,7 @@
     </header>
 
     <div class="about-header">
+        <div id="vanta-services-bg"></div>
         <h1 data-aos="fade-down" data-aos-duration="1000">Contact Us</h1>
         <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">We're here to help you find the perfect
             laptop. Reach out to our team for personalized assistance.</p>
@@ -835,13 +859,31 @@
         <i class="fas fa-comments"></i>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>
+    <script>
+        VANTA.RINGS({
+            el: "#vanta-services-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 300.00,
+            minWidth: 500.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x0ef,
+            backgroundColor: 0x0a0a23,
+            points: 12.0,
+            maxDistance: 20.0
+        })
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-// JavaScript for sticky header
-window.addEventListener('scroll', function () {
-    const header = document.querySelector('header');
-    header.classList.toggle('sticky', window.scrollY > 50);
-});
+        // JavaScript for sticky header
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 50);
+        });
 
         // Get buttons that open the modals
         const hamburgerMenu = document.getElementById('hamburger-menu');

@@ -128,7 +128,7 @@
         }
 
         .nav-link {
-            color: #252e37;
+            color:#f1f1f1;
             text-decoration: none;
             font-size: 16px;
             padding: 15px 20px;
@@ -140,7 +140,7 @@
 
         /* Hover Effect Styles */
         .nav-link:hover {
-            color: #f1f1f1;
+            color:  #00e1ff;
         }
 
         .nav-link::before {
@@ -171,6 +171,9 @@
                 border-color: transparent;
                 box-shadow: none;
                 opacity: 0;
+            }
+            .nav-link{
+                color: #00e1ff;
             }
         }
 
@@ -1001,6 +1004,14 @@
             opacity: 1;
             transform: translateY(0);
         }
+        #vanta-services-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+    }
     </style>
 </head>
 
@@ -1055,6 +1066,7 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
+            <div id="vanta-services-bg"></div>
             <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
                 <h1>LapZone Laptops</h1>
                 <h2>Empowering Your Digital Journey</h2>
@@ -1412,6 +1424,23 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+      el: "#vanta-services-bg",
+      mouseControls: true,
+      touchControls: true,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x0ef,
+      backgroundColor: 0x0a0a23,
+      points: 12.0,
+      maxDistance: 20.0
+    });
+    </script>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
