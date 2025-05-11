@@ -20,5 +20,5 @@ This project exists thanks to all the people who contribute.
 
 ---
 
-![Snake animation](https://github.com/Farouq-beginner/Farouq-beginner/blob/output/github-contribution-grid-snake.svg)
+![Snake animation](https://github.com/Farouq-beginner/TokoLaptop/blob/output/github-contribution-grid-snake.svg)
 
