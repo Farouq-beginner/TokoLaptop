@@ -1,130 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Laptop</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin - Kelola Laptop</title>
+
+    <!-- Font dan ikon -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/Daftarlaptop.css">
+
+    <!-- CSS utama -->
+    <link rel="stylesheet" href="/css/Daftarlaptop.css"/>
+
+    <style>
+        .header {
+        background-color: rgba(47, 103, 122, 0.9);
+        backdrop-filter: blur(5px);
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .admin-btn {
+            font-weight: 800;
+            font-size: 16px;
+            padding: 12px 24px;
+            margin: 4px;
+            border: none;
+            background-color: #2e7d32;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .admin-btn.edit { background-color: #0277bd; }
+        .admin-btn.delete { background-color: #c62828; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            width: 400px;
+            border-radius: 8px;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            cursor: pointer;
+            font-size: 22px;
+            color: red;
+        }
+        body {
+        background: url('https://www.luarangkasa.com/wp-content/uploads/2014/10/earth-billion-stars.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+        }
+
+        .main-content {
+        background-color: rgba(0, 0, 0, 0.5); /* agar isi lebih jelas terbaca */
+        padding-bottom: 40px;
+        }
+        .label-text {
+        position: relative;
+        z-index: 10;
+        color: black;
+        display: inline-flex;   
+        align-items: center;
+        white-space: nowrap;    
+        width: auto;
+        }
+
+    </style>
 </head>
-
 <body>
-    <div class="background"></div>
-
-    <section class="parallax">
-        <img src="/images/Parallax/text.png" id="t1">
-        <img src="/images/Parallax/elemen1.png" id="m1">
-        <img src="/images/Parallax/elemen2.png" id="t2">
-        <img src="/images/Parallax/laptop.png" id="m2">
-        <img src="/images/Parallax/elemen3.png" id="man">
-        <img src="/images/Parallax/laptop1.png" id="plants">
-    </section>
     <main class="main-content">
+        <!-- Header -->
         <header class="header">
-            <a href="/Home" class="logo">Lap<span>Zone</span></a>
+            <a href="/Home" class="logo">Admin<span>LapZone</span></a>
 
             <nav class="nav" id="main-nav">
-                <a href="/Home" class="nav-link">
-                    Home
-                    <span class="sparkle sparkle-1"></span>
-                    <span class="sparkle sparkle-2"></span>
-                    <span class="sparkle sparkle-3"></span>
-                </a>
-                <a href="/DaftarLaptop" class="nav-link" id="laptop-link">
-                    Laptop
-                    <span class="sparkle sparkle-1"></span>
-                    <span class="sparkle sparkle-2"></span>
-                    <span class="sparkle sparkle-3"></span>
-                </a>
-                <a href="/Services" class="nav-link">
-                    Services
-                    <span class="sparkle sparkle-1"></span>
-                    <span class="sparkle sparkle-2"></span>
-                    <span class="sparkle sparkle-3"></span>
-                </a>
-                <a href="/Aboutus" class="nav-link">
-                    About Us
-                    <span class="sparkle sparkle-1"></span>
-                    <span class="sparkle sparkle-2"></span>
-                    <span class="sparkle sparkle-3"></span>
-                </a>
-                <a href="/Contactus" class="nav-link">
-                    Contact Us
-                    <span class="sparkle sparkle-1"></span>
-                    <span class="sparkle sparkle-2"></span>
-                    <span class="sparkle sparkle-3"></span>
-                </a>
+                <a href="/Home" class="nav-link">Home</a>
+                <a href="/DaftarLaptop" class="nav-link">Laptop</a>
+                <a href="/Services" class="nav-link">Services</a>
+                <a href="/Aboutus" class="nav-link">About Us</a>
+                <a href="/Contactus" class="nav-link">Contact Us</a>
             </nav>
 
             <div class="icons">
-                <a href="/login" class="icon" id="profile-icon">👤</a>
-                <div class="hamburger" id="hamburger-menu">
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
-                    <div class="hamburger-line"></div>
-                </div>
+                <a href="/logout" class="icon" id="profile-icon">🔒</a>
             </div>
         </header>
 
-        <!-- Products Section -->
+        <!-- Produk Admin -->
         <div class="produkcontainer">
-            <div class="products-container" id="laptop-products">
+            <div class="products-container">
                 <div class="products-header">
-                    
-                    <h2 class="products-title">Our Laptop Collection</h2>
+                    <h2 class="products-title">Kelola Laptop</h2>
+                    <button class="admin-btn" id="btnAddLaptop">Tambah Laptop</button>
+                </div>
 
-                    <!-- New Search and Sort Controls -->
-                    <div class="search-sort-controls">
-                        <div class="search-container">
-                            <span class="search-icon">🔍</span>
-                            <input type="text" id="search-input" placeholder="Search for laptops..."
-                                aria-label="Search laptops">
-                        </div>
-                        <div class="sort-container">
-                            <span class="sort-label">Sort by:</span>
-                            <select id="sort-select" aria-label="Sort options">
-                                <option value="default">Featured</option>
-                                <option value="name-asc">Name (A-Z)</option>
-                                <option value="name-desc">Name (Z-A)</option>
-                                <option value="price-asc">Price (Low to High)</option>
-                                <option value="price-desc">Price (High to Low)</option>
-                                <option value="limited">Limited Edition</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="products-grid" id="products-grid">
-                    <!-- Products will be dynamically loaded here -->
-                </div>
+                <div class="products-grid" id="products-grid"></div>
             </div>
         </div>
-        <script>
-            window.addEventListener('scroll', function () {
-                const scroll = window.scrollY;
-                const vh = window.innerHeight;
-                const vw = window.innerWidth;
-        
-                // Progress scroll: 0 (atas) -> 1 (1 layar scroll)
-                const progress = Math.min(scroll / vh, 1);
-        
-                // Sesuaikan dengan % layar untuk pergerakan maksimal
-                const moveX = vw * 0.2 * progress; // Maks 20% lebar layar
-                const moveY = vh * 0.2 * progress; // Maks 20% tinggi layar
-        
-                // Apply ke tiap elemen sesuai arah
-                document.getElementById('t1').style.transform = `translate(${moveX}px, ${moveY}px)`;      // kiri atas → kanan bawah
-                document.getElementById('m1').style.transform = `translate(${-moveX}px, ${moveY}px)`;     // kanan atas → kiri bawah
-                document.getElementById('t2').style.transform = `translate(${moveX}px, ${-moveY}px)`;     // kiri bawah → kanan atas
-                document.getElementById('m2').style.transform = `translate(${-moveX}px, ${-moveY}px)`;    // kanan bawah → kiri atas
-                document.getElementById('man').style.transform = `translate(${-moveX}px, -50%)`;          // kanan → kiri
-                document.getElementById('plants').style.transform = `translate(${moveX}px, -50%)`;        // kiri → kanan
-            });
-        </script>
-        
-        <script src="/js/daftarlaptop.js"></script>
     </main>
-</body>
 
+    <!-- Modal Form -->
+    <div class="modal" id="laptopModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModal">&times;</span>
+            <h2 id="modalTitle">Tambah Laptop</h2>
+            <form id="laptopForm">
+                <input type="hidden" id="laptopId" />
+                <input type="text" id="laptopName" placeholder="Nama Laptop" required />
+                <input type="number" id="laptopPrice" placeholder="Harga" required />
+                <input type="text" id="laptopImage" placeholder="URL Gambar" required />
+
+                <label for="laptopLimited" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span class="label-text">Limited Edition</span>
+                     <input type="checkbox" id="laptopLimited" />
+                </label>
+
+                <div class="btn-group">
+                    <button type="submit" class="admin-btn">Simpan</button>
+                    <button type="button" class="admin-btn delete" id="cancelEdit">Batal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const apiBase = '/api/laptops';
+        const grid = document.getElementById('products-grid');
+        const modal = document.getElementById('laptopModal');
+        const form = document.getElementById('laptopForm');
+
+        const fields = {
+            id: document.getElementById('laptopId'),
+            name: document.getElementById('laptopName'),
+            price: document.getElementById('laptopPrice'),
+            image: document.getElementById('laptopImage'),
+            limited: document.getElementById('laptopLimited')
+        };
+
+        function openModal(laptop = null) {
+            modal.style.display = 'flex';
+            if (laptop) {
+                document.getElementById('modalTitle').innerText = 'Edit Laptop';
+                fields.id.value = laptop.id;
+                fields.name.value = laptop.name;
+                fields.price.value = laptop.price;
+                fields.image.value = laptop.image;
+                fields.limited.checked = laptop.limited;
+            } else {
+                form.reset();
+                fields.id.value = '';
+                document.getElementById('modalTitle').innerText = 'Tambah Laptop';
+            }
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        document.getElementById('btnAddLaptop').onclick = () => openModal();
+        document.getElementById('closeModal').onclick = closeModal;
+        document.getElementById('cancelEdit').onclick = closeModal;
+        window.onclick = e => { if (e.target === modal) closeModal(); };
+
+        function renderLaptops(laptops) {
+            grid.innerHTML = '';
+            laptops.forEach(l => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image"><img src="${l.image}" alt="${l.name}"></div>
+                    <h3 class="product-title">${l.name}</h3>
+                    <p class="product-price">Rp ${l.price.toLocaleString()}</p>
+                    <div style="margin-top: 8px;">
+                        <button class="admin-btn edit" onclick='editLaptop(${JSON.stringify(l)})'>Edit</button>
+                        <button class="admin-btn delete" onclick='deleteLaptop(${l.id})'>Hapus</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        async function fetchLaptops() {
+            const res = await fetch(apiBase);
+            const data = await res.json();
+            renderLaptops(data);
+        }
+
+        async function deleteLaptop(id) {
+            if (confirm('Yakin ingin menghapus laptop ini?')) {
+                await fetch(`${apiBase}/${id}`, { method: 'DELETE' });
+                fetchLaptops();
+            }
+        }
+
+        window.editLaptop = laptop => openModal(laptop);
+
+        form.onsubmit = async e => {
+            e.preventDefault();
+            const laptop = {
+                name: fields.name.value,
+                price: Number(fields.price.value),
+                image: fields.image.value,
+                limited: fields.limited.checked
+            };
+
+            const id = fields.id.value;
+            const method = id ? 'PUT' : 'POST';
+            const url = id ? `${apiBase}/${id}` : apiBase;
+
+            await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(laptop)
+            });
+
+            closeModal();
+            fetchLaptops();
+        };
+
+        fetchLaptops();
+    </script>
+</body>
 </html>

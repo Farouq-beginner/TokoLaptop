@@ -1,5 +1,10 @@
 package com.example.tokolaptop.model;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "laptops")
@@ -11,7 +16,10 @@ public class Laptop {
     private String name;
     private Long price;
     private String image;
-    private boolean isLimited;
+    @Column(name = "is_limited")
+    private boolean limited;
+
+ 
 
     public Long getId() {
         return id;
@@ -46,10 +54,10 @@ public class Laptop {
     }
 
     public boolean isLimited() {
-        return isLimited;
+        return limited;
     }
 
-    public void setLimited(boolean isLimited) {
-        this.isLimited = isLimited;
+    public void setlimited(boolean limited) {
+        this.limited = limited;
     }
 }

@@ -52,7 +52,7 @@ function renderProducts(products) {
         productCard.innerHTML = `
             <div class="product-image">
                 <img src="${product.image}" alt="${product.name}">
-                ${product.isLimited ? '<div class="hand-icon"><img src="/images/LimitedEdition.png"></div>' : ''}
+                ${product.limited == true || product.isLimited === "true" ? '<div class="hand-icon"><img src="/images/LimitedEdition.png"></div>' : ''}
             </div>
             <h3 class="product-title">${product.name}</h3>
             <p class="product-price">${formatPrice(product.price)}</p>

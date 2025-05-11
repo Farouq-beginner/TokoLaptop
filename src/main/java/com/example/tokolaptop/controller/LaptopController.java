@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/laptops")
+@CrossOrigin(origins = "*")
 public class LaptopController {
     @Autowired
     private LaptopRepository laptopRepository;
@@ -28,7 +29,7 @@ public class LaptopController {
         laptop.setName(laptopDetails.getName());
         laptop.setPrice(laptopDetails.getPrice());
         laptop.setImage(laptopDetails.getImage());
-        laptop.setLimited(laptopDetails.isLimited());
+        laptop.setlimited(laptopDetails.isLimited());
         return laptopRepository.save(laptop);
     }
 
