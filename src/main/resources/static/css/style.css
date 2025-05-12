@@ -390,3 +390,53 @@ model-viewer {
     height: 30dvh;
     /* Sesuaikan dengan tinggi layar */
 }
+
+:root {
+    --white: #e6f1ff;
+    --accent: #64ffda;
+    --navy: #0a192f;
+    --dark-navy: #020c1b;
+    --light-navy: #112240;
+    --lightest-navy: #233554;
+    --light-accent: #9affe7;
+    --slate: #8892b0;
+    --light-slate: #a8b2d1;
+    --lightest-slate: #ccd6f6;
+}
+
+
+.container1 {
+    width: 85%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    z-index: 1001;
+}
+
+footer {
+    background-color: var(--dark-navy);
+    padding: 4rem 0 2rem;
+    position: relative;
+}
+
+.footer-bottom {
+    color: white;
+    border-top: 1px solid var(--light-navy);
+    padding-top: 1.5rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+.footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
