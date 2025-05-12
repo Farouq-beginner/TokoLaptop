@@ -29,7 +29,7 @@ public class LaptopController {
         laptop.setName(laptopDetails.getName());
         laptop.setPrice(laptopDetails.getPrice());
         laptop.setImage(laptopDetails.getImage());
-        laptop.setlimited(laptopDetails.isLimited());
+        laptop.setLimited(laptopDetails.isLimited());
         return laptopRepository.save(laptop);
     }
 

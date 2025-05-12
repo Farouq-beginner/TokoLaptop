@@ -47,13 +47,11 @@ public class AuthController {
         return "redirect:/login"; // redirect ke halaman login
     }
 
-    // Halaman LOGIN akun
     @GetMapping("/loginmasuk")
     public String loginForm() {
         return "LoginMasuk"; // arahkan ke LoginMasuk.html
     }
 
-    // Proses LOGIN
     @PostMapping("/login")
     public String login(@RequestParam String email,
                         @RequestParam String password,

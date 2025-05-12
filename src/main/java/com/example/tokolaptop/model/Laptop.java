@@ -57,7 +57,7 @@ public class Laptop {
         return limited;
     }
 
-    public void setlimited(boolean limited) {
+    public void setLimited(boolean limited) {
         this.limited = limited;
     }
 }
