@@ -40,4 +40,9 @@ public class TokoController {
 	public String getContactus() {
 		return "Contactus";
 	}
+
+	@GetMapping("/DashAdmin")
+	public String getDashAdmin() {
+		return "DashAdmin";
+	}
 }
