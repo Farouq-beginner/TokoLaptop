@@ -34,7 +34,7 @@ public class AuthController {
                            Model model) {
         if (userRepo.findByEmail(email).isPresent()) {
             model.addAttribute("error", "Email sudah terdaftar");
-            return "Login"; // kembali ke form daftar
+            return "LoginMasuk"; // kembali ke form daftar
         }
 
         User user = new User();
