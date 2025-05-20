@@ -21,7 +21,7 @@ public class CartService {
     private LaptopRepository laptopRepo;
 
     public void addToCart(User user, Long laptopId) {
-        // Perbaikan: casting dari Object ke CartItem
+       
         Object result = cartRepo.findByUserAndLaptopId(user, laptopId);
         CartItem item = result instanceof CartItem ? (CartItem) result : null;
 
