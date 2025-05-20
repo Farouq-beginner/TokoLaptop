@@ -102,8 +102,7 @@ function filterProducts(products, searchTerm, sortOption) {
             break;
         case 'limited':
             filtered.sort((a, b) => {
-                if (a.isLimited === b.isLimited) return 0;
-                return a.isLimited ? -1 : 1;
+                return a.limited === b.limited ? 0 : a.limited ? -1 : 1;
             });
             break;
         default:
