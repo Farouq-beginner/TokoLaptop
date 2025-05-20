@@ -20,6 +20,10 @@ public class CartService {
     @Autowired
     private LaptopRepository laptopRepo;
 
+    @Autowired
+    private CartItemRepository cartItemRepository;
+
+
     public void addToCart(User user, Long laptopId) {
        
         Object result = cartRepo.findByUserAndLaptopId(user, laptopId);
@@ -48,4 +52,33 @@ public class CartService {
                 .mapToInt(CartItem::getQuantity)
                 .sum();
     }
+    
+    public void deleteItemById(Long id) {
+    cartItemRepository.deleteById(id);
+    }
+
+    public void updateItemQuantity(Long id, int quantity) {
+    CartItem item = cartItemRepository.findById(id).orElse(null);
+    if (item != null && quantity > 0) {
+        item.setQuantity(quantity);
+        cartItemRepository.save(item);
+    }
+    }
+
+    public void clearCart(User user) {
+    List<CartItem> items = cartItemRepository.findByUser(user);
+    cartItemRepository.deleteAll(items);
+    }
+
+    public void checkoutSelectedItems(User user, List<Long> selectedItemIds) {
+    List<CartItem> userCart = getCartItems(user);
+
+    for (CartItem item : userCart) {
+        if (selectedItemIds.contains(item.getId())) {
+            deleteItemById(item.getId()); // atau proses order sesuai logikamu
+        }
+    }
+}
+
+
 }
