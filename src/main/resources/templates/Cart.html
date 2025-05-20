@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Keranjang Belanja</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">TokoLaptop</div>
+    <nav class="nav" id="main-nav">
+        <a href="/Home">Home</a>
+        <a href="/cart/view" class="active">Keranjang (<span id="cart-count">0</span>)</a>
+        <a href="/logout">Logout</a>
+    </nav>
+    <div class="hamburger" id="hamburger-menu"><i class="fas fa-bars"></i></div>
+</header>
+
+<main class="cart-container">
+    <h2>Keranjang Belanja</h2>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-summary">
+        <p>Total: <span id="cart-total">Rp. 0</span></p>
+        <button class="checkout-btn">Checkout</button>
+    </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', loadCartItems);
+
+async function loadCartItems() {
+    try {
+        const response = await fetch('/cart/items');
+        const items = await response.json();
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartCount = document.getElementById('cart-count');
+        
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+        let count = 0;
+
+        if (items.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Keranjang masih kosong.</p>';
+        } else {
+            items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                total += item.price;
+                count++;
+
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-details">
+                        <h4>${item.name}</h4>
+                        <p>${formatPrice(item.price)}</p>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+        }
+
+        cartTotal.textContent = formatPrice(total);
+        cartCount.textContent = count;
+    } catch (error) {
+        console.error('Gagal mengambil data keranjang:', error);
+    }
+}
+
+function formatPrice(price) {
+    return "Rp. " + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+</script>
+
+<style>
+.cart-container {
+    max-width: 800px;
+    margin: 100px auto 40px;
+    padding: 20px;
+}
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.cart-item {
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+.cart-item img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.cart-details h4 {
+    margin: 0;
+}
+.cart-summary {
+    margin-top: 30px;
+    text-align: right;
+}
+.checkout-btn {
+    padding: 10px 20px;
+    background-color: #0095ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
+
+</body>
+</html>

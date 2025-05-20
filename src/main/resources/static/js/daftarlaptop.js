@@ -1,4 +1,4 @@
-// JavaScript for sticky header
+
 window.addEventListener('scroll', function () {
     const header = document.querySelector('.header');
     header.classList.toggle('sticky', window.scrollY > 50);
@@ -13,26 +13,25 @@ hamburgerMenu.onclick = function () {
     mainNav.classList.toggle('active');
 };
 
-// Close nav menu if clicked outside
+
 window.onclick = function (event) {
     if (!event.target.closest('.nav') && !event.target.closest('.hamburger') && mainNav.classList.contains('active')) {
         mainNav.classList.remove('active');
     }
 };
 
-// Adjust nav on resize
+
 window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
         mainNav.classList.remove('active');
     }
 });
 
-// Format price to Rupiah
+
 function formatPrice(price) {
     return "Rp. " + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-// Render product cards
 function renderProducts(products) {
     const productsGrid = document.getElementById('products-grid');
     productsGrid.innerHTML = '';
@@ -56,16 +55,28 @@ function renderProducts(products) {
             </div>
             <h3 class="product-title">${product.name}</h3>
             <p class="product-price">${formatPrice(product.price)}</p>
-            <button class="buy-now-btn">
-                <span>Buy Now</span>
-            </button>
+            <div class="button-group">
+                <button class="add-to-cart-btn" data-id="${product.id}">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+                </button>
+                <button class="buy-now-btn">
+                    <span>Buy Now</span>
+                </button>
+                
+            </div>
         `;
+
+        const addToCartButton = productCard.querySelector('.add-to-cart-btn');
+        addToCartButton.addEventListener('click', () => {
+            const productId = addToCartButton.dataset.id;
+            addToCart(productId);
+        });
 
         productsGrid.appendChild(productCard);
     });
 }
 
-// Filter and sort products
+
 function filterProducts(products, searchTerm, sortOption) {
     let filtered = [...products];
 
@@ -96,14 +107,14 @@ function filterProducts(products, searchTerm, sortOption) {
             });
             break;
         default:
-            // Do nothing
+            
             break;
     }
 
     return filtered;
 }
 
-// Fetch data from API and render
+
 async function fetchAndRenderLaptops() {
     try {
         const response = await fetch('/api/laptops');
@@ -111,7 +122,7 @@ async function fetchAndRenderLaptops() {
 
         renderProducts(laptops);
 
-        // Handle search and sort
+   
         const searchInput = document.getElementById('search-input');
         const sortSelect = document.getElementById('sort-select');
 
@@ -132,5 +143,54 @@ async function fetchAndRenderLaptops() {
     }
 }
 
-// Init on page load
-document.addEventListener('DOMContentLoaded', fetchAndRenderLaptops);
+document.addEventListener('DOMContentLoaded', () => {
+    fetchAndRenderLaptops();
+    fetchCartCount();
+});
+
+
+
+
+async function addToCart(productId) {
+    try {
+        const response = await fetch('/cart/add/' + productId, {
+            method: 'POST'
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to add to cart');
+        }
+
+        const result = await response.json();
+
+        if (result.success) {
+            updateCartCount(result.totalItems);
+            alert("Laptop added to cart successfully!");
+        } else {
+            alert("LOGIN DULU KINGG.");
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert("Sepertinya ada kesalahan saat menambahkan ke keranjang. kingg");
+    }
+}
+
+
+function updateCartCount(count) {
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+        cartCount.textContent = count;
+    }
+}
+
+async function fetchCartCount() {
+    try {
+        const response = await fetch('/cart/total-items');
+        if (response.ok) {
+            const totalItems = await response.json();
+            updateCartCount(totalItems);
+        }
+    } catch (error) {
+        console.error('Failed to fetch cart count:', error);
+    }
+}

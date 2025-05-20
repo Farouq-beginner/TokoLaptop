@@ -1,4 +1,5 @@
 package com.example.tokolaptop.model;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,17 +10,24 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "laptops")
 public class Laptop {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private Long price;
+    private long price;
     private String image;
+
     @Column(name = "is_limited")
     private boolean limited;
 
- 
+   
+public double calculatePrice() {
+    return isLimited() ? price * 1.1 : price;
+}
+
+
 
     public Long getId() {
         return id;

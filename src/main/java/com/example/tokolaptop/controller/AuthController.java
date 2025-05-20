@@ -64,7 +64,7 @@ public class AuthController {
         }
     
         User user = userOpt.get();
-        session.setAttribute("user", user);
+        session.setAttribute("loggedInUser", user);
     
         if ("ADMIN".equalsIgnoreCase(user.getRole())) {
             return "redirect:/DLAdmin";
