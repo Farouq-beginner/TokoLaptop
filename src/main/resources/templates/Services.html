@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPro - Laptop Service Center</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/services.css">
+</head>
+<body>
+    <header class="header">
+        <a href="/Home" class="logo">Lap<span>Zone</span></a>
+
+        <nav class="nav" id="main-nav">
+            <a href="/Home" class="nav-link">
+                Home
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+            <a href="/DaftarLaptop" class="nav-link" id="laptop-link">
+                Laptop
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+            <a href="/Services" class="nav-link">
+                Services
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+            <a href="/Aboutus" class="nav-link">
+                About Us
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+            <a href="/Contactus" class="nav-link">
+                Contact Us
+                <span class="sparkle sparkle-1"></span>
+                <span class="sparkle sparkle-2"></span>
+                <span class="sparkle sparkle-3"></span>
+            </a>
+        </nav>
+
+        <div class="icons">
+            <a th:href="${session.loggedInUser != null} ? '/Profil' : '/login'" class="icon" id="profile-icon">👤</a>
+            <div class="hamburger" id="hamburger-menu">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </div>
+    </header>
+    //boleh diedit
+    <section class="service-section">
+    <h2 class="section-title">Layanan Kami</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="icon-container">
+          <img src="https://www.svgrepo.com/show/492144/tools.svg" alt="Servis" />
+        </div>
+        <h3>Servis Laptop</h3>
+        <p>Perbaikan cepat dan profesional untuk semua jenis laptop, dari hardware hingga software.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon-container">
+          <img src="https://www.svgrepo.com/show/481611/laptop.svg" alt="Aksesoris" />
+        </div>
+        <h3>Aksesoris & Sparepart</h3>
+        <p>Kami menyediakan charger, baterai, RAM, SSD, dan berbagai aksesoris berkualitas.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon-container">
+          <img src="https://www.svgrepo.com/show/493137/headphone.svg" alt="Konsultasi" />
+        </div>
+        <h3>Konsultasi Teknis</h3>
+        <p>Bingung memilih laptop atau butuh bantuan teknis? Tim kami siap membantu Anda.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon-container">
+          <img src="https://www.svgrepo.com/show/493137/headphone.svg" alt="Konsultasi" />
+        </div>
+        <h3>Layanan Klaim Garansi</h3>
+        <p>Bantuan mengurus garansi ke service center resmi (khusus brand tertentu) dan Menjual sparepart original dengan garansi toko.</p>
+      </div>
+
+    </div>
+  </section>
+//terakhir diedit
+    <script src="/js/services.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+.profile-header {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #111;
+}
+
+.profile-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #7b0416;
+}
+
+.profile-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.07);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.profile-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.label {
+    font-weight: bold;
+    width: 150px;
+    color: #ffe3ec;
+}
+
+.value {
+    flex-grow: 1;
+}
+
+.value input {
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+}
+
+.edit-icon {
+    cursor: pointer;
+    color: #ffb3c6;
+    font-size: 18px;
+}
+
+.edit-icon:hover {
+    color: #fff;
+}
+
+.save-button {
+    background-color: #7b0416;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    float: right;
+    cursor: pointer;
+}
+
+.wave-img {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.logout-button {
+    background-color: #444;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button i {
+    margin-right: 8px;
+}
+
+.logout-button:hover {
+    background-color: #222;
+}
