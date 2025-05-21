@@ -1,3 +1,9 @@
+<h1 align="center">
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=Kelompok%204;Tugas%20Pemrograman%20Berorientasi%20Objek;Project%20Toko%20Laptop;Chaired%20by%20Farouq&center=true&width=500&height=50&size=25">
+</h1>
+
+----
+
 ##  Contributors
 |NO| NAMA | NIM |
 |:-:|--------|--------|
