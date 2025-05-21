@@ -1,16 +1,16 @@
 ##  Contributors
-| NAMA | NIM |
-|--------|--------|
-| **Farouq Gusmo Abdilah** | 24111814081 |
-| **Rendy Syahputra Riyadi** | 24111814026 |
-| **Vhemas Dwi Agung Prasetyo** | 24111814047 |
-| **Aditya Febrian** | 24111814083 |
-| **Naufal Akbar Putra Pradana** | 24111814027 |
-| **Sultan Raffi Surya Negara** | 24111814108 |
-| **Tabligh Akbar** | 24111814134 |
-| **Pratama Dicky Novianto** | 24111814143 |
+|NO| NAMA | NIM |
+|:-:|--------|--------|
+| 1 | **Farouq Gusmo Abdilah** | 24111814081 |
+| 2 | **Rendy Syahputra Riyadi** | 24111814026 |
+| 3 | **Vhemas Dwi Agung Prasetyo** | 24111814047 |
+| 4 | **Aditya Febrian** | 24111814083 |
+| 5 | **Naufal Akbar Putra Pradana** | 24111814027 |
+| 6 | **Sultan Raffi Surya Negara** | 24111814108 |
+| 7 | **Tabligh Akbar** | 24111814134 |
+| 8 | **Pratama Dicky Novianto** | 24111814143 |
 
----
+----
 
 This project exists thanks to all the people who contribute.
 
