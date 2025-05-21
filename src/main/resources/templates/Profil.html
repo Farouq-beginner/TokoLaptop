@@ -1,97 +1,92 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Profil Pengguna</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #888ddf;
-            color: #fff;
-        }
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/Daftarlaptop.css">
+    <link rel="stylesheet" href="/css/profil.css"> <!-- Buat file ini -->
+</head>
 
-        .header {
-            text-align: center;
-            padding: 40px 20px 20px;
-        }
+<body>
+    <div class="background"></div>
 
-        .header h2 {
-            margin: 0;
-            font-size: 20px;
-            color: #111;
-        }
+    <main class="main-content">
+        <!-- Header Navbar -->
+        <header class="header">
+            <a href="/Home" class="logo">Lap<span>Zone</span></a>
 
-        .header h1 {
-            font-size: 32px;
-            font-weight: bold;
-            color: #7b0416;
-        }
+            <nav class="nav" id="main-nav">
+                <a href="/Home" class="nav-link">Home</a>
+                <a href="/DaftarLaptop" class="nav-link">Laptop</a>
+                <a href="/Aboutus" class="nav-link">About Us</a>
+                <a href="/Contactus" class="nav-link">Contact Us</a>
+                <a href="/cart/view" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </nav>
 
-        .profile-container {
-            max-width: 700px;
-            margin: auto;
-            background-color: rgba(255, 255, 255, 0.07);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 12px rgba(0,0,0,0.2);
-        }
+            <div class="icons">
+                <a th:href="${session.loggedInUser != null} ? '/Profil' : '/login'" class="icon" id="profile-icon">👤</a>
+                <div class="hamburger" id="hamburger-menu">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </div>
+        </header>
 
-        .profile-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 15px 0;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-        }
+        <!-- Judul Halaman -->
+        <section class="profile-header">
+            <h1>Profil Pengguna</h1>
+        </section>
 
-        .label {
-            font-weight: bold;
-            width: 150px;
-            color: #ffe3ec;
-        }
+        <!-- Container Profil -->
+        <form th:action="@{/profile/save}" method="post" class="profile-container">
+            <div class="profile-item">
+                <span class="label">Bio:</span>
+                <div class="value"><input type="text" name="bio" id="bio" th:value="${user.bio}" placeholder="Belum diisi" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('bio')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Alamat:</span>
+                <div class="value"><input type="text" name="alamat" id="alamat" th:value="${user.alamat}" placeholder="Belum diisi" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('alamat')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Jenis Kelamin:</span>
+                <div class="value"><input type="text" name="gender" id="gender" th:value="${user.gender}" placeholder="Belum diisi" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('gender')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Tanggal Lahir:</span>
+                <div class="value"><input type="date" name="tanggalLahir" id="tanggalLahir" th:value="${user.tanggalLahir}" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('tanggalLahir')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">No HP:</span>
+                <div class="value"><input type="text" name="noHp" id="noHp" th:value="${user.noHp}" placeholder="Belum diisi" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('noHp')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Email:</span>
+                <div class="value"><input type="email" name="email" id="email" th:value="${user.email}" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('email')">&#9998;</span>
+            </div>
 
-        .value {
-            flex-grow: 1;
-            color: #ffffff;
-        }
+            <div class="button-group">
+            <a href="/logout" class="logout-button">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+            <button type="submit" class="save-button">Simpan</button>
+            </div>
 
-        .value input {
-            padding: 5px;
-            font-size: 14px;
-            width: 100%;
-            border-radius: 6px;
-            border: none;
-        }
+        </form>
 
-        .edit-icon {
-            cursor: pointer;
-            color: #ffb3c6;
-            font-size: 18px;
-        }
-
-        .edit-icon:hover {
-            color: #fff;
-        }
-
-        .save-button {
-            background-color: #7b0416;
-            color: white;
-            padding: 8px 20px;
-            border: none;
-            border-radius: 8px;
-            margin-top: 20px;
-            float: right;
-            cursor: pointer;
-        }
-
-        .wave-img {
-            width: 100%;
-            height: auto;
-            margin-top: 30px;
-        }
-    </style>
+    </main>
 
     <script>
         function enableEdit(fieldId) {
@@ -100,66 +95,6 @@
             input.focus();
         }
     </script>
-</head>
-<body>
-
-    <!-- Header -->
-    <div class="header">
-        <h2>Best Promo On This Month</h2>
-        <h1>Profil Pengguna</h1>
-    </div>
-
-    <!-- Container Profil -->
-    <form th:action="@{/profile/save}" method="post" class="profile-container">
-        <div class="profile-item">
-            <span class="label">Bio:</span>
-            <div class="value">
-                <input type="text" name="bio" id="bio" th:value="${user.bio}" placeholder="Belum diisi" readonly>
-            </div>
-            <span class="edit-icon" onclick="enableEdit('bio')">&#9998;</span>
-        </div>
-        <div class="profile-item">
-            <span class="label">Alamat:</span>
-            <div class="value">
-                <input type="text" name="alamat" id="alamat" th:value="${user.alamat}" placeholder="Belum diisi" readonly>
-            </div>
-            <span class="edit-icon" onclick="enableEdit('alamat')">&#9998;</span>
-        </div>
-        <div class="profile-item">
-            <span class="label">Jenis Kelamin:</span>
-            <div class="value">
-                <input type="text" name="gender" id="gender" th:value="${user.gender}" placeholder="Belum diisi" readonly>
-            </div>
-            <span class="edit-icon" onclick="enableEdit('gender')">&#9998;</span>
-        </div>
-        <div class="profile-item">
-            <span class="label">Tanggal Lahir:</span>
-            <div class="value">
-                <input type="date" name="tanggalLahir" id="tanggalLahir" th:value="${user.tanggalLahir}" readonly>
-            </div>
-            <span class="edit-icon" onclick="enableEdit('tanggalLahir')">&#9998;</span>
-        </div>
-        <div class="profile-item">
-            <span class="label">No HP:</span>
-            <div class="value">
-                <input type="text" name="noHp" id="noHp" th:value="${user.noHp}" placeholder="Belum diisi" readonly>
-            </div>
-            <span class="edit-icon" onclick="enableEdit('noHp')">&#9998;</span>
-        </div>
-        <div class="profile-item">
-            <span class="label">Email:</span>
-            <div class="value">
-                <input type="email" name="email" id="email" th:value="${user.email}" readonly>
-            </div>
-            <span class="edit-icon" onclick="enableEdit('email')">&#9998;</span>
-        </div>
-
-        <button type="submit" class="save-button">Simpan</button>
-    </form>
-
-    <!-- Dekorasi -->
-    <img src="/images/wave-top.png" class="wave-img" alt="dekorasi atas">
-    <img src="/images/wave-bottom.png" class="wave-img" alt="dekorasi bawah">
-
 </body>
+
 </html>

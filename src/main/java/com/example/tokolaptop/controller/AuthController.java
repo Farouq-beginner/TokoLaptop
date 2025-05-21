@@ -116,5 +116,10 @@ public String saveProfile(@RequestParam String bio,
     return "redirect:/Profil"; // atau tampilkan halaman sukses
 }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
+    }
 
 }

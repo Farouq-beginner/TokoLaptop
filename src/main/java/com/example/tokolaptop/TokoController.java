@@ -19,7 +19,8 @@ public class TokoController {
         return "hello, " + name + "!" + "\nWelcome to Laptop Store";}
 
 	@GetMapping("/Home")
-	public String getHome() {
+	public String getHome(Model model, HttpSession session) {
+		model.addAttribute("user", session.getAttribute("loggedInUser"));
 		return "homePage";
 	}
 
@@ -31,17 +32,20 @@ public class TokoController {
 
 
 	@GetMapping("/Aboutus")
-	public String getAboutus() {
+	public String getAboutus(Model model, HttpSession session) {
+		model.addAttribute("user", session.getAttribute("loggedInUser"));
 		return "Aboutus";
 	}
 
 	@GetMapping("/Services")
-	public String getServices() {
+	public String getServices(Model model, HttpSession session) {
+		model.addAttribute("user", session.getAttribute("loggedInUser"));
 		return "Services";
 	}
 
 	@GetMapping("/Contactus")
-	public String getContactus() {
+	public String getContactus(Model model, HttpSession session) {
+		model.addAttribute("user", session.getAttribute("loggedInUser"));
 		return "Contactus";
 	}
 
