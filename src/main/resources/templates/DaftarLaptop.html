@@ -57,7 +57,6 @@
                     <span class="sparkle sparkle-2"></span>
                     <span class="sparkle sparkle-3"></span>
                 </a>
-
             </nav>
 
             <div class="icons">
@@ -70,14 +69,12 @@
             </div>
         </header>
 
-        <!-- Products Section -->
         <div class="produkcontainer">
             <div class="products-container" id="laptop-products">
                 <div class="products-header">
                     
                     <h2 class="products-title">Our Laptop Collection</h2>
 
-                    <!-- New Search and Sort Controls -->
                     <div class="search-sort-controls">
                         <div class="search-container">
                             <span class="search-icon">🔍</span>
@@ -98,7 +95,6 @@
                     </div>
                 </div>
                 <div class="products-grid" id="products-grid">
-                    <!-- Products will be dynamically loaded here -->
                 </div>
             </div>
         </div>
@@ -108,20 +104,17 @@
                 const vh = window.innerHeight;
                 const vw = window.innerWidth;
         
-                // Progress scroll: 0 (atas) -> 1 (1 layar scroll)
                 const progress = Math.min(scroll / vh, 1);
         
-                // Sesuaikan dengan % layar untuk pergerakan maksimal
-                const moveX = vw * 0.2 * progress; // Maks 20% lebar layar
-                const moveY = vh * 0.2 * progress; // Maks 20% tinggi layar
+                const moveX = vw * 0.2 * progress;
+                const moveY = vh * 0.2 * progress;
         
-                // Apply ke tiap elemen sesuai arah
-                document.getElementById('t1').style.transform = `translate(${moveX}px, ${moveY}px)`;      // kiri atas → kanan bawah
-                document.getElementById('m1').style.transform = `translate(${-moveX}px, ${moveY}px)`;     // kanan atas → kiri bawah
-                document.getElementById('t2').style.transform = `translate(${moveX}px, ${-moveY}px)`;     // kiri bawah → kanan atas
-                document.getElementById('m2').style.transform = `translate(${-moveX}px, ${-moveY}px)`;    // kanan bawah → kiri atas
-                document.getElementById('man').style.transform = `translate(${-moveX}px, -50%)`;          // kanan → kiri
-                document.getElementById('plants').style.transform = `translate(${moveX}px, -50%)`;        // kiri → kanan
+                document.getElementById('t1').style.transform = `translate(${moveX}px, ${moveY}px)`;
+                document.getElementById('m1').style.transform = `translate(${-moveX}px, ${moveY}px)`;
+                document.getElementById('t2').style.transform = `translate(${moveX}px, ${-moveY}px)`;
+                document.getElementById('m2').style.transform = `translate(${-moveX}px, ${-moveY}px)`;
+                document.getElementById('man').style.transform = `translate(${-moveX}px, -50%)`;
+                document.getElementById('plants').style.transform = `translate(${moveX}px, -50%)`;
             });
         </script>
         
