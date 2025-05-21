@@ -1,15 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #6d1545, #000000);
+    padding: 20px;
 }
 
-.sidebar {
-  height: 100vh;
-  position: fixed;
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.nav-link.active {
-  font-weight: bold;
-  color: #007bff !important;
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 36px;
+}
+
+/* Horizontal Flex Layout */
+.stats-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Colored Cards */
+.stat-card {
+    border-radius: 15px;
+    padding: 25px 20px;
+    color: white;
+    text-align: center;
+    flex: 1 1 250px;
+    min-width: 250px;
+    max-width: 300px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1),;
+    transition: all 0.3s ease;
+}
+
+/* Different background colors */
+.stat-card:nth-child(1) {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    box-shadow: 0 12px 30px rgb(196, 193, 193);
+
+}   
+
+.stat-card:nth-child(2) {
+    background: linear-gradient(to right, #43e97b, #38f9d7);
+    box-shadow: 0 12px 30px rgb(196, 193, 193);
+}
+
+.stat-card:nth-child(3) {
+    background: linear-gradient(to right, #f9d423, #ff4e50);
+    box-shadow: 0 12px 30px rgb(196, 193, 193);
+}
+
+.stat-card:nth-child(4) {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    box-shadow: 0 12px 30px rgb(196, 193, 193);
+}
+
+.stat-card:hover {
+    transform: scale(1.14);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+}
+
+.stat-label {
+    font-size: 18px;
+    color: #f1f1f1;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+}
+
+.navbar a, .navbar-brand, .navbar-nav {
+    color: white !important;
+}
+
+
+.nav-link {
+    color: white !important;
 }
 
         .header {
@@ -22,8 +119,10 @@ body {
         position: sticky;
         top: 0;
         z-index: 10;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 8px rgba(250, 250, 250, 0.2);
+        
         }
+        
 
         .admin-btn {
             font-weight: 800;

@@ -5,19 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
     <link rel="stylesheet" href="css/DashAdmin.css">
+       <link rel="stylesheet" href="/css/Daftarlaptop.css"/>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>
+    <style>
+        .header {
+        background-color: rgba(47, 103, 122, 0.9);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .admin-btn {
+            font-weight: 800;
+            font-size: 16px;
+            padding: 12px 24px;
+            margin: 4px;
+            border: none;
+            background-color: #2e7d32;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .admin-btn.edit { background-color: #0277bd; }
+        .admin-btn.delete { background-color: #c62828; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            width: 400px;
+            border-radius: 8px;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            cursor: pointer;
+            font-size: 22px;
+            color: red;
+        }
+        body {
+        background: url('https://www.luarangkasa.com/wp-content/uploads/2014/10/earth-billion-stars.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+        }
+
+        .main-content {
+        background-color: rgba(0, 0, 0, 0.5); /* agar isi lebih jelas terbaca */
+       
+        }
+        .label-text {
+        position: relative;
+        z-index: 10;
+        color: black;
+        display: inline-flex;   
+        align-items: center;
+        white-space: nowrap;    
+        width: auto;
+        }
+
+    </style>
 <body>
+  <main class="main-content"></main>
       <!-- Header -->
-        <header class="header">
+      <header class="header">
             <a href="/Home" class="logo">Admin<span>LapZone</span></a>
 
             <nav class="nav" id="main-nav">
-                <a href="/Home" class="nav-link">Home</a>
-                <a href="/DaftarLaptop" class="nav-link">Laptop</a>
-                <a href="/DashAdmin" class="nav-link">Dashboard</a>
-                <a href="/Contactus" class="nav-link">Contact Us</a>
+                <a href="/DLAdmin" class="nav-link">Kelola Laptop</a>
             </nav>
 
             <div class="icons">
@@ -30,56 +118,43 @@
   <div class="container-fluid">
     <div class="row">
       
-      <!-- Main content -->
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <h2 class="mt-4">Dashboard</h2>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="card text-white bg-primary mb-3">
-              <div class="card-body">
-                <h5 class="card-title">New Orders</h5>
-                <p class="card-text h2">150</p>
-              </div>
+     <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Admin Dashboard</h1>
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-label">jumlah pesanan</div>
+                <div class="stat-value" id="orders">0</div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card text-white bg-success mb-3">
-              <div class="card-body">
-                <h5 class="card-title">Bounce Rate</h5>
-                <p class="card-text h2">53%</p>
-              </div>
+            <div class="stat-card">
+                <div class="stat-label">pengunjung</div>
+                <div class="stat-value" id="visitors">0</div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card text-white bg-warning mb-3">
-              <div class="card-body">
-                <h5 class="card-title">User Registrations</h5>
-                <p class="card-text h2">44</p>
-              </div>
+            <div class="stat-card">
+                <div class="stat-label">jumlah barang</div>
+                <div class="stat-value" id="products">0</div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card text-white bg-danger mb-3">
-              <div class="card-body">
-                <h5 class="card-title">Unique Visitor</h5>
-                <p class="card-text h2">65</p>
-              </div>
+            <div class="stat-card">
+                <div class="stat-label">Total pendapatan</div>
+                <div class="stat-value" id="revenue">0</div>
             </div>
-          </div>
         </div>
 
-        <!-- Charts -->
-        <div class="row">
-          <div class="col-md-6">
-            <canvas id="doughnutChart"></canvas>
-          </div>
-          <div class="col-md-6">
+        <div class="chart-container">
             <canvas id="barChart"></canvas>
-          </div>
         </div>
-      </main>
     </div>
-  </div>
+
+        <div class="chart-container">
+  <canvas id="barChart"></canvas>
+</div>
 
     
 
