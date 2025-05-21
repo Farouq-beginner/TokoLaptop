@@ -136,76 +136,122 @@
     </main>
 
     <script>
-    document.addEventListener('DOMContentLoaded', loadCartItems);
+    document.addEventListener('DOMContentLoaded', () => {
+    loadCartItems();
 
-    async function loadCartItems() {
-        try {
-            const response = await fetch('/cart/items');
-            const items = await response.json();
-            const container = document.getElementById('cart-items');
-            const totalElement = document.getElementById('cart-total');
-            const countElement = document.getElementById('cart-count');
+    const checkoutButton = document.getElementById('checkout-button');
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', handleCheckout);
+    }
+});
 
-            container.innerHTML = '';
-            let total = 0;
-            let count = 0;
+async function loadCartItems() {
+    try {
+        const response = await fetch('/cart/items');
+        const items = await response.json();
+        const container = document.getElementById('cart-items');
+        const totalElement = document.getElementById('cart-total');
+        const countElement = document.getElementById('cart-count');
 
-            if (items.length === 0) {
-                container.innerHTML = '<p>Keranjang masih kosong.</p>';
-            } else {
-                for (const item of items) {
-                    const subtotal = item.price * item.quantity;
-                    total += subtotal;
-                    count += item.quantity;
+        container.innerHTML = '';
+        let total = 0;
+        let count = 0;
 
-                    const itemHTML = `
-                        <div class="cart-item" data-id="${item.id}">
-                            <input type="checkbox" name="selectedItems" value="${item.id}" class="item-checkbox" checked>
-                            <img src="${item.image}" alt="${item.name}">
-                            <div class="cart-details">
-                                <h4>${item.name}</h4>
-                                <p>Harga: ${formatPrice(item.price)} x ${item.quantity} = <strong>${formatPrice(subtotal)}</strong></p>
-                            </div>
-                            <div class="cart-actions">
-                                <input type="number" class="quantity-input" data-id="${item.id}" value="${item.quantity}" min="1">
-                                <form method="post" action="/cart/delete/${item.id}">
-                                    <button class="delete-btn" type="submit">Hapus</button>
-                                </form>
-                            </div>
-                        </div>`;
-                    container.insertAdjacentHTML('beforeend', itemHTML);
-                }
+        if (items.length === 0) {
+            container.innerHTML = '<p>Keranjang masih kosong.</p>';
+        } else {
+            for (const item of items) {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                count += item.quantity;
+
+                const itemHTML = `
+                    <div class="cart-item" data-id="${item.id}">
+                        <input type="checkbox" name="selectedItems" value="${item.id}" class="item-checkbox" checked>
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-details">
+                            <h4>${item.name}</h4>
+                            <p>Harga: ${formatPrice(item.price)} x ${item.quantity} = <strong>${formatPrice(subtotal)}</strong></p>
+                        </div>
+                        <div class="cart-actions">
+                            <input type="number" class="quantity-input" data-id="${item.id}" value="${item.quantity}" min="1">
+                            <form method="post" action="/cart/delete/${item.id}">
+                                <button class="delete-btn" type="submit">Hapus</button>
+                            </form>
+                        </div>
+                    </div>`;
+                container.insertAdjacentHTML('beforeend', itemHTML);
             }
-
-            totalElement.textContent = formatPrice(total);
-            countElement.textContent = count;
-
-            // Event handler untuk quantity change
-            document.querySelectorAll('.quantity-input').forEach(input => {
-                input.addEventListener('change', async () => {
-                    const itemId = input.getAttribute('data-id');
-                    const quantity = input.value;
-
-                    await fetch(`/cart/update/${itemId}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: `quantity=${quantity}`
-                    });
-
-                    // Reload cart
-                    loadCartItems();
-                });
-            });
-        } catch (err) {
-            console.error('Gagal load keranjang:', err);
         }
-    }
 
-    function formatPrice(price) {
-        return 'Rp. ' + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        totalElement.textContent = formatPrice(total);
+        countElement.textContent = count;
+
+        // Event handler untuk quantity change
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', async () => {
+                const itemId = input.getAttribute('data-id');
+                const quantity = input.value;
+
+                await fetch(`/cart/update/${itemId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `quantity=${quantity}`
+                });
+
+                loadCartItems();
+            });
+        });
+    } catch (err) {
+        console.error('Gagal load keranjang:', err);
     }
+}
+
+// ✅ Tombol checkout: kirim data ke backend agar stok berkurang
+async function handleCheckout() {
+    try {
+        const response = await fetch('/cart/items');
+        const items = await response.json();
+
+        if (!items.length) {
+            alert("Keranjang kosong!");
+            return;
+        }
+
+        const checkoutPayload = items.map(item => ({
+            id: item.id,
+            quantity: item.quantity
+        }));
+
+        const backendResponse = await fetch('http://localhost:8080/api/laptops/checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(checkoutPayload)
+        });
+
+        if (!backendResponse.ok) {
+            const errorText = await backendResponse.text();
+            alert(`Checkout gagal: ${errorText}`);
+            return;
+        }
+
+        alert('Checkout berhasil! Stok laptop telah diperbarui.');
+        // Kamu bisa juga membersihkan cart di sini kalau backend mendukung
+        location.reload(); // refresh data
+    } catch (error) {
+        console.error("Gagal saat proses checkout:", error);
+        alert("Terjadi kesalahan saat checkout.");
+    }
+}
+
+function formatPrice(price) {
+    return 'Rp. ' + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
     </script>
 </body>
 </html>

@@ -38,7 +38,6 @@ function renderProducts(products) {
 
     if (products.length === 0) {
         const noResults = document.createElement('div');
-        noResults.className = 'no-results';
         noResults.textContent = 'No laptops found. Try a different search term.';
         productsGrid.appendChild(noResults);
         return;
@@ -48,33 +47,35 @@ function renderProducts(products) {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
 
+        const isOutOfStock = product.stockQuantity === 0;
+
         productCard.innerHTML = `
-            <div class="product-image">
-                <img src="${product.image}" alt="${product.name}">
-                ${product.limited == true || product.isLimited === "true" ? '<div class="hand-icon"><img src="/images/LimitedEdition.png"></div>' : ''}
-            </div>
-            <h3 class="product-title">${product.name}</h3>
-            <p class="product-price">${formatPrice(product.price)}</p>
+            <img src="${product.image}" alt="${product.name}" />
+            <h3>${product.name}</h3>
+            <p>Rp ${product.price.toLocaleString('id-ID')}</p>
+            <p class="stock-text">Stok: ${product.stockQuantity}</p>
             <div class="button-group">
-                <button class="add-to-cart-btn" data-id="${product.id}">
-                    <i class="fas fa-cart-plus"></i> Add to Cart
+                <button class="add-to-cart-btn" data-id="${product.id}" ${isOutOfStock ? 'disabled' : ''}>
+                    <i class="fas fa-cart-plus"></i> ${isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
                 </button>
-                <button class="buy-now-btn">
-                    <span>Buy Now</span>
+                <button class="buy-now-btn" ${isOutOfStock ? 'disabled' : ''}>
+                    <span>${isOutOfStock ? 'Not Available' : 'Buy Now'}</span>
                 </button>
-                
             </div>
         `;
 
         const addToCartButton = productCard.querySelector('.add-to-cart-btn');
-        addToCartButton.addEventListener('click', () => {
-            const productId = addToCartButton.dataset.id;
-            addToCart(productId);
-        });
+        if (!isOutOfStock) {
+            addToCartButton.addEventListener('click', () => {
+                const productId = addToCartButton.dataset.id;
+                addToCart(productId);
+            });
+        }
 
         productsGrid.appendChild(productCard);
     });
 }
+
 
 
 function filterProducts(products, searchTerm, sortOption) {
@@ -106,7 +107,7 @@ function filterProducts(products, searchTerm, sortOption) {
             });
             break;
         default:
-            
+
             break;
     }
 
@@ -121,7 +122,7 @@ async function fetchAndRenderLaptops() {
 
         renderProducts(laptops);
 
-   
+
         const searchInput = document.getElementById('search-input');
         const sortSelect = document.getElementById('sort-select');
 
@@ -191,5 +192,70 @@ async function fetchCartCount() {
         }
     } catch (error) {
         console.error('Failed to fetch cart count:', error);
+    }
+}
+
+async function loadCartItems() {
+    try {
+        const response = await fetch('/cart/items');
+        const items = await response.json();
+        const container = document.getElementById('cart-items');
+        const totalElement = document.getElementById('cart-total');
+        const countElement = document.getElementById('cart-count');
+
+        container.innerHTML = '';
+        let total = 0;
+        let count = 0;
+
+        if (items.length === 0) {
+            container.innerHTML = '<p>Keranjang masih kosong.</p>';
+        } else {
+            for (const item of items) {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                count += item.quantity;
+
+                const itemHTML = `
+                    <div class="cart-item" data-id="${item.id}">
+                        <input type="checkbox" name="selectedItems" value="${item.id}" class="item-checkbox" checked>
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-details">
+                            <h4>${item.name}</h4>
+                            <p>Harga: ${formatPrice(item.price)} x ${item.quantity} = <strong>${formatPrice(subtotal)}</strong></p>
+                        </div>
+                        <div class="cart-actions">
+                            <input type="number" class="quantity-input" data-id="${item.id}" value="${item.quantity}" min="1" max="${item.stockQuantity}">
+                            <form method="post" action="/cart/delete/${item.id}">
+                                <button class="delete-btn" type="submit">Hapus</button>
+                            </form>
+                        </div>
+                    </div>`;
+                container.insertAdjacentHTML('beforeend', itemHTML);
+            }
+        }
+
+        totalElement.textContent = formatPrice(total);
+        countElement.textContent = count;
+
+        // Event handler untuk perubahan jumlah
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', async () => {
+                const itemId = input.getAttribute('data-id');
+                const quantity = input.value;
+
+                await fetch(`/cart/update/${itemId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `quantity=${quantity}`
+                });
+
+                // Reload keranjang
+                loadCartItems();
+            });
+        });
+    } catch (err) {
+        console.error('Gagal load keranjang:', err);
     }
 }

@@ -74,7 +74,7 @@ public class AuthController {
     }
     @GetMapping("/DLAdmin")
     public String DLAPage() {
-        return "DLAdmin"; 
+        return "DLAdmin";
     }
 
 }
