@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Profil Pengguna</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/Daftarlaptop.css">
+    <link rel="stylesheet" href="/css/profil.css"> <!-- Buat file ini -->
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <main class="main-content">
+        <!-- Header Navbar -->
+        <header class="header">
+            <a href="/Home" class="logo">Lap<span>Zone</span></a>
+
+            <nav class="nav" id="main-nav">
+                <a href="/Home" class="nav-link">Home</a>
+                <a href="/DaftarLaptop" class="nav-link">Laptop</a>
+                <a href="/Aboutus" class="nav-link">About Us</a>
+                <a href="/Contactus" class="nav-link">Contact Us</a>
+                <a href="/cart/view" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </nav>
+
+            <div class="icons">
+                <a th:href="${session.loggedInUser != null} ? '/Profil' : '/login'" class="icon" id="profile-icon">👤</a>
+                <div class="hamburger" id="hamburger-menu">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Judul Halaman -->
+        <section class="profile-header">
+            <h1>Profil Pengguna</h1>
+        </section>
+
+        <!-- Container Profil -->
+        <form th:action="@{/profile/save}" method="post" class="profile-container">
+            <div class="profile-item">
+                <span class="label">Bio:</span>
+                <div class="value"><input type="text" name="bio" id="bio" th:value="${user.bio}" placeholder="Belum diisi" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('bio')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Alamat:</span>
+                <div class="value"><input type="text" name="alamat" id="alamat" th:value="${user.alamat}" placeholder="Belum diisi" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('alamat')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Jenis Kelamin:</span>
+                <div class="value"><input type="text" name="gender" id="gender" th:value="${user.gender}" placeholder="Belum diisi" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('gender')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Tanggal Lahir:</span>
+                <div class="value"><input type="date" name="tanggalLahir" id="tanggalLahir" th:value="${user.tanggalLahir}" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('tanggalLahir')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">No HP:</span>
+                <div class="value"><input type="text" name="noHp" id="noHp" th:value="${user.noHp}" placeholder="Belum diisi" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('noHp')">&#9998;</span>
+            </div>
+            <div class="profile-item">
+                <span class="label">Email:</span>
+                <div class="value"><input type="email" name="email" id="email" th:value="${user.email}" readonly></div>
+                <span class="edit-icon" onclick="enableEdit('email')">&#9998;</span>
+            </div>
+
+            <div class="button-group">
+            <a href="/logout" class="logout-button">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+            <button type="submit" class="save-button">Simpan</button>
+            </div>
+
+        </form>
+
+    </main>
+
+    <script>
+        function enableEdit(fieldId) {
+            const input = document.getElementById(fieldId);
+            input.removeAttribute("readonly");
+            input.focus();
+        }
+    </script>
+</body>
+
+</html>
