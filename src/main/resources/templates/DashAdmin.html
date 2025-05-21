@@ -5,49 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
     <link rel="stylesheet" href="css/DashAdmin.css">
-
-    
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard Toko Laptop</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
+      <!-- Header -->
+        <header class="header">
+            <a href="/Home" class="logo">Admin<span>LapZone</span></a>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">TokoLaptop Dashboard</a>
-    <div class="ml-auto d-flex align-items-center">
-      <span class="text-white mr-3">mazipan</span>
-      <img src="https://via.placeholder.com/40" class="rounded-circle" alt="User">
-    </div>
-  </nav>
+            <nav class="nav" id="main-nav">
+                <a href="/Home" class="nav-link">Home</a>
+                <a href="/DaftarLaptop" class="nav-link">Laptop</a>
+                <a href="/DashAdmin" class="nav-link">Dashboard</a>
+                <a href="/Contactus" class="nav-link">Contact Us</a>
+            </nav>
+
+            <div class="icons">
+                <a href="/logout" class="icon" id="profile-icon">🔒</a>
+            </div>
+        </header>
+
+  
 
   <div class="container-fluid">
     <div class="row">
-      <!-- Sidebar -->
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky pt-3">
-          <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Forms</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">UI Elements</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Tables</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Presentations</a></li>
-          </ul>
-          <hr>
-          <h6>User Area</h6>
-          <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Github</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Twitter</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Facebook</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
-          </ul>
-        </div>
-      </nav>
-
+      
       <!-- Main content -->
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <h2 class="mt-4">Dashboard</h2>
