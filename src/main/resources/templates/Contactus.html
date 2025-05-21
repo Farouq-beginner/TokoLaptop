@@ -758,12 +758,6 @@
                 <span class="sparkle sparkle-2"></span>
                 <span class="sparkle sparkle-3"></span>
             </a>
-            <a href="/Services" class="nav-link">
-                Services
-                <span class="sparkle sparkle-1"></span>
-                <span class="sparkle sparkle-2"></span>
-                <span class="sparkle sparkle-3"></span>
-            </a>
             <a href="/Aboutus" class="nav-link">
                 About Us
                 <span class="sparkle sparkle-1"></span>
@@ -779,7 +773,7 @@
         </nav>
 
         <div class="icons">
-            <a href="/login" class="icon" id="profile-icon">👤</a>
+            <a th:href="${session.loggedInUser != null} ? '/Profil' : '/login'" class="icon" id="profile-icon">👤</a>
             <div class="hamburger" id="hamburger-menu">
                 <div class="hamburger-line"></div>
                 <div class="hamburger-line"></div>

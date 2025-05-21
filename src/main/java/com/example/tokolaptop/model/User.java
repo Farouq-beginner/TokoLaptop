@@ -1,5 +1,6 @@
 package com.example.tokolaptop.model;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +25,14 @@ public class User {
 
     private String role = "PEMBELI"; // default
 
-    // Getter dan Setter
+    private String bio;
+    private String alamat;
+    private String gender;
+    private String tanggalLahir; // jika kamu tidak pakai LocalDate
+    private String noHp;
+
+
+    
     public Integer getId() {
         return id;
     }
@@ -61,4 +69,39 @@ public class User {
         this.role = role;
     }
     
+    public String getBio() {
+    return bio;
+}
+public void setBio(String bio) {
+    this.bio = bio;
+}
+
+public String getAlamat() {
+    return alamat;
+}
+public void setAlamat(String alamat) {
+    this.alamat = alamat;
+}
+
+public String getGender() {
+    return gender;
+}
+public void setGender(String gender) {
+    this.gender = gender;
+}
+
+public String getTanggalLahir() {
+    return tanggalLahir;
+}
+public void setTanggalLahir(String tanggalLahir) {
+    this.tanggalLahir = tanggalLahir;
+}
+
+public String getNoHp() {
+    return noHp;
+}
+public void setNoHp(String noHp) {
+    this.noHp = noHp;
+}
+
 }

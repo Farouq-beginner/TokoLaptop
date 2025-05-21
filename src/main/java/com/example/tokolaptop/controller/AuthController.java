@@ -34,7 +34,7 @@ public class AuthController {
                            Model model) {
         if (userRepo.findByEmail(email).isPresent()) {
             model.addAttribute("error", "Email sudah terdaftar");
-            return "Login"; // kembali ke form daftar
+            return "LoginMasuk"; // kembali ke form daftar
         }
 
         User user = new User();
@@ -74,7 +74,52 @@ public class AuthController {
     }
     @GetMapping("/DLAdmin")
     public String DLAPage() {
-        return "DLAdmin"; 
+        return "DLAdmin";
+    }
+
+    @GetMapping("/Profil")
+    public String profil(Model model, HttpSession session) {
+        Object user = session.getAttribute("loggedInUser"); // Ganti "user" jadi "loggedInUser"
+        if (user == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("user", user);
+        return "Profil";
+    }
+
+
+    @PostMapping("/profile/save")
+public String saveProfile(@RequestParam String bio,
+                          @RequestParam String alamat,
+                          @RequestParam String gender,
+                          @RequestParam String tanggalLahir,
+                          @RequestParam String noHp,
+                          @RequestParam String email,
+                          HttpSession session,
+                          Model model) {
+    User user = (User) session.getAttribute("loggedInUser");
+    if (user == null) {
+        return "redirect:/login";
+    }
+
+    user.setBio(bio);
+    user.setAlamat(alamat);
+    user.setGender(gender);
+    user.setTanggalLahir(tanggalLahir);
+    user.setNoHp(noHp);
+    user.setEmail(email); // hati-hati jika kamu pakai email sebagai username unik
+
+    userRepo.save(user);
+    session.setAttribute("loggedInUser", user); // update sesi
+    model.addAttribute("user", user);
+
+    return "redirect:/Profil"; // atau tampilkan halaman sukses
+}
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 
 }

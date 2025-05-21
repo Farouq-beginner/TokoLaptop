@@ -142,6 +142,10 @@
                 <input type="number" id="laptopPrice" placeholder="Harga" required />
                 <input type="text" id="laptopImage" placeholder="URL Gambar" required />
 
+                <label for="stocklaptop" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span class="label-text">Stok</span>
+                    <input type="number" id="stocklaptop" placeholder="Stok" required />
+                </label>
                 <label for="laptopLimited" style="display: inline-flex; align-items: center; gap: 8px;">
                     <span class="label-text">Limited Edition</span>
                      <input type="checkbox" id="laptopLimited" />
@@ -155,6 +159,7 @@
         </div>
     </div>
 
+    <script src="/js/admin.js"></script>
     <script>
         const apiBase = '/api/laptops';
         const grid = document.getElementById('products-grid');

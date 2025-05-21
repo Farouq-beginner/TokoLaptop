@@ -19,15 +19,15 @@ public class Laptop {
     private long price;
     private String image;
 
+    @Column(name = "stock_quantity", nullable = false)
+    private Integer stockQuantity = 0;
+
     @Column(name = "is_limited")
     private boolean limited;
 
-   
-public double calculatePrice() {
-    return isLimited() ? price * 1.1 : price;
-}
-
-
+    public double calculatePrice() {
+        return isLimited() ? price * 1.1 : price;
+    }
 
     public Long getId() {
         return id;
@@ -59,6 +59,14 @@ public double calculatePrice() {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Integer getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 
     public boolean isLimited() {
