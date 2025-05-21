@@ -1,14 +1,14 @@
 ##  Contributors
 |NO| NAMA | NIM |
 |:-:|--------|--------|
-| 1 | **Farouq Gusmo Abdilah** | 24111814081 |
-| 2 | **Rendy Syahputra Riyadi** | 24111814026 |
-| 3 | **Vhemas Dwi Agung Prasetyo** | 24111814047 |
-| 4 | **Aditya Febrian** | 24111814083 |
-| 5 | **Naufal Akbar Putra Pradana** | 24111814027 |
-| 6 | **Sultan Raffi Surya Negara** | 24111814108 |
-| 7 | **Tabligh Akbar** | 24111814134 |
-| 8 | **Pratama Dicky Novianto** | 24111814143 |
+| 1 | [**Farouq Gusmo Abdilah**](https://github.com/Farouq-beginner) | 24111814081 |
+| 2 | [**Rendy Syahputra Riyadi**](https://github.com/) | 24111814026 |
+| 3 | [**Vhemas Dwi Agung Prasetyo**](https://github.com/) | 24111814047 |
+| 4 | [**Aditya Febrian**](https://github.com/) | 24111814083 |
+| 5 | [**Naufal Akbar Putra Pradana**](https://github.com/) | 24111814027 |
+| 6 | [**Sultan Raffi Surya Negara**](https://github.com/) | 24111814108 |
+| 7 | [**Tabligh Akbar**](https://github.com/) | 24111814134 |
+| 8 | [**Pratama Dicky Novianto**](https://github.com/) | 24111814143 |
 
 ----
 
