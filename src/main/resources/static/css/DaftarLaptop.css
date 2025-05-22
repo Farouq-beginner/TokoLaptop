@@ -37,7 +37,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at bottom, #112434, #4158D0,#909cda );
+    background: radial-gradient(circle at bottom, #2c475d, #4158D0,#909cda );
     z-index: -3;
 }
 
@@ -90,7 +90,7 @@
         }
 
         .nav-link {
-            color: #252e37;
+            color: #ffffff;
             text-decoration: none;
             font-size: 16px;
             padding: 15px 20px;

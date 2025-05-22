@@ -9,9 +9,9 @@
 |:-:|--------|--------|
 | 1 | [**Farouq Gusmo Abdilah**](https://github.com/Farouq-beginner) | 24111814081 |
 | 2 | [**Rendy Syahputra Riyadi**](https://github.com/) | 24111814026 |
-| 3 | [**Vhemas Dwi Agung Prasetyo**](https://github.com/) | 24111814047 |
+| 3 | [**Vhemas Dwi Agung Prasetyo**](https://github.com/VhemasP) | 24111814047 |
 | 4 | [**Aditya Febrian**](https://github.com/AdityaFebrian23) | 24111814083 |
-| 5 | [**Naufal Akbar Putra Pradana**](https://github.com/) | 24111814027 |
+| 5 | [**Naufal Akbar Putra Pradana**](https://github.com/nopalPwaelah) | 24111814027 |
 | 6 | [**Sultan Raffi Surya Negara**](https://github.com/) | 24111814108 |
 | 7 | [**Tabligh Akbar**](https://github.com/) | 24111814134 |
 | 8 | [**Pratama Dicky Novianto**](https://github.com/pratamadky) | 24111814143 |
