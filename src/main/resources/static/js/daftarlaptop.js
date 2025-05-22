@@ -59,25 +59,30 @@ function renderProducts(products) {
                 <button class="add-to-cart-btn" data-id="${product.id}" ${isOutOfStock ? 'disabled' : ''}>
                     <i class="fas fa-cart-plus"></i> ${isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
                 </button>
-                <button class="buy-now-btn" ${isOutOfStock ? 'disabled' : ''}>
+                <button class="buy-now-btn" data-id="${product.id}" ${isOutOfStock ? 'disabled' : ''}>
                     <span>${isOutOfStock ? 'Not Available' : 'Buy Now'}</span>
                 </button>
             </div>
         `;
 
-        const addToCartButton = productCard.querySelector('.add-to-cart-btn');
         if (!isOutOfStock) {
+            const addToCartButton = productCard.querySelector('.add-to-cart-btn');
+            const buyNowButton = productCard.querySelector('.buy-now-btn');
+
             addToCartButton.addEventListener('click', () => {
                 const productId = addToCartButton.dataset.id;
                 addToCart(productId);
+            });
+
+            buyNowButton.addEventListener('click', () => {
+                const productId = buyNowButton.dataset.id;
+                buyNow(productId);
             });
         }
 
         productsGrid.appendChild(productCard);
     });
 }
-
-
 
 
 
@@ -151,6 +156,23 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchCartCount();
 });
 
+
+async function buyNow(productId) {
+    try {
+        const response = await fetch('/auth/check-login'); // Ganti sesuai endpoint login check di backend
+        const result = await response.json();
+
+        if (result.loggedIn) {
+            // Langsung ke checkout
+            window.location.href = `/checkout/${productId}`;
+        } else {
+            alert("ADD TO CART DULU.");
+        }
+    } catch (error) {
+        console.error('Buy Now error:', error);
+        alert("Terjadi kesalahan saat memproses permintaan Buy Now.");
+    }
+}
 
 
 
