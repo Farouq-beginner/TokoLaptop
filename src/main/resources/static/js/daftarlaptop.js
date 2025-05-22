@@ -45,12 +45,15 @@ function renderProducts(products) {
 
     products.forEach(product => {
         const productCard = document.createElement('div');
-        productCard.className = 'product-card';
+        productCard.className = `product-card ${product.limited ? 'limited-product' : ''}`;
 
         const isOutOfStock = product.stockQuantity === 0;
 
         productCard.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" />
+            <div class="product-limited">
+                <img src="${product.image}" alt="${product.name}" />
+                ${product.limited ? '<img class="limited-icon" src="/images/LimitedEdition.png" alt="Limited Edition" />' : ''}
+            </div>
             <h3>${product.name}</h3>
             <p>Rp ${product.price.toLocaleString('id-ID')}</p>
             <p class="stock-text">Stok: ${product.stockQuantity}</p>
@@ -75,6 +78,8 @@ function renderProducts(products) {
         productsGrid.appendChild(productCard);
     });
 }
+
+
 
 
 

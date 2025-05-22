@@ -812,3 +812,48 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 7px 15px rgba(0, 210, 255, 0.4);
 }
+
+.product-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Gambar kecil pojok kanan atas */
+.limited-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 60px;
+    height: auto;
+    z-index: 2;
+}
+
+/* Style khusus untuk product limited */
+.limited-product {
+    border: 2px solid gold;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Badge diagonal */
+.limited-product::before {
+    content: "-LIMITED";
+    position: absolute;
+    top: 10px;
+    left: -45px;
+    transform: rotate(-45deg);
+    background-color: gold;
+    color: black;
+    padding: 4px 40px;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0 0 6px rgba(255, 215, 0, 0.7);
+    z-index: 3;
+}

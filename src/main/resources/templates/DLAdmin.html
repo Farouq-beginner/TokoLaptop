@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin - Kelola Laptop</title>
 
     <!-- Font dan ikon -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- CSS utama -->
-    <link rel="stylesheet" href="/css/Daftarlaptop.css"/>
+    <link rel="stylesheet" href="/css/Daftarlaptop.css" />
 
     <style>
         .header {
-        background-color: rgba(47, 103, 122, 0.9);
-        backdrop-filter: blur(5px);
-        padding: 10px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            background-color: rgba(47, 103, 122, 0.9);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .admin-btn {
@@ -38,14 +41,22 @@
             cursor: pointer;
         }
 
-        .admin-btn.edit { background-color: #0277bd; }
-        .admin-btn.delete { background-color: #c62828; }
+        .admin-btn.edit {
+            background-color: #0277bd;
+        }
+
+        .admin-btn.delete {
+            background-color: #c62828;
+        }
 
         .modal {
             display: none;
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0,0,0,0.5);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -76,33 +87,37 @@
 
         .modal-close {
             position: absolute;
-            top: 10px; right: 15px;
+            top: 10px;
+            right: 15px;
             cursor: pointer;
             font-size: 22px;
             color: red;
         }
+
         body {
-        background: url('https://www.luarangkasa.com/wp-content/uploads/2014/10/earth-billion-stars.jpg') no-repeat center center fixed;
-        background-size: cover;
-        color: white;
+            background: url('https://www.luarangkasa.com/wp-content/uploads/2014/10/earth-billion-stars.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
         }
 
         .main-content {
-        background-color: rgba(0, 0, 0, 0.5); /* agar isi lebih jelas terbaca */
-        padding-bottom: 40px;
-        }
-        .label-text {
-        position: relative;
-        z-index: 10;
-        color: black;
-        display: inline-flex;   
-        align-items: center;
-        white-space: nowrap;    
-        width: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* agar isi lebih jelas terbaca */
+            padding-bottom: 40px;
         }
 
+        .label-text {
+            position: relative;
+            z-index: 10;
+            color: black;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            width: auto;
+        }
     </style>
 </head>
+
 <body>
     <main class="main-content">
         <!-- Header -->
@@ -131,6 +146,8 @@
         </div>
     </main>
 
+    <!-- ... bagian atas tidak berubah ... -->
+
     <!-- Modal Form -->
     <div class="modal" id="laptopModal">
         <div class="modal-content">
@@ -142,13 +159,15 @@
                 <input type="number" id="laptopPrice" placeholder="Harga" required />
                 <input type="text" id="laptopImage" placeholder="URL Gambar" required />
 
-                <label for="stocklaptop" style="display: inline-flex; align-items: center; gap: 8px;">
+                <!-- ✅ Perbarui id agar konsisten -->
+                <label for="laptopStock" style="display: inline-flex; align-items: center; gap: 8px;">
                     <span class="label-text">Stok</span>
-                    <input type="number" id="stocklaptop" placeholder="Stok" required />
+                    <input type="number" id="laptopStock" placeholder="Stok" required />
                 </label>
+
                 <label for="laptopLimited" style="display: inline-flex; align-items: center; gap: 8px;">
                     <span class="label-text">Limited Edition</span>
-                     <input type="checkbox" id="laptopLimited" />
+                    <input type="checkbox" id="laptopLimited" />
                 </label>
 
                 <div class="btn-group">
@@ -171,6 +190,7 @@
             name: document.getElementById('laptopName'),
             price: document.getElementById('laptopPrice'),
             image: document.getElementById('laptopImage'),
+            stock: document.getElementById('laptopStock'), // ✅ Tambahkan ini
             limited: document.getElementById('laptopLimited')
         };
 
@@ -182,6 +202,7 @@
                 fields.name.value = laptop.name;
                 fields.price.value = laptop.price;
                 fields.image.value = laptop.image;
+                fields.stock.value = laptop.stockQuantity ?? 0; // ✅ Isi stok
                 fields.limited.checked = laptop.limited;
             } else {
                 form.reset();
@@ -205,14 +226,18 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
-                    <div class="product-image"><img src="${l.image}" alt="${l.name}"></div>
-                    <h3 class="product-title">${l.name}</h3>
-                    <p class="product-price">Rp ${l.price.toLocaleString()}</p>
-                    <div style="margin-top: 8px;">
-                        <button class="admin-btn edit" onclick='editLaptop(${JSON.stringify(l)})'>Edit</button>
-                        <button class="admin-btn delete" onclick='deleteLaptop(${l.id})'>Hapus</button>
-                    </div>
-                `;
+            <div class="product-limited">
+                <img src="${l.image}" alt="${l.name}" />
+                ${l.limited === true ? '<img class="limited-icon" src="/images/LimitedEdition.png" alt="Limited Edition" />' : ''}
+            </div>
+            <h3 class="product-title">${l.name}</h3>
+            <p class="product-price">Rp ${l.price.toLocaleString()}</p>
+            <p class="product-stock">Stok: ${l.stockQuantity ?? 0}</p>
+            <div style="margin-top: 8px;">
+                <button class="admin-btn edit" onclick='editLaptop(${JSON.stringify(l)})'>Edit</button>
+                <button class="admin-btn delete" onclick='deleteLaptop(${l.id})'>Hapus</button>
+            </div>
+        `;
                 grid.appendChild(card);
             });
         }
@@ -238,6 +263,7 @@
                 name: fields.name.value,
                 price: Number(fields.price.value),
                 image: fields.image.value,
+                stockQuantity: Number(fields.stock.value), // ✅ Kirim stok
                 limited: fields.limited.checked
             };
 
@@ -258,4 +284,5 @@
         fetchLaptops();
     </script>
 </body>
+
 </html>
