@@ -1,9 +1,47 @@
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", function () {
     fetch('/api/dashboard')
         .then(response => response.json())
         .then(data => {
             document.getElementById("orders").textContent = data.jumlahPesanan || 0;
             document.getElementById("visitors").textContent = data.jumlahPengunjung || 0;
+=======
+document.addEventListener('DOMContentLoaded', function() {
+    const dashboardData = {
+        orders: 56,
+        visitors: 120,
+        products: 42,
+        revenue: 12500000,
+        monthlyData: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            orders: [30, 40, 35, 50, 49, 60, 70, 56, 55, 60, 65, 70],
+            visitors: [80, 90, 95, 100, 105, 110, 115, 120, 110, 115, 120, 125],
+            revenue: [8000000, 8500000, 9000000, 9500000, 10000000, 10500000, 11000000, 11500000, 12000000, 12000000, 12500000, 13000000]
+        }
+    };
+
+    animateValue('orders', 0, dashboardData.orders, 1000);
+    animateValue('visitors', 0, dashboardData.visitors, 1000);
+    animateValue('products', 0, dashboardData.products, 1000);
+    animateValue('revenue', 0, dashboardData.revenue, 1000);
+
+    setTimeout(() => {
+        document.getElementById('revenue').textContent = formatCurrency(dashboardData.revenue);
+    }, 1000);
+
+    initBarChart(dashboardData.monthlyData);
+
+    function animateValue(id, start, end, duration) {
+        const element = document.getElementById(id);
+        const range = end - start;
+        const increment = end > start ? 1 : -1;
+        const stepTime = Math.abs(Math.floor(duration / range));
+        let current = start;
+        
+        const timer = setInterval(function() {
+            current += increment;
+            element.textContent = current;
+>>>>>>> 14c582200e7c08c5ee3a59291451c5220e96c721
             
             document.getElementById("revenue").textContent =
                 "Rp " + (data.totalPendapatan ? data.totalPendapatan.toLocaleString("id-ID") : "0");
@@ -24,6 +62,13 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Gagal memuat data dashboard:", error);
         });
 
+<<<<<<< HEAD
+=======
+    function formatCurrency(value) {
+        return 'Rp ' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+>>>>>>> 14c582200e7c08c5ee3a59291451c5220e96c721
     function initBarChart(data) {
         const ctx = document.getElementById('barChart').getContext('2d');
         new Chart(ctx, {

@@ -31,7 +31,6 @@ h1 {
     font-size: 36px;
 }
 
-/* Horizontal Flex Layout */
 .stats-container {
     display: flex;
     gap: 20px;
@@ -39,7 +38,6 @@ h1 {
     justify-content: space-between;
 }
 
-/* Colored Cards */
 .stat-card {
     border-radius: 15px;
     padding: 25px 20px;
@@ -54,7 +52,6 @@ h1 {
     transition: all 0.3s ease;
 }
 
-/* Different background colors */
 .stat-card:nth-child(1) {
     background: linear-gradient(to right, #4facfe, #00f2fe);
     box-shadow: 0 12px 30px rgb(196, 193, 193);
@@ -94,7 +91,6 @@ h1 {
     font-weight: bold;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .stats-container {
         justify-content: center;

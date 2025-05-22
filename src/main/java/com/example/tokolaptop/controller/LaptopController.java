@@ -45,7 +45,6 @@ public class LaptopController {
         return ResponseEntity.ok().build();
     }
 
-    // ✅ Endpoint Checkout: Kurangi stok berdasarkan quantity
     @PostMapping("/checkout")
     public ResponseEntity<?> checkoutLaptops(@RequestBody List<Map<String, Object>> checkoutItems) {
         for (Map<String, Object> item : checkoutItems) {

@@ -4,11 +4,9 @@ window.addEventListener('scroll', function () {
     header.classList.toggle('sticky', window.scrollY > 50);
 });
 
-// Get hamburger menu
 const hamburgerMenu = document.getElementById('hamburger-menu');
 const mainNav = document.getElementById('main-nav');
 
-// Toggle nav menu
 hamburgerMenu.onclick = function () {
     mainNav.classList.toggle('active');
 };
@@ -45,12 +43,15 @@ function renderProducts(products) {
 
     products.forEach(product => {
         const productCard = document.createElement('div');
-        productCard.className = 'product-card';
+        productCard.className = `product-card ${product.limited ? 'limited-product' : ''}`;
 
         const isOutOfStock = product.stockQuantity === 0;
 
         productCard.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" />
+            <div class="product-limited">
+                <img src="${product.image}" alt="${product.name}" />
+                ${product.limited ? '<img class="limited-icon" src="/images/LimitedEdition.png" alt="Limited Edition" />' : ''}
+            </div>
             <h3>${product.name}</h3>
             <p>Rp ${product.price.toLocaleString('id-ID')}</p>
             <p class="stock-text">Stok: ${product.stockQuantity}</p>
@@ -58,17 +59,24 @@ function renderProducts(products) {
                 <button class="add-to-cart-btn" data-id="${product.id}" ${isOutOfStock ? 'disabled' : ''}>
                     <i class="fas fa-cart-plus"></i> ${isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
                 </button>
-                <button class="buy-now-btn" ${isOutOfStock ? 'disabled' : ''}>
+                <button class="buy-now-btn" data-id="${product.id}" ${isOutOfStock ? 'disabled' : ''}>
                     <span>${isOutOfStock ? 'Not Available' : 'Buy Now'}</span>
                 </button>
             </div>
         `;
 
-        const addToCartButton = productCard.querySelector('.add-to-cart-btn');
         if (!isOutOfStock) {
+            const addToCartButton = productCard.querySelector('.add-to-cart-btn');
+            const buyNowButton = productCard.querySelector('.buy-now-btn');
+
             addToCartButton.addEventListener('click', () => {
                 const productId = addToCartButton.dataset.id;
                 addToCart(productId);
+            });
+
+            buyNowButton.addEventListener('click', () => {
+                const productId = buyNowButton.dataset.id;
+                buyNow(productId);
             });
         }
 
@@ -148,6 +156,23 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchCartCount();
 });
 
+
+async function buyNow(productId) {
+    try {
+        const response = await fetch('/auth/check-login'); // Ganti sesuai endpoint login check di backend
+        const result = await response.json();
+
+        if (result.loggedIn) {
+            // Langsung ke checkout
+            window.location.href = `/checkout/${productId}`;
+        } else {
+            alert("ADD TO CART DULU.");
+        }
+    } catch (error) {
+        console.error('Buy Now error:', error);
+        alert("Terjadi kesalahan saat memproses permintaan Buy Now.");
+    }
+}
 
 
 

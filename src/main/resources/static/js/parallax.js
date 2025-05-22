@@ -1,4 +1,3 @@
-// Header Sticky Effect
 window.addEventListener('scroll', function () {
   var header = document.querySelector('header');
   header.classList.toggle('sticky', window.scrollY > 100);
@@ -8,7 +7,7 @@ window.addEventListener('scroll', function () {
 if (window.innerWidth > 768) {
   gsap.from("#m1", {
     scrollTrigger: {
-      scrub: 4, // Scrub lebih tinggi untuk efek lebih dramatis
+      scrub: 4,
       trigger: "#m1",
       start: "top bottom",
       end: "bottom top",
@@ -16,7 +15,7 @@ if (window.innerWidth > 768) {
     y: 60,
     scale: 1.2,
     rotate: 3, 
-    skewX: 5, // Efek miring untuk perspektif lebih dinamis
+    skewX: 5,
     duration: 4,
     ease: "power2.out",
   });
@@ -96,7 +95,6 @@ if (window.innerWidth > 768) {
 }
 
 
-// Animate text container
 gsap.to(".text-container", {
   scrollTrigger: {
     trigger: ".text-container",
@@ -109,10 +107,8 @@ gsap.to(".text-container", {
   delay: 0.3
 });
 
-// Make scrolling smoother
 gsap.registerPlugin(ScrollTrigger);
 
-// Smooth scroll initialization
 const smoothScroll = () => {
   const body = document.body;
   const html = document.documentElement;

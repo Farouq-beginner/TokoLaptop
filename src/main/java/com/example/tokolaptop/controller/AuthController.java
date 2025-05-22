@@ -20,13 +20,11 @@ public class AuthController {
 
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    // Halaman DAFTAR akun
     @GetMapping("/login")
     public String registerForm() {
-        return "Login"; // Login.html adalah halaman daftar
+        return "Login";
     }
 
-    // Proses DAFTAR akun
     @PostMapping("/register")
     public String register(@RequestParam String name,
                            @RequestParam String email,
@@ -34,7 +32,7 @@ public class AuthController {
                            Model model) {
         if (userRepo.findByEmail(email).isPresent()) {
             model.addAttribute("error", "Email sudah terdaftar");
-            return "LoginMasuk"; // kembali ke form daftar
+            return "LoginMasuk";
         }
 
         User user = new User();
@@ -44,19 +42,19 @@ public class AuthController {
         user.setRole("PEMBELI");
 
         userRepo.save(user);
-        return "redirect:/login"; // redirect ke halaman login
+        return "redirect:/login";
     }
 
     @GetMapping("/loginmasuk")
     public String loginForm() {
-        return "LoginMasuk"; // arahkan ke LoginMasuk.html
+        return "LoginMasuk";
     }
 
     @PostMapping("/login")
     public String login(@RequestParam String email,
                         @RequestParam String password,
                         Model model,
-                        HttpSession session) { // ← ini penting
+                        HttpSession session) {
         var userOpt = userRepo.findByEmail(email);
         if (userOpt.isEmpty() || !passwordEncoder.matches(password, userOpt.get().getPassword())) {
             model.addAttribute("error", "Email atau password salah");
@@ -90,7 +88,7 @@ public class AuthController {
 
     @GetMapping("/Profil")
     public String profil(Model model, HttpSession session) {
-        Object user = session.getAttribute("loggedInUser"); // Ganti "user" jadi "loggedInUser"
+        Object user = session.getAttribute("loggedInUser");
         if (user == null) {
             return "redirect:/login";
         }
@@ -118,13 +116,13 @@ public String saveProfile(@RequestParam String bio,
     user.setGender(gender);
     user.setTanggalLahir(tanggalLahir);
     user.setNoHp(noHp);
-    user.setEmail(email); // hati-hati jika kamu pakai email sebagai username unik
+    user.setEmail(email);
 
     userRepo.save(user);
-    session.setAttribute("loggedInUser", user); // update sesi
+    session.setAttribute("loggedInUser", user);
     model.addAttribute("user", user);
 
-    return "redirect:/Profil"; // atau tampilkan halaman sukses
+    return "redirect:/Profil";
 }
 
     @GetMapping("/logout")

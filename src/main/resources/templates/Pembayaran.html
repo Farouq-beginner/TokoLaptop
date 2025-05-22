@@ -57,7 +57,6 @@
 <body>
     <div class="background"></div>
     <main class="main-content">
-        <!-- Header -->
         <header class="header">
             <a href="/Home" class="logo">Lap<span>Zone</span></a>
             <nav class="nav" id="main-nav">
@@ -79,7 +78,6 @@
             </div>
         </header>
 
-        <!-- Payment Section -->
         <section class="payment-container">
             <h2 class="payment-title">Pembayaran</h2>
             <div class="payment-summary">Total Pembayaran: <span id="payment-total">Rp. 0</span></div>
@@ -107,7 +105,6 @@
     </main>
 
     <script>
-        // Fetch total dari backend atau localStorage jika tersedia
         document.addEventListener('DOMContentLoaded', async () => {
             try {
                 const res = await fetch('/cart/total');
