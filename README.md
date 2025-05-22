@@ -14,7 +14,7 @@
 | 5 | [**Naufal Akbar Putra Pradana**](https://github.com/) | 24111814027 |
 | 6 | [**Sultan Raffi Surya Negara**](https://github.com/) | 24111814108 |
 | 7 | [**Tabligh Akbar**](https://github.com/) | 24111814134 |
-| 8 | [**Pratama Dicky Novianto**](https://github.com/) | 24111814143 |
+| 8 | [**Pratama Dicky Novianto**](https://github.com/pratamadky) | 24111814143 |
 
 ----
 
