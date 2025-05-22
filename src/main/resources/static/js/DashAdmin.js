@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sample data for the dashboard
     const dashboardData = {
         orders: 56,
         visitors: 120,
@@ -13,21 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Animate counting up for each statistic
     animateValue('orders', 0, dashboardData.orders, 1000);
     animateValue('visitors', 0, dashboardData.visitors, 1000);
     animateValue('products', 0, dashboardData.products, 1000);
     animateValue('revenue', 0, dashboardData.revenue, 1000);
 
-    // Format revenue with currency
     setTimeout(() => {
         document.getElementById('revenue').textContent = formatCurrency(dashboardData.revenue);
     }, 1000);
 
-    // Initialize bar chart
     initBarChart(dashboardData.monthlyData);
 
-    // Function to animate counting up
     function animateValue(id, start, end, duration) {
         const element = document.getElementById(id);
         const range = end - start;
@@ -45,12 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }, stepTime);
     }
 
-    // Function to format currency
     function formatCurrency(value) {
         return 'Rp ' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
 
-    // Function to initialize bar chart
     function initBarChart(data) {
         const ctx = document.getElementById('barChart').getContext('2d');
         

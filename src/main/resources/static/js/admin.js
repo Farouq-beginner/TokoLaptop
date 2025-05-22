@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (form) {
         form.addEventListener("submit", function (e) {
-            e.preventDefault(); // Mencegah reload halaman
+            e.preventDefault();
 
             const id = document.getElementById('laptopId').value;
             const name = document.getElementById('laptopName').value;
@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log('Data dari backend:', data);
                 document.getElementById('laptopForm').reset();
                 document.getElementById('laptopModal').style.display = 'none';
-                // Optional: reload data laptop di halaman utama
                 location.reload(); 
             })
             .catch(error => {

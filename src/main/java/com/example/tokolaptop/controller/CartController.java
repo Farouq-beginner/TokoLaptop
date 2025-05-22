@@ -32,7 +32,6 @@ public class CartController {
     @Autowired
     private LaptopRepository laptopRepository;
 
-    // ✅ Tambahkan item ke keranjang
     @PostMapping("/add/{laptopId}")
     public Map<String, Object> addToCart(@PathVariable Long laptopId, HttpSession session) {
         Map<String, Object> response = new HashMap<>();
@@ -52,14 +51,12 @@ public class CartController {
         return response;
     }
 
-    // ✅ Ambil total jumlah item di keranjang
     @GetMapping("/total-items")
     public int getTotalItems(HttpSession session) {
         User user = (User) session.getAttribute("loggedInUser");
         return user == null ? 0 : cartService.getTotalItems(user);
     }
 
-    // ✅ Tampilkan halaman view keranjang
     @GetMapping("/view")
     public ModelAndView viewCart(HttpSession session) {
         User user = (User) session.getAttribute("loggedInUser");
@@ -71,7 +68,6 @@ public class CartController {
         return mav;
     }
 
-    // ✅ Hapus item dari keranjang (dengan validasi user)
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteCartItem(@PathVariable Long id, HttpSession session) {
         User user = (User) session.getAttribute("loggedInUser");
@@ -92,7 +88,6 @@ public class CartController {
         return ResponseEntity.ok("Item berhasil dihapus");
     }
 
-    // ✅ Update quantity item + Validasi agar tidak melebihi stok
     @PostMapping("/update/{id}")
     public ResponseEntity<String> updateQuantity(@PathVariable Long id, @RequestParam int quantity) {
         Optional<CartItem> cartItemOpt = cartItemRepository.findById(id);
@@ -112,7 +107,6 @@ public class CartController {
         return ResponseEntity.ok("Jumlah berhasil diperbarui.");
     }
 
-    // ✅ Checkout - Simpan item yang akan dibayar ke session
     @PostMapping("/checkout")
     public ModelAndView checkout(
             @RequestParam(name = "selectedItems", required = false) List<Long> selectedItems,
@@ -128,7 +122,6 @@ public class CartController {
         return new ModelAndView("Pembayaran");
     }
 
-    // ✅ Proses Pembayaran - Kurangi stok & hapus item dari keranjang
     @PostMapping("/payment/process")
     public ModelAndView processPayment(HttpSession session) {
         User user = (User) session.getAttribute("loggedInUser");
@@ -149,10 +142,9 @@ public class CartController {
             session.removeAttribute("checkoutItems");
         }
 
-        return new ModelAndView("/payment-succes"); // atau redirect ke halaman sukses
+        return new ModelAndView("/payment-succes");
     }
 
-    // ✅ API ambil semua item cart untuk frontend JS
     @GetMapping("/items")
     public List<Map<String, Object>> getCartItems(HttpSession session) {
         User user = (User) session.getAttribute("loggedInUser");
@@ -178,7 +170,7 @@ public Map<String, Object> getTotal(HttpSession session) {
     Map<String, Object> response = new HashMap<>();
 
     if (user == null) {
-        response.put("total", 0L);  // gunakan 0L untuk long
+        response.put("total", 0L);
         response.put("count", 0);
         return response;
     }

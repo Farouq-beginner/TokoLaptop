@@ -119,12 +119,10 @@
             </div>
         </header>
 
-        <!-- Cart Section -->
         <section class="cart-container">
             <h2 class="cart-title">Keranjang Belanja</h2>
             <form id="checkout-form" action="/cart/checkout" method="post">
                 <div id="cart-items" class="cart-items">
-                    <!-- JS will populate cart items -->
                 </div>
                 <div class="cart-summary">
                     Total: <span id="cart-total">Rp. 0</span>
@@ -184,7 +182,6 @@ async function loadCartItems() {
         totalElement.textContent = formatPrice(total);
         countElement.textContent = count;
 
-        // Event handler untuk quantity change
         document.querySelectorAll('.quantity-input').forEach(input => {
             input.addEventListener('change', async () => {
                 const itemId = input.getAttribute('data-id');
@@ -202,7 +199,6 @@ async function loadCartItems() {
             });
         });
 
-        // ✅ Event handler untuk tombol hapus
         document.querySelectorAll('.delete-btn').forEach(button => {
             button.addEventListener('click', async (e) => {
                 e.preventDefault();
@@ -223,7 +219,7 @@ async function loadCartItems() {
                     }
 
                     alert("Item berhasil dihapus.");
-                    loadCartItems(); // reload keranjang
+                    loadCartItems();
                 } catch (error) {
                     console.error("Gagal menghapus item:", error);
                     alert("Terjadi kesalahan saat menghapus.");
@@ -236,7 +232,6 @@ async function loadCartItems() {
     }
 }
 
-// ✅ Tombol checkout: kirim data ke backend agar stok berkurang
 async function handleCheckout() {
     try {
         const response = await fetch('/cart/items');
@@ -267,7 +262,7 @@ async function handleCheckout() {
         }
 
         alert('Checkout berhasil! Stok laptop telah diperbarui.');
-        location.reload(); // refresh data
+        location.reload();
     } catch (error) {
         console.error("Gagal saat proses checkout:", error);
         alert("Terjadi kesalahan saat checkout.");

@@ -75,13 +75,13 @@ h1 + p, p + p {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Menyesuaikan dengan kartu */
-    height: 100%; /* Menyesuaikan dengan kartu */
-    padding: 10px; /* Padding lebih kecil agar tidak mengganggu konten kartu */
+    width: 100%;
+    height: 100%;
+    padding: 10px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; /* Mengisi seluruh kartu */
-    border-radius: 8px; /* Agar sesuai dengan bentuk kartu */
+    background-size: cover;
+    border-radius: 8px;
     transition: all 0.5s ease-in-out, opacity 1s ease-in-out;
     pointer-events: none;
 }

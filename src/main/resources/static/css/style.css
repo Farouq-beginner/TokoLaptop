@@ -29,13 +29,11 @@ body {
     height: 100%;
     background-size: cover;
     background-position: center;
-    /* Fallback color gradient if image doesn't load */
     background: radial-gradient(circle at bottom, #112434, #4158D0,#909cda );
     z-index: 0;
 }
 
 
- /* Header Styles */
  .logo {
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
@@ -47,7 +45,6 @@ body {
     color: var(--accent);
 }
 
-/* Scrollbar Styles */
 ::-webkit-scrollbar {
     width: 8px;
     background: transparent;
@@ -55,7 +52,6 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
-    /* Warna transparan */
     border-radius: 10px;
 }
 
@@ -95,7 +91,6 @@ body {
     transition: color 0.3s;
 }
 
-/* Hover Effect Styles */
 .nav-link:hover {
     color: #f1f1f1;
 }
@@ -115,14 +110,12 @@ body {
     background: none;
 }
 
-/* Efek hover tetap ada di PC */
 .nav-link:hover::before {
     border-color: #00e1ff;
     box-shadow: 0 0 15px #00e1ff, 0 0 30px rgba(0, 225, 255, 0.5);
     opacity: 1;
 }
 
-/* Menonaktifkan hover di perangkat mobile */
 @media (max-width: 768px) {
     .nav-link:hover::before {
         border-color: transparent;
@@ -246,7 +239,6 @@ body {
     }
 }
 
-/* Header and Navigation */
 header {
     position: fixed;
     top: 0;
@@ -272,11 +264,9 @@ header.sticky .nav a {
     transition: 0.5s;
 }
 
-/* Warna navbar tetap gelap di mobile */
 @media (max-width: 768px) {
     header.sticky {
         background: #112434;
-        /* Tetap gelap di layar kecil */
     }
 
     header.sticky .logo,
@@ -290,7 +280,6 @@ header.sticky .nav a {
 @media (max-width: 768px) {
     .nav a:hover {
         background: #112434;
-        /* Warna saat hover di mobile */
         color: #ffffff;
         transform: scale(1.05);
         transition: 0.3s ease-in-out;
@@ -300,7 +289,6 @@ header.sticky .nav a {
 @media (max-width: 768px) {
     header.sticky .nav-link:hover {
         background: #ffffff;
-        /* Warna saat hover di mobile */
         color: #112434;
         transform: scale(1.05);
         transition: 0.3s ease-in-out;
@@ -309,11 +297,9 @@ header.sticky .nav a {
 
 
 
-/* Warna teks tetap kontras di mobile */
 @media (max-width: 768px) {
     header.sticky .nav a {
         color: #fff;
-        /* Warna tetap putih di mobile */
     }
 }
 
@@ -323,27 +309,24 @@ header.sticky .nav a {
     }
 }
 
-/* 3D Model Viewer Styles */
 .model-viewer-container {
     position: relative;
     z-index: 1;
     display: flex;
-    justify-content: flex-start; /* Pindah ke kiri */
+    justify-content: flex-start;
     align-items: center;
-    padding: 20px 10px; /* Kurangi padding agar tidak terlalu besar */
-    height: calc(80dvh - 50px); /* Kurangi tinggi agar lebih kecil */
-    opacity: 0; /* Awalnya tersembunyi */
-    transform: translateX(-50px); /* Geser lebih ke kiri */
+    padding: 20px 10px;
+    height: calc(80dvh - 50px);
+    opacity: 0;
+    transform: translateX(-50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Saat elemen masuk ke viewport */
 .model-viewer-container.visible {
     opacity: 1;
     transform: translateX(0);
 }
 
-/* Saat elemen menjauh dari viewport */
 .model-viewer-container.hidden {
     opacity: 0;
     transform: translateX(-100px);
@@ -374,21 +357,18 @@ model-viewer {
 
 @media (max-width: 768px) {
     .model-nama-viewer {
-        bottom: 400px; /* Naikkan posisinya */
-        padding: 6px 8px; /* Perkecil padding */
-        font-size: 12px; /* Ukuran teks lebih kecil */
-        border-radius: 8px; /* Bentuk tetap sesuai */
+        bottom: 400px;
+        padding: 6px 8px;
+        font-size: 12px;
+        border-radius: 8px;
     }
 }
 
 .nama-penjelasan {
     display: flex;
     flex-direction: column;
-    /* Susun elemen secara vertikal */
     justify-content: flex-end;
-    /* Posisikan elemen di bawah */
     height: 30dvh;
-    /* Sesuaikan dengan tinggi layar */
 }
 
 :root {

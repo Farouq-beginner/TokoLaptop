@@ -133,7 +133,6 @@
             </div>
         </header>
 
-        <!-- Produk Admin -->
         <div class="produkcontainer">
             <div class="products-container">
                 <div class="products-header">
@@ -146,9 +145,6 @@
         </div>
     </main>
 
-    <!-- ... bagian atas tidak berubah ... -->
-
-    <!-- Modal Form -->
     <div class="modal" id="laptopModal">
         <div class="modal-content">
             <span class="modal-close" id="closeModal">&times;</span>
@@ -159,7 +155,6 @@
                 <input type="number" id="laptopPrice" placeholder="Harga" required />
                 <input type="text" id="laptopImage" placeholder="URL Gambar" required />
 
-                <!-- ✅ Perbarui id agar konsisten -->
                 <label for="laptopStock" style="display: inline-flex; align-items: center; gap: 8px;">
                     <span class="label-text">Stok</span>
                     <input type="number" id="laptopStock" placeholder="Stok" required />
@@ -190,7 +185,7 @@
             name: document.getElementById('laptopName'),
             price: document.getElementById('laptopPrice'),
             image: document.getElementById('laptopImage'),
-            stock: document.getElementById('laptopStock'), // ✅ Tambahkan ini
+            stock: document.getElementById('laptopStock'),
             limited: document.getElementById('laptopLimited')
         };
 
@@ -202,7 +197,7 @@
                 fields.name.value = laptop.name;
                 fields.price.value = laptop.price;
                 fields.image.value = laptop.image;
-                fields.stock.value = laptop.stockQuantity ?? 0; // ✅ Isi stok
+                fields.stock.value = laptop.stockQuantity ?? 0;
                 fields.limited.checked = laptop.limited;
             } else {
                 form.reset();
@@ -263,7 +258,7 @@
                 name: fields.name.value,
                 price: Number(fields.price.value),
                 image: fields.image.value,
-                stockQuantity: Number(fields.stock.value), // ✅ Kirim stok
+                stockQuantity: Number(fields.stock.value),
                 limited: fields.limited.checked
             };
 

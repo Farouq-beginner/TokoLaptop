@@ -1081,7 +1081,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div id="vanta-services-bg"></div>
@@ -1095,7 +1094,6 @@
         </div>
     </section>
 
-    <!-- Who We Are -->
     <section class="who-we-are" id="who-we-are">
         <div class="container">
             <div class="section-grid">
@@ -1143,7 +1141,6 @@
         </div>
     </section>
 
-    <!-- Company Timeline -->
     <section class="timeline" id="timeline">
         <div class="container">
             <h2 class="text-center" data-aos="fade-up">Our Journey</h2>
@@ -1207,7 +1204,7 @@
             </div>
         </div>
     </section>
-    <!-- Team Section -->
+
     <section class="team" id="team">
         <div class="container">
             <h2>Meet Our Team</h2>
@@ -1329,7 +1326,7 @@
             </div>
         </div>
     </section>
-    <!-- Why Choose Us -->
+
     <section class="why-us" id="why-us">
         <div class="container">
             <h2>Why Choose Us</h2>
@@ -1362,7 +1359,7 @@
             </div>
         </div>
     </section>
-    <!-- Quote Section -->
+
     <section class="quote">
         <div class="container">
             <blockquote data-aos="fade-up" data-aos-duration="1000">
@@ -1372,7 +1369,7 @@
             </blockquote>
         </div>
     </section>
-    <!-- Footer -->
+
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1430,45 +1427,38 @@ Tetap terhubung dengan kami di media sosial untuk mendapatkan informasi terbaru,
       maxDistance: 20.0
     });
     </script>
-    <!-- Scripts -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
     <script>
-        // JavaScript for sticky header
+
         window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             header.classList.toggle('sticky', window.scrollY > 50);
         });
 
-        // Get buttons that open the modals
         const hamburgerMenu = document.getElementById('hamburger-menu');
         const mainNav = document.getElementById('main-nav');
 
-        // When the user clicks on the hamburger menu, toggle the nav menu
         hamburgerMenu.onclick = function () {
             mainNav.classList.toggle('active');
         }
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
-            // Close the nav menu if clicked outside
+
             if (!event.target.closest('.nav') && !event.target.closest('.hamburger') && mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
             }
         }
-        // Check window size and adjust nav accordingly
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 768) {
                 mainNav.classList.remove('active');
             }
         });
 
-        // Smooth scrolling for anchor links
         $(document).ready(function () {
-            // Initialize AOS
             AOS.init();
 
-            // Smooth scrolling
             $('a[href^="#"]').on('click', function (event) {
                 var target = $(this.getAttribute('href'));
                 if (target.length) {
@@ -1479,15 +1469,12 @@ Tetap terhubung dengan kami di media sosial untuk mendapatkan informasi terbaru,
                 }
             });
 
-            // Hamburger menu toggle
             $('.hamburger').on('click', function () {
                 $('.nav-links').toggleClass('active');
                 $(this).toggleClass('active');
             });
         });
 
-
-        // Reveal on scroll
         const revealElements = document.querySelectorAll('.reveal');
         const options = {
             root: null,

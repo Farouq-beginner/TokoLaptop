@@ -122,9 +122,7 @@
         .about-header h1 {
             font-size: 4rem;
             color: white;
-            /* agar isi teks transparan */
             -webkit-text-stroke: 1px #000;
-            /* garis luar hitam */
             font-weight: bold;
             font-size: 3rem;
             margin-bottom: 10px;
@@ -135,9 +133,7 @@
         .about-header p {
             font-size: 4rem;
             color: white;
-            /* agar isi teks transparan */
             -webkit-text-stroke: 1px #000;
-            /* garis luar hitam */
             font-weight: bold;
             font-size: 1.5rem;
             max-width: 700px;
@@ -401,8 +397,6 @@
             }
         }
 
-
-        /* Header Styles */
         .logo {
             font-family: 'Raleway', sans-serif;
             font-weight: 800;
@@ -414,7 +408,6 @@
             color: var(--accent);
         }
 
-        /* Scrollbar Styles */
         ::-webkit-scrollbar {
             width: 8px;
             background: transparent;
@@ -422,7 +415,6 @@
 
         ::-webkit-scrollbar-thumb {
             background: rgba(0, 0, 0, 0.2);
-            /* Warna transparan */
             border-radius: 10px;
         }
 
@@ -462,7 +454,6 @@
             transition: color 0.3s;
         }
 
-        /* Hover Effect Styles */
         .nav-link:hover {
             color: #00e1ff;
         }
@@ -482,14 +473,12 @@
             background: none;
         }
 
-        /* Efek hover tetap ada di PC */
         .nav-link:hover::before {
             border-color: #00e1ff;
             box-shadow: 0 0 15px #00e1ff, 0 0 30px rgba(0, 225, 255, 0.5);
             opacity: 1;
         }
 
-        /* Menonaktifkan hover di perangkat mobile */
         @media (max-width: 768px) {
             .nav-link:hover::before {
                 border-color: transparent;
@@ -613,7 +602,6 @@
             }
         }
 
-        /* Header and Navigation */
         header {
             position: fixed;
             top: 0;
@@ -639,11 +627,9 @@
             transition: 0.5s;
         }
 
-        /* Warna navbar tetap gelap di mobile */
         @media (max-width: 768px) {
             header.sticky {
                 background: #112434;
-                /* Tetap gelap di layar kecil */
             }
 
             header.sticky .logo,
@@ -657,7 +643,6 @@
         @media (max-width: 768px) {
             .nav a:hover {
                 background: #112434;
-                /* Warna saat hover di mobile */
                 color: #ffffff;
                 transform: scale(1.05);
                 transition: 0.3s ease-in-out;
@@ -667,7 +652,6 @@
         @media (max-width: 768px) {
             header.sticky .nav-link:hover {
                 background: #ffffff;
-                /* Warna saat hover di mobile */
                 color: #112434;
                 transform: scale(1.05);
                 transition: 0.3s ease-in-out;
@@ -676,11 +660,9 @@
 
 
 
-        /* Warna teks tetap kontras di mobile */
         @media (max-width: 768px) {
             header.sticky .nav a {
                 color: #fff;
-                /* Warna tetap putih di mobile */
             }
         }
 
@@ -741,7 +723,6 @@
         <i class="fas fa-moon"></i>
     </div>
 
-    <!-- Fixed: Removed the nested header and simplified the structure -->
     <header>
         <a href="/Home" class="logo">Lap<span>Zone</span></a>
 
@@ -795,7 +776,6 @@
                 <div class="contact-form-wrap" data-aos="fade-right" data-aos-duration="1000">
                     <h2 class="section-title">Beri kami Pesan</h2>
                     <form id="contactForm" action="https://formsubmit.co/24111814081@mhs.unesa.ac.id" method="POST">
-                        <!-- FormSubmit Configuration -->
                         <input type="hidden" name="_subject" value="New Contact Form Submission - TechHub Laptops">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_captcha" value="false">
@@ -890,7 +870,6 @@
             </div>
 
             <div class="map-container" data-aos="zoom-in" data-aos-duration="1000">
-                <!-- Placeholder for Google Maps -->
                 <img src="/images/Map Contact Us/Map.png" alt="Map Location">
             </div>
         </div>
@@ -932,29 +911,23 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // JavaScript for sticky header
         window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             header.classList.toggle('sticky', window.scrollY > 50);
         });
 
-        // Get buttons that open the modals
         const hamburgerMenu = document.getElementById('hamburger-menu');
         const mainNav = document.getElementById('main-nav');
 
-        // When the user clicks on the hamburger menu, toggle the nav menu
         hamburgerMenu.onclick = function () {
             mainNav.classList.toggle('active');
         }
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
-            // Close the nav menu if clicked outside
             if (!event.target.closest('.nav') && !event.target.closest('.hamburger') && mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
             }
         }
-        // Check window size and adjust nav accordingly
         window.addEventListener('resize', () => {
             if (window.innerWidth >= 768) {
                 mainNav.classList.remove('active');
@@ -962,19 +935,16 @@
         });
 
 
-        // Initialize AOS animation
         AOS.init({
             once: true,
             duration: 800,
             easing: 'ease-in-out'
         });
 
-        // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
         const icon = themeToggle.querySelector('i');
         const body = document.body;
 
-        // Check if user has a preferred theme
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (prefersDark) {
             body.classList.add('dark-theme');
@@ -982,11 +952,9 @@
             icon.classList.add('fa-sun');
         }
 
-        // Toggle theme on click
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-theme');
 
-            // Toggle icon
             if (body.classList.contains('dark-theme')) {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
@@ -996,16 +964,13 @@
             }
         });
 
-        // Form validation
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
         const errorMessage = document.getElementById('errorMessage');
 
         contactForm.addEventListener('submit', (e) => {
-            // Client-side validation before sending to FormSubmit
             let isValid = true;
 
-            // Validate name
             const name = document.getElementById('name');
             const nameError = document.getElementById('nameError');
             if (name.value.trim() === '') {
@@ -1015,8 +980,6 @@
             } else {
                 nameError.style.display = 'none';
             }
-
-            // Validate email
             const email = document.getElementById('email');
             const emailError = document.getElementById('emailError');
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1028,7 +991,6 @@
                 emailError.style.display = 'none';
             }
 
-            // Validate subject
             const subject = document.getElementById('subject');
             const subjectError = document.getElementById('subjectError');
             if (subject.value.trim() === '') {
@@ -1039,7 +1001,6 @@
                 subjectError.style.display = 'none';
             }
 
-            // Validate message
             const message = document.getElementById('message');
             const messageError = document.getElementById('messageError');
             if (message.value.trim() === '') {
@@ -1050,12 +1011,9 @@
                 messageError.style.display = 'none';
             }
 
-            // If valid, let the form submission happen naturally to FormSubmit
-            // We don't prevent default if everything is valid
             if (!isValid) {
                 e.preventDefault();
             } else {
-                // Show visual feedback that submission is happening
                 const submitBtn = contactForm.querySelector('.submit-btn');
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 submitBtn.disabled = true;
@@ -1069,10 +1027,8 @@
                 }, 2000);
             }
         });
-        // Chatbot widget functionality
         const chatbotWidget = document.getElementById('chatbotWidget');
         chatbotWidget.addEventListener('click', () => {
-            // Open your chatbot or chat support here
             alert('Chatbot is not implemented yet.');
         });
     </script>

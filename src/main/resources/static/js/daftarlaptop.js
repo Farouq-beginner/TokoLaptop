@@ -4,11 +4,9 @@ window.addEventListener('scroll', function () {
     header.classList.toggle('sticky', window.scrollY > 50);
 });
 
-// Get hamburger menu
 const hamburgerMenu = document.getElementById('hamburger-menu');
 const mainNav = document.getElementById('main-nav');
 
-// Toggle nav menu
 hamburgerMenu.onclick = function () {
     mainNav.classList.toggle('active');
 };

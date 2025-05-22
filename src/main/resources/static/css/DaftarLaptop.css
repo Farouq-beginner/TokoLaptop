@@ -24,7 +24,6 @@
     opacity: 0.9;
 }
 
-/* Posisi awal elemen */
 #t1 { top: 0; left: 0; }
 #m1 { top: 0; right: 0; }
 #t2 { bottom: 0; left: 0; }
@@ -44,7 +43,6 @@
 
 
 
-        /* Header Styles */
         .logo {
             font-family: 'Raleway', sans-serif;
             font-weight: 800;
@@ -56,7 +54,6 @@
             color: var(--accent);
         }
 
-        /* Scrollbar Styles */
         ::-webkit-scrollbar {
             width: 8px;
             background: transparent;
@@ -64,7 +61,6 @@
 
         ::-webkit-scrollbar-thumb {
             background: rgba(0, 0, 0, 0.2);
-            /* Warna transparan */
             border-radius: 10px;
         }
 
@@ -104,7 +100,6 @@
             transition: color 0.3s;
         }
 
-        /* Hover Effect Styles */
         .nav-link:hover {
             color: #f1f1f1;
         }
@@ -124,14 +119,12 @@
             background: none;
         }
 
-        /* Efek hover tetap ada di PC */
         .nav-link:hover::before {
             border-color: #00e1ff;
             box-shadow: 0 0 15px #00e1ff, 0 0 30px rgba(0, 225, 255, 0.5);
             opacity: 1;
         }
 
-        /* Menonaktifkan hover di perangkat mobile */
         @media (max-width: 768px) {
             .nav-link:hover::before {
                 border-color: transparent;
@@ -266,7 +259,6 @@
             }
         }
 
-        /* Header and Navigation */
         header {
             position: fixed;
             top: 0;
@@ -292,11 +284,9 @@
             transition: 0.5s;
         }
 
-        /* Warna navbar tetap gelap di mobile */
         @media (max-width: 768px) {
             header.sticky {
                 background: #112434;
-                /* Tetap gelap di layar kecil */
             }
 
             header.sticky .logo,
@@ -310,7 +300,6 @@
         @media (max-width: 768px) {
             .nav a:hover {
                 background: #112434;
-                /* Warna saat hover di mobile */
                 color: #ffffff;
                 transform: scale(1.05);
                 transition: 0.3s ease-in-out;
@@ -320,7 +309,6 @@
         @media (max-width: 768px) {
             header.sticky .nav-link:hover {
                 background: #ffffff;
-                /* Warna saat hover di mobile */
                 color: #112434;
                 transform: scale(1.05);
                 transition: 0.3s ease-in-out;
@@ -329,11 +317,9 @@
 
 
 
-        /* Warna teks tetap kontras di mobile */
         @media (max-width: 768px) {
             header.sticky .nav a {
                 color: #fff;
-                /* Warna tetap putih di mobile */
             }
         }
 
@@ -357,7 +343,6 @@ body {
 
 
 
-/* Products Container */
 .produkcontainer {
     padding: 40px 5% 50px;
 }
@@ -604,7 +589,6 @@ body {
     cursor: pointer;
 }
 
-/* Enhanced Search & Sort Controls */
 .search-sort-controls {
     display: flex;
     justify-content: space-between;
@@ -693,7 +677,6 @@ body {
     font-weight: 500;
 }
 
-/* No results message */
 .no-results {
     grid-column: 1 / -1;
     text-align: center;
@@ -706,7 +689,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive Design */
 @media (min-width: 768px) {
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -824,7 +806,6 @@ body {
     border-radius: 8px;
 }
 
-/* Gambar kecil pojok kanan atas */
 .limited-icon {
     position: absolute;
     top: 8px;
@@ -834,7 +815,6 @@ body {
     z-index: 2;
 }
 
-/* Style khusus untuk product limited */
 .limited-product {
     border: 2px solid gold;
     box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
@@ -842,7 +822,6 @@ body {
     overflow: hidden;
 }
 
-/* Badge diagonal */
 .limited-product::before {
     content: "-LIMITED";
     position: absolute;

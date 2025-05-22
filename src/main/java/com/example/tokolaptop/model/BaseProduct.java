@@ -1,6 +1,5 @@
 package com.example.tokolaptop.model;
 
-// Tidak diberi anotasi JPA agar tidak konflik
 public abstract class BaseProduct {
     protected String name;
     protected Long price;

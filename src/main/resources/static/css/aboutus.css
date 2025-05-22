@@ -67,7 +67,6 @@ section {
     transform: translateY(-3px);
 }
 
-/* Header Styles */
 .logo {
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
@@ -79,7 +78,6 @@ section {
     color: var(--accent);
 }
 
-/* Scrollbar Styles */
 ::-webkit-scrollbar {
     width: 8px;
     background: transparent;
@@ -87,7 +85,6 @@ section {
 
 ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
-    /* Warna transparan */
     border-radius: 10px;
 }
 
@@ -147,14 +144,12 @@ section {
     background: none;
 }
 
-/* Efek hover tetap ada di PC */
 .nav-link:hover::before {
     border-color: #00e1ff;
     box-shadow: 0 0 15px #00e1ff, 0 0 30px rgba(0, 225, 255, 0.5);
     opacity: 1;
 }
 
-/* Menonaktifkan hover di perangkat mobile */
 @media (max-width: 768px) {
     .nav-link:hover::before {
         border-color: transparent;
@@ -278,7 +273,6 @@ section {
     }
 }
 
-/* Header and Navigation */
 header {
     position: fixed;
     top: 0;
@@ -304,11 +298,9 @@ header.sticky .nav a {
     transition: 0.5s;
 }
 
-/* Warna navbar tetap gelap di mobile */
 @media (max-width: 768px) {
     header.sticky {
         background: #112434;
-        /* Tetap gelap di layar kecil */
     }
 
     header.sticky .logo,
@@ -322,14 +314,12 @@ header.sticky .nav a {
 @media (max-width: 768px) {
     header.sticky .nav a:hover {
         background: #ffffff;
-        /* Warna saat hover di mobile */
         color: #112434;
         transform: scale(1.05);
         transition: 0.3s ease-in-out;
     }
 }
 
-/* Nonaktifkan Hover di PC */
 @media (min-width: 769px) {
     header.sticky .nav a:hover {
         background: transparent !important;
@@ -338,11 +328,9 @@ header.sticky .nav a {
     }
 }
 
-/* Warna teks tetap kontras di mobile */
 @media (max-width: 768px) {
     header.sticky .nav a {
         color: #fff;
-        /* Warna tetap putih di mobile */
     }
 }
 
@@ -352,7 +340,6 @@ header.sticky .nav a {
     }
 }
 
-/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
@@ -435,7 +422,6 @@ header.sticky .nav a {
     font-size: 1.1rem;
 }
 
-/* Vision & Mission */
 .vision-mission {
     background-color: var(--dark-navy);
     position: relative;
@@ -490,7 +476,6 @@ header.sticky .nav a {
     color: var(--white);
 }
 
-/* Company Timeline */
 .timeline {
     background-color: var(--navy);
     position: relative;

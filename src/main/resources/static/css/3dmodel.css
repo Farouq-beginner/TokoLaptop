@@ -1,4 +1,3 @@
-/* Container utama untuk deskripsi dan model 3D */
 .info-container {
     background: linear-gradient(to top, #112434, #1c3150);
     display: flex;
@@ -27,7 +26,6 @@
     transition: all 0.3s ease;
 }
 
-/* Judul */
 .deskripsi3d h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -37,7 +35,6 @@
     padding-bottom: 0.5rem;
 }
 
-/* Paragraf utama */
 .deskripsi3d p {
     font-size: 1.1rem;
     line-height: 1.6;
@@ -45,7 +42,6 @@
     color: #d6e0ea;
 }
 
-/* List keunggulan */
 .deskripsi3d ul {
     list-style: none;
     padding: 0;
@@ -69,7 +65,6 @@
 }
 
 
-/* Bungkus untuk model 3D */
 .model-viewer-container {
     position: relative;
     transition: all 0.5s ease;
@@ -78,7 +73,6 @@
     max-width: 800px;
 }
 
-/* Model 3D interaktif */
 model-viewer {
     width: 100%;
     height: 500px;
@@ -89,7 +83,6 @@ model-viewer {
     --poster-color: transparent;
 }
 
-/* Label/nama model */
 .model-nama-viewer {
     position: absolute;
     bottom: 10px;
@@ -104,7 +97,6 @@ model-viewer {
     z-index: 3;
 }
 
-/* Responsif untuk mobile */
 @media (max-width: 768px) {
     .info-container {
         padding: 1.5rem;
