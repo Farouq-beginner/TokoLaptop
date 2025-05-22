@@ -135,7 +135,7 @@
     </main>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     loadCartItems();
 
     const checkoutButton = document.getElementById('checkout-button');
@@ -174,9 +174,7 @@ async function loadCartItems() {
                         </div>
                         <div class="cart-actions">
                             <input type="number" class="quantity-input" data-id="${item.id}" value="${item.quantity}" min="1">
-                            <form method="post" action="/cart/delete/${item.id}">
-                                <button class="delete-btn" type="submit">Hapus</button>
-                            </form>
+                            <button class="delete-btn">Hapus</button>
                         </div>
                     </div>`;
                 container.insertAdjacentHTML('beforeend', itemHTML);
@@ -203,6 +201,36 @@ async function loadCartItems() {
                 loadCartItems();
             });
         });
+
+        // ✅ Event handler untuk tombol hapus
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const itemId = button.closest('.cart-item').getAttribute('data-id');
+
+                const confirmed = confirm("Yakin ingin menghapus item ini?");
+                if (!confirmed) return;
+
+                try {
+                    const response = await fetch(`/cart/delete/${itemId}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (!response.ok) {
+                        const error = await response.text();
+                        alert("Gagal menghapus item: " + error);
+                        return;
+                    }
+
+                    alert("Item berhasil dihapus.");
+                    loadCartItems(); // reload keranjang
+                } catch (error) {
+                    console.error("Gagal menghapus item:", error);
+                    alert("Terjadi kesalahan saat menghapus.");
+                }
+            });
+        });
+
     } catch (err) {
         console.error('Gagal load keranjang:', err);
     }
@@ -239,7 +267,6 @@ async function handleCheckout() {
         }
 
         alert('Checkout berhasil! Stok laptop telah diperbarui.');
-        // Kamu bisa juga membersihkan cart di sini kalau backend mendukung
         location.reload(); // refresh data
     } catch (error) {
         console.error("Gagal saat proses checkout:", error);

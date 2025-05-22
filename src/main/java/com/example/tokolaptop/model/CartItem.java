@@ -9,13 +9,20 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) // hemat memori
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER) // pastikan data laptop langsung tersedia
+    @JoinColumn(name = "laptop_id", nullable = false)
     private Laptop laptop;
 
+    @Column(nullable = false)
     private int quantity;
+
+    // Opsional: Tambahkan status jika ingin menandai item sedang dalam proses
+    // @Column(nullable = false)
+    // private String status = "CART"; // atau "CHECKOUT", "PAID"
 
     public CartItem() {}
 
@@ -25,7 +32,7 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    // Getter dan Setter
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -57,4 +64,12 @@ public class CartItem {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    // Jika pakai status:
+    // public String getStatus() {
+    //     return status;
+    // }
+    // public void setStatus(String status) {
+    //     this.status = status;
+    // }
 }
