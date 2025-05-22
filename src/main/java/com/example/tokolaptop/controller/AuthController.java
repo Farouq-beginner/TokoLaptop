@@ -73,9 +73,20 @@ public class AuthController {
         }
     }
     @GetMapping("/DLAdmin")
-    public String DLAPage() {
-        return "DLAdmin";
+    public String DLAPage(HttpSession session) {
+    User user = (User) session.getAttribute("loggedInUser");
+
+    if (user == null) {
+        return "redirect:/login";
     }
+
+    if (!"ADMIN".equalsIgnoreCase(user.getRole())) {
+        return "redirect:/Home"; 
+    }
+
+    return "DLAdmin"; 
+    }
+
 
     @GetMapping("/Profil")
     public String profil(Model model, HttpSession session) {
